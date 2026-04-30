@@ -4,14 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Michael Gauthier | Mechanical Engineering Portfolio</title>
-  <meta name="description" content="Mechanical Engineering portfolio: design, prototyping, automation, and field-to-CAD workflow improvements." />
-
-  <!-- Optional: discourages search engines from indexing (not guaranteed) -->
-  <meta name="robots" content="noindex,nofollow" />
-
+  <meta name="description" content="Mechanical engineering portfolio: CAD, automation, prototyping, inspection workflow design, and project outcomes." />
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
   <header class="hero">
     <div class="container hero-grid">
@@ -19,14 +14,14 @@
         <p class="kicker">Mechanical Engineering • Northeastern University • May 2027</p>
         <h1>Michael Gauthier</h1>
         <p class="subtitle">
-          I build practical engineering systems—CAD + prototyping + automation—focused on outcomes people rely on.
+          Portfolio of projects across CAD, automation, prototyping, and process improvement.
         </p>
 
-        <div class="buttons">
+        <div class="button-row">
           <a class="btn primary" href="#projects">Projects</a>
-          <a class="btn" href="#wellesley">Wellesley Work</a>
+          <a class="btn" href="#wellesley">Wellesley</a>
           <a class="btn" href="#skills">Skills</a>
-          <a class="btn" href="#contact">Contact</a>
+          <button class="btn" type="button" id="printBtn">Print Portfolio (PDF)</button>
         </div>
 
         <div class="links">
@@ -35,14 +30,13 @@
           <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
         </div>
 
-        <div class="small-note">
-          Tip: GitHub lets anyone view this site. If you prefer, you can remove the headshot and keep it text-only.
-        </div>
+        <p class="note">
+          This site is public and anyone with the link can view it.
+        </p>
       </div>
 
-      <!-- Optional headshot. Upload to assets/img/headshot.jpg OR delete this whole div. -->
       <div class="headshot-wrap">
-        <img class="headshot" src="assets/img/headshot.jpg" alt="Headshot of Michael Gauthier" />
+        <img class="headshot" src="assets/img/headshot.jpg" alt="Michael Gauthier headshot" />
       </div>
     </div>
   </header>
@@ -52,122 +46,110 @@
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#wellesley">Wellesley Work</a>
-      <a href="#skills">Skills & Coursework</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills and Coursework</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
 
   <main>
-
-    <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
         <h2>About</h2>
         <div class="card">
           <p>
-            I’m a Mechanical Engineering student at Northeastern (May 2027) with a minor in Entrepreneurial Startups.
-            I’ve enjoyed roles where I’m trusted with real responsibility early on—writing tools that save time, building systems
-            that teams use daily, and taking projects from field work through CAD and documentation.
+            I am a Mechanical Engineering student at Northeastern University graduating in May 2027 with a minor in Entrepreneurial Startups.
+            I enjoy engineering work that improves how people build, measure, document, and repeat a process.
+          </p>
+          <p>
+            My recent co op with the Town of Wellesley Engineering Division gave me experience across CAD, surveying, GIS workflows, and Python automation.
+            I also run projects outside school, including a custom LED sign business and engineering club work.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
     <section id="projects" class="section">
       <div class="container">
         <div class="section-head">
           <h2>Project Portfolio</h2>
-          <p class="muted">Focused on what I did, how I did it, and the outcome.</p>
+          <p class="muted">Each project is written as what I did, how I did it, and the outcome.</p>
         </div>
 
         <div class="grid">
 
-          <!-- Project: Clean Energy Exhibit -->
           <article class="project card">
             <div class="media">
-              <img src="assets/img/clean-energy-exhibit.jpg" alt="Clean Energy Exhibit project" />
+              <img src="assets/img/clean-energy-exhibit.jpg" alt="Clean Energy Exhibit" />
             </div>
             <div class="body">
-              <h3>Clean Energy Exhibit (Boston Middle School Exposition)</h3>
-              <p class="meta">Design • Prototyping • Testing • Arduino/MATLAB</p>
-
+              <h3>Clean Energy Exhibit</h3>
+              <p class="meta">Design • Prototyping • Programming</p>
               <div class="whw">
-                <p><strong>What:</strong> Built an interactive exhibit to teach clean energy concepts to middle school students in a way that would survive constant use.</p>
-                <p><strong>How:</strong> Designed the physical build (laser-cut house model, 3D-printed turbine), integrated LEDs + interactions, and programmed an Arduino/MATLAB game.</p>
-                <p><strong>Result:</strong> A stable, repeatable demo that ran reliably during repeated student use and clearly communicated the concept through hands-on interaction.</p>
+                <p><strong>What:</strong> Built an interactive exhibit to teach clean energy concepts to middle school students.</p>
+                <p><strong>How:</strong> Designed the physical build, laser cut parts, 3D printed a turbine, integrated LEDs, and programmed an Arduino and MATLAB based game.</p>
+                <p><strong>Result:</strong> A stable exhibit that ran reliably during repeated student use and clearly demonstrated the concept through hands on interaction.</p>
               </div>
             </div>
           </article>
 
-          <!-- Project: CA Light Designs -->
           <article class="project card">
             <div class="media">
-              <img src="assets/img/led-signs-collage.jpg" alt="Custom engraved LED signs" />
+              <img src="assets/img/led-signs-collage.jpg" alt="CA Light Designs LED signs" />
             </div>
             <div class="body">
-              <h3>CA Light Designs — Custom Engraved LED Signs</h3>
-              <p class="meta">Product design • Iteration • Manufacturing workflow</p>
-
+              <h3>CA Light Designs</h3>
+              <p class="meta">Product design • Iteration • Production workflow</p>
               <div class="whw">
-                <p><strong>What:</strong> Started and ran a custom LED sign business from scratch—design through production and fulfillment.</p>
-                <p><strong>How:</strong> Designed products, iterated on engraving + assembly steps, and improved the process as order volume increased.</p>
-                <p><strong>Result:</strong> Better repeatability and faster production, with customers coming back and recommending the signs based on quality and consistency.</p>
+                <p><strong>What:</strong> Started and ran a custom engraved LED sign business.</p>
+                <p><strong>How:</strong> Designed products, improved production steps over time, modified an engraving workflow for acrylic, and managed customer driven design revisions.</p>
+                <p><strong>Result:</strong> More consistent production and a strong customer experience, including repeat customers and referrals.</p>
               </div>
-
-              <p class="small">
-                Website: <a href="https://calightdesigns.wixsite.com/calightdesign" target="_blank" rel="noopener">calightdesigns.wixsite.com/calightdesign</a>
-              </p>
+              <p class="small"><a href="https://calightdesigns.wixsite.com/calightdesign" target="_blank" rel="noopener">calightdesigns.wixsite.com/calightdesign</a></p>
             </div>
           </article>
 
-          <!-- Project: NU Give a Hand -->
           <article class="project card">
             <div class="media">
-              <img src="assets/img/nu-give-a-hand.jpg" alt="NU Give a Hand prosthetic design" />
+              <img src="assets/img/nu-give-a-hand.jpg" alt="NU Give a Hand" />
             </div>
             <div class="body">
-              <h3>NU Give a Hand — Prosthetic Hand Design (Volunteer)</h3>
+              <h3>NU Give a Hand</h3>
               <p class="meta">SolidWorks • Mechanisms • Prototyping</p>
-
               <div class="whw">
-                <p><strong>What:</strong> Support mechanical design improvements for a prosthetic hand system.</p>
-                <p><strong>How:</strong> Model mechanism updates in SolidWorks and iterate using prototype prints and assembly feedback.</p>
-                <p><strong>Result:</strong> Faster iteration cycles and clearer design documentation for future builds.</p>
+                <p><strong>What:</strong> Contributed to prosthetic hand design improvements.</p>
+                <p><strong>How:</strong> Modeled mechanism updates in SolidWorks and supported iterative improvements based on assembly and motion feedback.</p>
+                <p><strong>Result:</strong> Faster design iteration and clearer CAD for future builds.</p>
               </div>
             </div>
           </article>
 
-          <!-- Project: NU Electric Racing -->
           <article class="project card">
             <div class="media">
-              <img src="assets/img/nu-electric-racing.jpg" alt="NU Electric Racing tire optimization" />
+              <img src="assets/img/nu-electric-racing.jpg" alt="NU Electric Racing" />
             </div>
             <div class="body">
-              <h3>NU Electric Racing — Tire Optimization (Volunteer)</h3>
-              <p class="meta">MATLAB • Tradeoff thinking • Vehicle performance</p>
-
+              <h3>NU Electric Racing</h3>
+              <p class="meta">Analysis • Performance tradeoffs</p>
               <div class="whw">
-                <p><strong>What:</strong> Support tire optimization work by comparing performance tradeoffs that affect acceleration/efficiency.</p>
-                <p><strong>How:</strong> Use analysis tools (MATLAB/data comparisons) to evaluate options and document takeaways for the team.</p>
-                <p><strong>Result:</strong> Clearer decision support on tire-related choices as the team tests and iterates.</p>
+                <p><strong>What:</strong> Supported tire optimization work by comparing performance tradeoffs that affect acceleration and efficiency.</p>
+                <p><strong>How:</strong> Used analysis and documentation to compare options and share takeaways with the team.</p>
+                <p><strong>Result:</strong> Clearer decision support for tire related choices as the team tests and iterates.</p>
               </div>
             </div>
           </article>
 
-          <!-- Placeholder: RDF Detention Pond -->
           <article class="project card placeholder">
             <div class="media placeholder-box">
               <p><strong>Image placeholder</strong><br/>RDF Detention Pond Redesign</p>
             </div>
             <div class="body">
-              <h3>RDF Detention Pond Redesign (Wellesley) — <span class="muted">Coming soon</span></h3>
-              <p class="meta">Placeholder section</p>
-
+              <h3>RDF Detention Pond Redesign</h3>
+              <p class="meta">Add details here</p>
               <div class="whw">
-                <p><strong>What:</strong> (Add short context)</p>
-                <p><strong>How:</strong> (Add your specific steps)</p>
-                <p><strong>Result:</strong> (Add outcome/impact)</p>
+                <p><strong>What:</strong> </p>
+                <p><strong>How:</strong> </p>
+                <p><strong>Result:</strong> </p>
               </div>
             </div>
           </article>
@@ -176,49 +158,48 @@
       </div>
     </section>
 
-    <!-- WELLESLEY WORK -->
     <section id="wellesley" class="section">
       <div class="container">
         <div class="section-head">
-          <h2>Town of Wellesley — Engineering Division</h2>
-          <p class="muted">Major workstreams (portfolio-style, not resume-style).</p>
+          <h2>Town of Wellesley Engineering Division</h2>
+          <p class="muted">Key workstreams written as portfolio projects.</p>
         </div>
 
         <div class="stack">
 
           <div class="card">
-            <h3>Digital Inspection Workflow (ArcGIS Online / Survey123 / Field Maps)</h3>
+            <h3>Digital Inspection Workflow</h3>
             <div class="whw">
-              <p><strong>What:</strong> The department relied on paper inspection forms, which slowed down turnaround and made data hard to share.</p>
-              <p><strong>How:</strong> Built the inspection workflow online from end to end (forms + field map setup + consistent structure so inspections were recorded the same way).</p>
-              <p><strong>Result:</strong> Inspections became faster to complete and easier to track, and engineers could access field data immediately without waiting for paper to be re-entered.</p>
+              <p><strong>What:</strong> Inspections relied on paper forms, which slowed turnaround and made data harder to share and track.</p>
+              <p><strong>How:</strong> Built and implemented an ArcGIS based workflow using ArcGIS Online, Survey123, and Field Maps so inspections were captured consistently and accessible to the team.</p>
+              <p><strong>Result:</strong> Faster inspection turnaround, improved consistency, and field data available to engineers immediately.</p>
             </div>
           </div>
 
           <div class="card">
-            <h3>Drafting Automation (Python → CAD/GIS Linework)</h3>
+            <h3>Python Automation for Drafting and Organization</h3>
             <div class="whw">
-              <p><strong>What:</strong> Drafting from hand sketches/field notes took significant time and created inconsistencies depending on who drew it.</p>
-              <p><strong>How:</strong> Wrote Python programs to convert hand-drawn lines/text into vector geometry so multiple drawings could be processed in batches.</p>
-              <p><strong>Result:</strong> Reduced repetitive manual drafting work and made it easier to standardize how information was brought into CAD/GIS.</p>
+              <p><strong>What:</strong> Repetitive drafting and file organization tasks took significant time and made work harder to standardize.</p>
+              <p><strong>How:</strong> Wrote multiple Python programs to automate drafting related steps and improve organization of engineering files and notes.</p>
+              <p><strong>Result:</strong> Less time spent on repetitive work and more consistent output across the team.</p>
             </div>
           </div>
 
           <div class="card">
-            <h3>Field-to-CAD Workflow (Survey Equipment → Plan Development)</h3>
+            <h3>Surveying and Plan Development Support</h3>
             <div class="whw">
-              <p><strong>What:</strong> Projects required accurate site measurements that could be used directly for design and documentation.</p>
-              <p><strong>How:</strong> Collected survey/topographic data with Trimble GPS and total station equipment, then integrated it into CAD/GIS for plan work.</p>
-              <p><strong>Result:</strong> Faster turnaround from field measurement to drawings and fewer gaps between site conditions and what was shown in plans.</p>
+              <p><strong>What:</strong> Projects required accurate site measurements for design and documentation.</p>
+              <p><strong>How:</strong> Collected measurements using Trimble GPS and total station equipment and brought the data into CAD and GIS for plan development.</p>
+              <p><strong>Result:</strong> Faster transition from field measurements to drawing updates and fewer gaps between site conditions and plans.</p>
             </div>
           </div>
 
           <div class="card">
-            <h3>Utility / Drainage / Sewer Plan Updates + Conflict Flagging</h3>
+            <h3>Utility Plan Updates and Conflict Flagging</h3>
             <div class="whw">
-              <p><strong>What:</strong> Field conditions regularly differed from drawings, and conflicts needed to be caught before they caused rework.</p>
-              <p><strong>How:</strong> Updated sewer/drainage/utility plans based on site observations and flagged conflicts early during review and inspection cycles.</p>
-              <p><strong>Result:</strong> Helped reduce on-site rework by catching issues earlier in the process.</p>
+              <p><strong>What:</strong> Field conditions often differed from existing drawings and conflicts needed to be caught early.</p>
+              <p><strong>How:</strong> Updated sewer, drainage, and utility plans based on field conditions and raised conflicts during review and inspection cycles.</p>
+              <p><strong>Result:</strong> Issues were identified earlier and helped reduce rework during construction.</p>
             </div>
           </div>
 
@@ -226,67 +207,92 @@
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2>Experience</h2>
+
+        <div class="stack">
+          <div class="card">
+            <h3>Town of Wellesley Engineering Division</h3>
+            <p class="meta">Construction Engineering Co op • Wellesley Massachusetts</p>
+            <p class="muted">Drafting, surveying, GIS workflows, and Python automation supporting town infrastructure projects.</p>
+          </div>
+
+          <div class="card">
+            <h3>CA Light Designs</h3>
+            <p class="meta">Founder and Owner • Westfield New Jersey</p>
+            <p class="muted">Custom engraved LED product design, process improvement, production, and customer communication.</p>
+          </div>
+
+          <div class="card">
+            <h3>Brandy Melville</h3>
+            <p class="meta">Stock Associate • Boston Massachusetts</p>
+            <p class="muted">Inventory flow, organization systems, and improving backstock layout for faster daily operations.</p>
+          </div>
+
+          <div class="card">
+            <h3>Town of Westfield</h3>
+            <p class="meta">Lifeguard and Swim Instructor • Westfield New Jersey</p>
+            <p class="muted">High volume instruction, safety responsibility, and clear communication with kids and parents.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="skills" class="section">
       <div class="container">
         <div class="section-head">
-          <h2>Skills & Coursework</h2>
-          <p class="muted">Relevant tools, technical skills, and core ME coursework.</p>
+          <h2>Skills and Coursework</h2>
+          <p class="muted">Tools and skills included for job applications that pull from LinkedIn style profiles.</p>
         </div>
 
         <div class="skills-grid">
           <div class="card">
-            <h3>CAD / Design</h3>
-            <p>AutoCAD (2D/3D), SolidWorks, plan set production, drawing revision cycles, basic GD&T familiarity</p>
+            <h3>CAD and Design</h3>
+            <p>AutoCAD, SolidWorks, 2D drawings, 3D modeling, plan set work, basic GD and T familiarity</p>
           </div>
 
           <div class="card">
-            <h3>Programming / Analysis</h3>
-            <p>Python, MATLAB, Excel (analysis + organization), basic scripting for automation</p>
+            <h3>Programming and Analysis</h3>
+            <p>Python, MATLAB, Excel, automation scripts, data organization</p>
           </div>
 
           <div class="card">
-            <h3>GIS / Field Data</h3>
-            <p>ArcGIS Online, Survey123, Field Maps, ArcGIS Pro; field-to-office workflows</p>
+            <h3>GIS and Field Data</h3>
+            <p>ArcGIS Online, Survey123, Field Maps, ArcGIS Pro, field data collection workflows</p>
           </div>
 
           <div class="card">
-            <h3>Equipment / Fabrication</h3>
-            <p>Trimble GPS/GNSS, total station; 3D printing; laser cutting/engraving; basic shop tools</p>
+            <h3>Testing and Fabrication</h3>
+            <p>Instron exposure, stress strain interpretation, 3D printing, laser cutting and engraving, shop tools</p>
           </div>
 
           <div class="card">
-            <h3>Testing (from coursework)</h3>
-            <p>Instron/Bluehill exposure, stress–strain interpretation, basic yield/failure concepts</p>
+            <h3>Equipment</h3>
+            <p>Trimble GPS and GNSS, total station, construction site documentation</p>
           </div>
 
           <div class="card">
-            <h3>Coursework (ME core)</h3>
-            <p>Thermodynamics, Fluids, Dynamics, Mechanics of Materials, Thermal Systems Analysis & Design, Measurement & Analysis</p>
+            <h3>Coursework</h3>
+            <p>Thermodynamics, Fluid Mechanics, Dynamics, Mechanics of Materials, Heat Transfer, Measurements and Analysis</p>
           </div>
-        </div>
-
-        <div class="print-tip card">
-          <p class="small"><strong>Download tip:</strong> Repo → <strong>Code</strong> → <strong>Download ZIP</strong> to save the whole portfolio site.</p>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact" class="section">
       <div class="container">
         <h2>Contact</h2>
         <div class="card contact">
-          <p><strong>Email:</strong> <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a></p>
-          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">linkedin.com/in/mgauthier1</a></p>
-          <p class="small muted">Boston, MA • New York, NY</p>
+          <p><strong>Email</strong><br><a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a></p>
+          <p><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">linkedin.com/in/mgauthier1</a></p>
         </div>
       </div>
     </section>
 
     <footer class="footer">
       <div class="container">
-        <p class="small muted">© <span id="year"></span> Michael Gauthier • GitHub Pages</p>
+        <p class="muted small">© <span id="year"></span> Michael Gauthier</p>
       </div>
     </footer>
   </main>
