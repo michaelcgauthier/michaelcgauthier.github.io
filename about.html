@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About | Michael Gauthier</title>
-  <meta name="description" content="About Michael Gauthier." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +12,10 @@
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a class="brand" href="index.html">Michael Gauthier</a>
+      <div class="brandblock">
+        <div class="brand">Michael Gauthier</div>
+        <div class="subtitle">Mechanical Engineering Student</div>
+      </div>
 
       <button class="menu-btn" id="menuBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -26,24 +28,22 @@
         <a class="nav-link active" href="about.html">About</a>
         <a class="nav-link" href="contact.html">Contact</a>
 
-        <a class="btn" href="assets/docs/Michael_Gauthier_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a class="btn btn-secondary" href="assets/docs/Michael_Gauthier_Portfolio.pdf" target="_blank" rel="noopener">Portfolio</a>
+        <a class="btn" href="resume.html">Resume</a>
+        <a class="btn btn-secondary" href="projects.html">Projects</a>
 
-        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email"><span class="icon">✉</span></a>
-        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon">in</span></a>
+        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
+        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero hero-about" style="background-image:url('assets/images/hero/about-hero.jpg');">
+    <section class="hero thin" style="background-image:url('assets/images/all/AboutMeBackgroundBanner.png');">
       <div class="hero-overlay"></div>
       <div class="wrap hero-content">
-        <p class="kicker">About</p>
-        <h1>Mechanical engineering student focused on design, systems, and results people can use.</h1>
-        <p class="lead">
-          I am a Mechanical Engineering student at Northeastern University graduating May 2027 with a minor in Entrepreneurial Startups. I like understanding how systems work, improving them, and building tools that make technical work easier for a team to use every day.
-        </p>
+        <div class="hero-center">
+          <h1>About</h1>
+        </div>
       </div>
     </section>
 
@@ -51,36 +51,37 @@
       <div class="wrap section">
         <div class="about-layout">
           <div class="about-photo">
-            <img src="assets/images/hero/headshot.jpg" alt="Headshot placeholder">
+            <img src="assets/images/all/headshot.jpeg" alt="Headshot">
           </div>
 
           <div class="about-text">
             <h2 class="section-title">Background</h2>
             <p>
-              My first major design and manufacturing experience came from starting CA Light Designs, a custom engraved LED sign business I ran in high school. I designed products, operated and modified engraving equipment, built a website, managed online storefronts, communicated with customers, and fulfilled orders. That experience taught me how product design, manufacturing workflow, quality control, customer needs, and business operations connect.
+              I am a Mechanical Engineering student at Northeastern University graduating May 2027. I am currently a Mechanical and Construction Engineering Co op, where my work includes CAD plan sets, field measurement with survey equipment, ArcGIS workflow development, and Python automation tools used across the engineering office.
             </p>
             <p>
-              More recently, I completed a co op with the Town of Wellesley Engineering Division where I worked across CAD design, field measurement, Python automation, GIS systems, and construction documentation. I created drawings, automated repetitive workflows, operated precision measurement equipment, processed field data, organized technical documentation, and built tools that improved how an engineering office works.
-            </p>
-            <p>
-              I am currently training for the Boston Half Marathon and I have organized fundraising events that raised about one thousand dollars for cancer research. I enjoy roles where I can stay organized, take initiative, and deliver work that is accurate and easy for others to rely on.
+              I studied abroad in Madrid during Fall 2023. Living and traveling throughout Spain and Europe gave me a better sense of how people work, communicate, and solve problems in different environments. It also helped my Spanish a lot. I have studied Spanish since third grade and I can speak, read, and write it.
             </p>
 
-            <h2 class="section-title">Leadership and volunteering</h2>
+            <h2 class="section-title">Leadership and projects</h2>
             <div class="bullets">
               <div class="bullet">
-                <div class="b-title">Coding with a Cause</div>
-                <div class="b-text">Co President and Co Founder, led outreach workshops teaching web design and coding, expanded to additional schools with over one hundred students.</div>
+                <div class="b-title">CA Light Designs</div>
+                <div class="b-text">Founded and ran a custom engraved LED sign business. Owned product design, production, machine setup improvements, customer communication, and order fulfillment.</div>
               </div>
               <div class="bullet">
-                <div class="b-title">Dana Farber fundraising</div>
-                <div class="b-text">Organized fundraiser yoga events including instructor sourcing and payment workflow, raised about one thousand dollars.</div>
+                <div class="b-title">NU Electric Racing</div>
+                <div class="b-text">Worked on tire optimization focused on reducing rotational inertia to improve acceleration and overall performance. Supported material selection and calculation work.</div>
+              </div>
+              <div class="bullet">
+                <div class="b-title">NU Give a Hand</div>
+                <div class="b-text">Worked on prosthetic hand design and iteration using CAD modeling and prototyping to improve mechanical function and usability.</div>
               </div>
             </div>
 
-            <div class="center" style="margin-top:18px;">
-              <a class="btn" href="projects.html">View projects</a>
-              <a class="btn btn-secondary" href="contact.html">Contact</a>
+            <div style="margin-top:18px;">
+              <a class="btn light" href="projects.html">Projects</a>
+              <a class="btn btn-secondary light" href="contact.html" style="margin-left:10px;">Contact</a>
             </div>
           </div>
         </div>
@@ -102,7 +103,6 @@
     </section>
   </main>
 
-  <script src="projects-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
