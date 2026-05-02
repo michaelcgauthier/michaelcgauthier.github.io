@@ -6,7 +6,7 @@
   <title>Projects | Michael Gauthier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -23,11 +23,10 @@
 
       <nav class="nav" id="nav">
         <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="projects.html">Projects</a>
+        <a class="nav-link active" href="projects.html">Projects</a>
         <a class="nav-link" href="resume.html">Resume</a>
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-link" href="contact.html">Contact</a>
-
         <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
         <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
@@ -35,34 +34,36 @@
   </header>
 
   <main>
-    <section class="hero thin" data-parallax="true" data-parallax-speed="0.18" style="background-image:url('assets/images/all/ProjectsBannerBackground.png'); background-position:center 35%;">
+    <section class="hero thin" data-parallax="true" data-parallax-speed="0.18"
+      style="background-image:url('assets/images/all/ProjectsBannerBackground.png'); background-position:center 35%;">
       <div class="hero-overlay"></div>
       <div class="wrap hero-content">
         <div class="hero-center">
           <h1>Engineering Projects</h1>
+          <p>Click any project to see the full case study: context, process, tools, and results.</p>
         </div>
       </div>
     </section>
 
     <section class="light">
       <div class="wrap section">
-        <p class="section-sub">Click a project to see the full write up with what I did, how I did it, and results.</p>
-        <div class="projects-grid" id="projectsGrid"></div>
-      </div>
+        <p class="section-sub">The strongest mechanical engineering work first: automation, CAD systems, measurement, testing, prototyping, and fabrication.</p>
+        <div id="projectsGrid" class="projects-grid"></div>
 
-      <section class="footer">
-        <div class="wrap footer-inner">
-          <div>
-            <div class="footer-name">Michael Gauthier</div>
-            <div class="footer-links">
-              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-              <span class="sep">|</span>
-              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+        <section class="footer">
+          <div class="wrap footer-inner">
+            <div>
+              <div class="footer-name">Michael Gauthier</div>
+              <div class="footer-links">
+                <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+                <span class="sep">|</span>
+                <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+              </div>
             </div>
+            <div class="muted">© <span id="year"></span></div>
           </div>
-          <div class="muted">© <span id="year"></span></div>
-        </div>
-      </section>
+        </section>
+      </div>
     </section>
   </main>
 
