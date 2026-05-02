@@ -10,6 +10,22 @@ function getParam(name){
   return url.searchParams.get(name);
 }
 
+function parallaxUpdate(){
+  const els = document.querySelectorAll("[data-parallax='true']");
+  const y = window.scrollY || 0;
+  els.forEach(el => {
+    const speed = parseFloat(el.getAttribute("data-parallax-speed") || "0.25");
+    const offset = Math.round(y * speed);
+    el.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+  });
+}
+
+const isMobile = window.matchMedia("(max-width: 720px)").matches;
+if (!isMobile) {
+  window.addEventListener("scroll", parallaxUpdate, { passive: true });
+  window.addEventListener("load", parallaxUpdate);
+}
+
 const grid = document.getElementById("projectsGrid");
 if (grid && window.PROJECTS) {
   grid.innerHTML = window.PROJECTS.map(p => {
@@ -37,7 +53,7 @@ if (root && window.PROJECTS) {
   const tags = (p.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
 
   root.innerHTML = `
-    <section class="project-hero" style="background-image:url('${p.hero}')">
+    <section class="project-hero" data-parallax="true" data-parallax-speed="0.22" style="background-image:url('${p.hero}')">
       <div class="hero-overlay"></div>
       <div class="wrap project-hero-content">
         <p class="kicker">${p.kicker || ""}</p>
@@ -90,6 +106,7 @@ if (root && window.PROJECTS) {
       </div>
     </section>
   `;
+  if (!isMobile) parallaxUpdate();
 }
 
 const contactForm = document.getElementById("contactForm");
