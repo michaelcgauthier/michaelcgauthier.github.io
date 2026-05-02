@@ -6,19 +6,18 @@
   <title>Contact | Michael Gauthier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
   <header class="topbar lightbar">
     <div class="wrap topbar-inner">
       <div class="brandblock">
-        <div class="brand light">Michael Gauthier</div>
-        <div class="subtitle light">Mechanical Engineering Student</div>
+        <div class="brand">Michael Gauthier</div>
+        <div class="subtitle">Mechanical Engineering Student</div>
       </div>
 
-      <button class="menu-btn light" id="menuBtn" aria-label="Open menu">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
 
@@ -27,79 +26,70 @@
         <a class="nav-link light" href="projects.html">Projects</a>
         <a class="nav-link light" href="resume.html">Resume</a>
         <a class="nav-link light" href="about.html">About</a>
-        <a class="nav-link light" href="contact.html">Contact</a>
-
+        <a class="nav-link light active" href="contact.html">Contact</a>
         <a class="icon-link light" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
         <a class="icon-link light" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
     </div>
   </header>
 
-  <main class="light" style="padding-top:var(--navH);">
+  <main class="light">
     <section class="wrap section">
       <div class="page-head">
         <div>
           <h1 class="page-title">Contact</h1>
-          <p class="page-sub">The form below opens an email with the message pre filled.</p>
+          <p class="page-sub">The form below opens an email with your message pre filled.</p>
         </div>
       </div>
 
       <div class="contact-layout">
         <div class="contact-card">
           <h2 class="mini-title">Details</h2>
-
-          <div class="contact-line">
-            <span class="label">Email</span>
-            <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-          </div>
-
-          <div class="contact-line">
-            <span class="label">LinkedIn</span>
-            <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">linkedin.com/in/mgauthier1</a>
-          </div>
-
-          <div class="contact-actions">
-            <a class="btn light" href="projects.html">Projects</a>
-            <a class="btn btn-secondary light" href="resume.html">Resume</a>
-          </div>
+          <div class="contact-line"><span class="label">Email</span><a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a></div>
+          <div class="contact-line"><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">linkedin.com/in/mgauthier1</a></div>
+          <div class="contact-line"><span class="label">Location</span><span class="muted">Boston and New York</span></div>
         </div>
 
-        <form class="contact-form" id="contactForm">
+        <div class="contact-form">
           <h2 class="mini-title">Send a message</h2>
+          <form id="contactForm">
+            <label class="field">
+              <span>Name</span>
+              <input id="cName" required>
+            </label>
 
-          <label class="field">
-            <span>Name</span>
-            <input type="text" id="cName" required>
-          </label>
+            <label class="field">
+              <span>Email</span>
+              <input id="cEmail" type="email" required>
+            </label>
 
-          <label class="field">
-            <span>Email</span>
-            <input type="email" id="cEmail" required>
-          </label>
+            <label class="field">
+              <span>Message</span>
+              <textarea id="cMessage" rows="7" required></textarea>
+            </label>
 
-          <label class="field">
-            <span>Message</span>
-            <textarea id="cMessage" rows="7" required></textarea>
-          </label>
+            <div style="margin-top:14px;">
+              <button class="btn btn-primary" type="submit">Open email</button>
+            </div>
 
-          <button class="btn light" type="submit">Open email</button>
-          <p class="muted small">This site uses mailto and does not store messages.</p>
-        </form>
-      </div>
-    </section>
-
-    <section class="footer">
-      <div class="wrap footer-inner">
-        <div>
-          <div class="footer-name">Michael Gauthier</div>
-          <div class="footer-links">
-            <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-            <span class="sep">|</span>
-            <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
+            <p class="muted small" style="margin-top:10px;">This site uses mailto and does not store messages.</p>
+          </form>
         </div>
-        <div class="muted">© <span id="year"></span></div>
       </div>
+
+      <section class="footer">
+        <div class="wrap footer-inner">
+          <div>
+            <div class="footer-name">Michael Gauthier</div>
+            <div class="footer-links">
+              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+              <span class="sep">|</span>
+              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </div>
+          <div class="muted">© <span id="year"></span></div>
+        </div>
+      </section>
     </section>
   </main>
 
