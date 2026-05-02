@@ -73,11 +73,20 @@ if (root && window.PROJECTS) {
             ${s.paragraphs.map(par => `<p>${par}</p>`).join("")}
           </div>
         `).join("")}
+      </div>
+    </section>
 
-        <div class="block">
-          <h2>Images</h2>
-          <p>Add project images into assets/images/all and update the filenames in projects-data.js.</p>
+    <section class="footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-name">Michael Gauthier</div>
+          <div class="footer-links">
+            <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+            <span class="sep">|</span>
+            <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
         </div>
+        <div class="muted">© <span id="year"></span></div>
       </div>
     </section>
   `;
