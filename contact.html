@@ -4,45 +4,43 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact | Michael Gauthier</title>
-  <meta name="description" content="Contact Michael Gauthier." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar">
+  <header class="topbar lightbar">
     <div class="wrap topbar-inner">
-      <a class="brand" href="index.html">Michael Gauthier</a>
+      <div class="brandblock">
+        <div class="brand light">Michael Gauthier</div>
+        <div class="subtitle light">Mechanical Engineering Student</div>
+      </div>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+      <button class="menu-btn light" id="menuBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
 
       <nav class="nav" id="nav">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="projects.html">Projects</a>
-        <a class="nav-link" href="resume.html">Resume</a>
-        <a class="nav-link" href="about.html">About</a>
-        <a class="nav-link active" href="contact.html">Contact</a>
+        <a class="nav-link light" href="index.html">Home</a>
+        <a class="nav-link light" href="projects.html">Projects</a>
+        <a class="nav-link light" href="resume.html">Resume</a>
+        <a class="nav-link light" href="about.html">About</a>
+        <a class="nav-link light active" href="contact.html">Contact</a>
 
-        <a class="btn" href="assets/docs/Michael_Gauthier_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a class="btn btn-secondary" href="assets/docs/Michael_Gauthier_Portfolio.pdf" target="_blank" rel="noopener">Portfolio</a>
-
-        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email"><span class="icon">✉</span></a>
-        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon">in</span></a>
+        <a class="btn light" href="resume.html">Resume</a>
+        <a class="icon-link light" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
+        <a class="icon-link light" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
     </div>
   </header>
 
-  <main class="light">
+  <main class="light" style="padding-top:var(--navH);">
     <section class="wrap section">
       <div class="page-head">
         <div>
           <h1 class="page-title">Contact</h1>
-          <p class="page-sub">
-            Email is the fastest way to reach me. The message form below opens your email app with the subject and message pre filled.
-          </p>
+          <p class="page-sub">The form below opens an email with the message pre filled.</p>
         </div>
       </div>
 
@@ -51,10 +49,9 @@
           <h2 class="mini-title">Details</h2>
           <div class="contact-line"><span class="label">Email</span><a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a></div>
           <div class="contact-line"><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">linkedin.com/in/mgauthier1</a></div>
-          <div class="contact-line"><span class="label">Location</span><span>Boston and New York</span></div>
           <div class="contact-actions">
-            <a class="btn" href="assets/docs/Michael_Gauthier_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-            <a class="btn btn-secondary" href="projects.html">Projects</a>
+            <a class="btn light" href="projects.html">Projects</a>
+            <a class="btn btn-secondary light" href="resume.html">Resume</a>
           </div>
         </div>
 
@@ -72,8 +69,8 @@
             <span>Message</span>
             <textarea id="cMessage" rows="7" required></textarea>
           </label>
-          <button class="btn" type="submit">Open email</button>
-          <p class="muted small">This site uses mailto. It does not store messages.</p>
+          <button class="btn light" type="submit">Open email</button>
+          <p class="muted small">This site uses mailto and does not store messages.</p>
         </form>
       </div>
     </section>
@@ -93,7 +90,6 @@
     </section>
   </main>
 
-  <script src="projects-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
