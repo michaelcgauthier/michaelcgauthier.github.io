@@ -13,7 +13,7 @@ function getParam(name){
 const grid = document.getElementById("projectsGrid");
 if (grid && window.PROJECTS) {
   grid.innerHTML = window.PROJECTS.map(p => {
-    const tags = p.tags.map(t => `<span class="tag">${t}</span>`).join("");
+    const tags = (p.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
     return `
       <a class="project-card" href="project.html?id=${encodeURIComponent(p.id)}">
         <div class="project-thumb" style="background-image:url('${p.cover}')"></div>
@@ -32,17 +32,17 @@ const root = document.getElementById("projectRoot");
 if (root && window.PROJECTS) {
   const id = getParam("id");
   const p = window.PROJECTS.find(x => x.id === id) || window.PROJECTS[0];
-  document.title = `${p.title} | Michael Gauthier`;
 
-  const tags = p.tags.map(t => `<span class="tag">${t}</span>`).join("");
+  document.title = `${p.title} | Michael Gauthier`;
+  const tags = (p.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
 
   root.innerHTML = `
     <section class="project-hero" style="background-image:url('${p.hero}')">
       <div class="hero-overlay"></div>
       <div class="wrap project-hero-content">
-        <p class="kicker">${p.kicker}</p>
+        <p class="kicker">${p.kicker || ""}</p>
         <h1 class="project-title">${p.title}</h1>
-        <p class="project-intro">${p.intro}</p>
+        <p class="project-intro">${p.intro || ""}</p>
         <div class="tags" style="margin-top:14px;">${tags}</div>
       </div>
     </section>
@@ -54,23 +54,23 @@ if (root && window.PROJECTS) {
           <div class="triad">
             <div class="mini">
               <h3>What</h3>
-              <ul>${p.what.map(x => `<li>${x}</li>`).join("")}</ul>
+              <ul>${(p.what || []).map(x => `<li>${x}</li>`).join("")}</ul>
             </div>
             <div class="mini">
               <h3>How</h3>
-              <ul>${p.how.map(x => `<li>${x}</li>`).join("")}</ul>
+              <ul>${(p.how || []).map(x => `<li>${x}</li>`).join("")}</ul>
             </div>
             <div class="mini">
               <h3>Results</h3>
-              <ul>${p.results.map(x => `<li>${x}</li>`).join("")}</ul>
+              <ul>${(p.results || []).map(x => `<li>${x}</li>`).join("")}</ul>
             </div>
           </div>
         </div>
 
-        ${p.sections.map(s => `
+        ${(p.sections || []).map(s => `
           <div class="block">
             <h2>${s.title}</h2>
-            ${s.paragraphs.map(par => `<p>${par}</p>`).join("")}
+            ${(s.paragraphs || []).map(par => `<p>${par}</p>`).join("")}
           </div>
         `).join("")}
       </div>
