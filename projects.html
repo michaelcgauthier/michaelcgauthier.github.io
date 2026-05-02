@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects | Michael Gauthier</title>
-  <meta name="description" content="Project portfolio of Michael Gauthier." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +12,10 @@
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a class="brand" href="index.html">Michael Gauthier</a>
+      <div class="brandblock">
+        <div class="brand">Michael Gauthier</div>
+        <div class="subtitle">Mechanical Engineering Student</div>
+      </div>
 
       <button class="menu-btn" id="menuBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -26,45 +28,44 @@
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-link" href="contact.html">Contact</a>
 
-        <a class="btn" href="assets/docs/Michael_Gauthier_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a class="btn btn-secondary" href="assets/docs/Michael_Gauthier_Portfolio.pdf" target="_blank" rel="noopener">Portfolio</a>
+        <a class="btn" href="resume.html">Resume</a>
+        <a class="btn btn-secondary" href="contact.html">Contact</a>
 
-        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email"><span class="icon">✉</span></a>
-        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon">in</span></a>
+        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
+        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero hero-projects" style="background-image:url('assets/images/hero/projects-hero.jpg');">
+    <section class="hero thin" style="background-image:url('assets/images/all/ProjectsBannerBackground.png');">
       <div class="hero-overlay"></div>
       <div class="wrap hero-content">
-        <p class="kicker">Projects</p>
-        <h1>Case studies with images first, then the full technical write up.</h1>
-        <p class="lead">
-          Click any project card to see What I did, How I did it, and the Results, plus a gallery for drawings, screenshots, and photos.
-        </p>
+        <div class="hero-center">
+          <h1>Engineering Projects</h1>
+        </div>
       </div>
     </section>
 
     <section class="light">
       <div class="wrap section">
+        <p class="section-sub">Click a project to see the full write up with what I did, how I did it, and results.</p>
         <div class="projects-grid" id="projectsGrid"></div>
       </div>
-    </section>
 
-    <section class="footer">
-      <div class="wrap footer-inner">
-        <div>
-          <div class="footer-name">Michael Gauthier</div>
-          <div class="footer-links">
-            <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-            <span class="sep">|</span>
-            <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+      <section class="footer">
+        <div class="wrap footer-inner">
+          <div>
+            <div class="footer-name">Michael Gauthier</div>
+            <div class="footer-links">
+              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+              <span class="sep">|</span>
+              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
           </div>
+          <div class="muted">© <span id="year"></span></div>
         </div>
-        <div class="muted">© <span id="year"></span></div>
-      </div>
+      </section>
     </section>
   </main>
 
