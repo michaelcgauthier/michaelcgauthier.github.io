@@ -6,7 +6,7 @@
   <title>About | Michael Gauthier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -25,9 +25,8 @@
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="projects.html">Projects</a>
         <a class="nav-link" href="resume.html">Resume</a>
-        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link active" href="about.html">About</a>
         <a class="nav-link" href="contact.html">Contact</a>
-
         <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
         <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
@@ -35,11 +34,13 @@
   </header>
 
   <main>
-    <section class="hero thin" data-parallax="true" data-parallax-speed="0.18" style="background-image:url('AboutMeBackgroundBanner.png'); background-position:center 35%;">
+    <section class="hero thin" data-parallax="true" data-parallax-speed="0.18"
+      style="background-image:url('AboutMeBackgroundBanner.png'); background-position:center 35%;">
       <div class="hero-overlay"></div>
       <div class="wrap hero-content">
         <div class="hero-center">
           <h1>About</h1>
+          <p>Background, interests, and the kind of engineering work I like to do.</p>
         </div>
       </div>
     </section>
@@ -53,50 +54,58 @@
 
           <div class="about-text">
             <h2 class="section-title">Background</h2>
-            <p>
-              I am a Mechanical Engineering student at Northeastern University graduating May 2027. I am currently a Mechanical and Construction Engineering Co op, where my work includes CAD plan sets, field measurement with survey equipment, ArcGIS workflow development, and Python automation tools used across the engineering office.
-            </p>
-            <p>
-              I studied abroad in Madrid during Fall 2023. Living and traveling throughout Spain and Europe gave me a better sense of how people work, communicate, and solve problems in different environments. It also helped my Spanish a lot. I have studied Spanish since third grade and I can speak, read, and write it.
+            <p class="section-sub">
+              I am a Mechanical Engineering student at Northeastern University graduating May 2027 with a minor in Entrepreneurial Startups. I am currently a Mechanical and Construction Engineering Co op. My work spans CAD plan sets, precision field measurement with survey equipment, ArcGIS system development, and Python automation tools used across an engineering office.
             </p>
 
-            <h2 class="section-title">Leadership and projects</h2>
+            <p class="section-sub">
+              I studied abroad in Madrid during Fall 2023. Living and traveling throughout Spain and Europe broadened how I think about communication, problem solving, and working in new environments. It also helped my Spanish a lot. I have studied Spanish since third grade and I can speak, read, and write it.
+            </p>
+
+            <h2 class="section-title">Clubs and leadership</h2>
             <div class="bullets">
               <div class="bullet">
                 <div class="b-title">CA Light Designs</div>
                 <div class="b-text">Founded and ran a custom engraved LED sign business. Owned product design, production, machine setup improvements, customer communication, and order fulfillment.</div>
               </div>
+
               <div class="bullet">
                 <div class="b-title">NU Electric Racing</div>
-                <div class="b-text">Worked on tire optimization focused on reducing rotational inertia to improve acceleration and overall performance. Supported material selection and calculation work.</div>
+                <div class="b-text">Tire optimization work focused on reducing rotational inertia and supporting tire material selection and analysis using MATLAB.</div>
               </div>
+
               <div class="bullet">
                 <div class="b-title">NU Give a Hand</div>
-                <div class="b-text">Worked on prosthetic hand design and iteration using CAD modeling and prototyping to improve mechanical function and usability.</div>
+                <div class="b-text">Supported prosthetic hand design iteration using SolidWorks and prototyping, focusing on mechanical function, fit, and assembly.</div>
+              </div>
+
+              <div class="bullet">
+                <div class="b-title">Coding with a Cause club outreach</div>
+                <div class="b-text">Planned and ran web design and coding outreach sessions for middle school students, helping students build their own websites.</div>
               </div>
             </div>
 
             <div style="margin-top:18px;">
-              <a class="btn light" href="projects.html">Projects</a>
-              <a class="btn btn-secondary light" href="contact.html" style="margin-left:10px;">Contact</a>
+              <a class="btn btn-primary" href="projects.html">Projects</a>
+              <a class="btn" href="contact.html" style="margin-left:10px;">Contact</a>
             </div>
           </div>
         </div>
-      </div>
 
-      <section class="footer">
-        <div class="wrap footer-inner">
-          <div>
-            <div class="footer-name">Michael Gauthier</div>
-            <div class="footer-links">
-              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-              <span class="sep">|</span>
-              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+        <section class="footer">
+          <div class="wrap footer-inner">
+            <div>
+              <div class="footer-name">Michael Gauthier</div>
+              <div class="footer-links">
+                <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+                <span class="sep">|</span>
+                <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+              </div>
             </div>
+            <div class="muted">© <span id="year"></span></div>
           </div>
-          <div class="muted">© <span id="year"></span></div>
-        </div>
-      </section>
+        </section>
+      </div>
     </section>
   </main>
 
