@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Michael Gauthier | Engineering Portfolio</title>
-  <meta name="description" content="Michael Gauthier engineering portfolio: CAD, automation, prototyping, testing, field measurement, and technical documentation." />
+  <title>Michael Gauthier | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,7 +12,10 @@
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a class="brand" href="index.html">Michael Gauthier</a>
+      <div class="brandblock">
+        <div class="brand">Michael Gauthier</div>
+        <div class="subtitle">Mechanical Engineering Student</div>
+      </div>
 
       <button class="menu-btn" id="menuBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -26,46 +28,27 @@
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-link" href="contact.html">Contact</a>
 
-        <a class="btn" href="assets/docs/Michael_Gauthier_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <a class="btn btn-secondary" href="assets/docs/Michael_Gauthier_Portfolio.pdf" target="_blank" rel="noopener">Portfolio</a>
+        <a class="btn" href="resume.html">Resume</a>
+        <a class="btn btn-secondary" href="projects.html">Projects</a>
 
-        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">
-          <span class="icon">✉</span>
-        </a>
-        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <span class="icon">in</span>
-        </a>
+        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
+        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero hero-home" style="background-image:url('assets/images/hero/home-hero.jpg');">
+    <section class="hero" style="background-image:url('assets/images/all/HomePageBackground.png');">
       <div class="hero-overlay"></div>
       <div class="wrap hero-content">
-        <p class="kicker">Engineering Portfolio</p>
-        <h1>CAD, automation, field measurement, testing, and build focused problem solving.</h1>
-        <p class="lead">
-          I am a Mechanical Engineering student at Northeastern University graduating May 2027. I currently work with the Town of Wellesley Engineering Division building plan sets, operating survey equipment, designing ArcGIS inspection workflows, and writing Python tools that reduce repetitive work across the office.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn-lg" href="projects.html">View Projects</a>
-          <a class="btn-lg btn-lg-secondary" href="contact.html">Get in Touch</a>
-        </div>
-
-        <div class="hero-meta">
-          <div class="meta-card">
-            <div class="meta-title">Current</div>
-            <div class="meta-value">Mechanical and Construction Engineering Co op</div>
+        <div class="hero-center">
+          <h1>Michael Gauthier</h1>
+          <div class="subline">
+            Northeastern University Mechanical Engineering student graduating May 2027. Currently a Mechanical and Construction Engineering Co op.
           </div>
-          <div class="meta-card">
-            <div class="meta-title">Tools</div>
-            <div class="meta-value">AutoCAD, ArcGIS, Python, SolidWorks</div>
-          </div>
-          <div class="meta-card">
-            <div class="meta-title">Focus</div>
-            <div class="meta-value">Systems that save time and hold up in real use</div>
+          <div class="hero-actions">
+            <a class="btn" href="projects.html">Projects</a>
+            <a class="btn btn-secondary" href="resume.html">Resume</a>
           </div>
         </div>
       </div>
@@ -73,77 +56,89 @@
 
     <section class="light">
       <div class="wrap section">
-        <h2 class="section-title">What I do</h2>
-        <div class="cards3">
-          <div class="card">
-            <h3>CAD and design documentation</h3>
-            <p>Plan sets, existing conditions, proposals, details, profiles, standards, revision cycles, printing, issuance.</p>
-          </div>
-          <div class="card">
-            <h3>Automation and data workflows</h3>
-            <p>Python OCR, vector conversion, file indexing, batch processing, repeatable tools that other people can use.</p>
-          </div>
-          <div class="card">
-            <h3>Testing, prototyping, field measurement</h3>
-            <p>Instron and Bluehill testing, sensor data collection, 3D printing, laser cutting, total station and Trimble GPS.</p>
+        <h2 class="section-title">Quick overview</h2>
+        <p class="section-sub">
+          I build CAD plan sets and existing conditions drawings, digitize inspection workflows with ArcGIS, write Python automation tools, and work across field measurement and office design. I also run long form project work through student teams and personal builds.
+        </p>
+
+        <div class="timeline-wrap">
+          <div class="timeline-row">
+            <div class="tl-card">
+              <div class="tl-img"><img src="assets/images/all/wellesleylogo.png" alt=""></div>
+              <div class="tl-body">
+                <p class="tl-title">Town of Wellesley</p>
+                <p class="tl-meta">Mechanical and Construction Engineering Co op</p>
+              </div>
+            </div>
+
+            <div class="tl-card">
+              <div class="tl-img"><img src="assets/images/all/ElectricRacingClubPic.png" alt=""></div>
+              <div class="tl-body">
+                <p class="tl-title">NU Electric Racing</p>
+                <p class="tl-meta">Tire optimization and inertia reduction</p>
+              </div>
+            </div>
+
+            <div class="tl-card">
+              <div class="tl-img"><img src="assets/images/all/NUGiveAHandClubPic.png" alt=""></div>
+              <div class="tl-body">
+                <p class="tl-title">NU Give a Hand</p>
+                <p class="tl-meta">Prosthetic hand design and iteration</p>
+              </div>
+            </div>
+
+            <div class="tl-card">
+              <div class="tl-img"><img src="assets/images/all/calightdesignslogo.png" alt=""></div>
+              <div class="tl-body">
+                <p class="tl-title">CA Light Designs</p>
+                <p class="tl-meta">Founder and product manufacturing</p>
+              </div>
+            </div>
+
+            <div class="tl-card">
+              <div class="tl-img"><img src="assets/images/all/westfieldlogo.png" alt=""></div>
+              <div class="tl-body">
+                <p class="tl-title">Westfield NJ</p>
+                <p class="tl-meta">Lifeguard and swim instructor summers</p>
+              </div>
+            </div>
+
+            <div class="tl-card">
+              <div class="tl-img"><img src="assets/images/all/project1.jpeg" alt=""></div>
+              <div class="tl-body">
+                <p class="tl-title">Clean energy exhibit</p>
+                <p class="tl-meta">Arduino, MATLAB, CAD, 3D printing</p>
+              </div>
+            </div>
+
+            <div class="tl-card">
+              <div class="tl-img"><img src="assets/images/all/AboutMeBackgroundBanner.png" alt=""></div>
+              <div class="tl-body">
+                <p class="tl-title">Study abroad</p>
+                <p class="tl-meta">Madrid Fall 2023</p>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
 
-      <div class="wrap section">
-        <h2 class="section-title">Featured work</h2>
-
-        <div class="tiles">
-          <a class="tile" href="project.html?id=inspection-sketches">
-            <div class="tile-img" style="background-image:url('assets/images/projects/inspection-sketches.jpg');"></div>
-            <div class="tile-body">
-              <h3>Inspection sketches to CAD and GIS</h3>
-              <p>Python OCR pipeline that converts scanned inspection sketches into vector geometry and attaches inspection metadata.</p>
-              <span class="tile-cta">Open</span>
+      <section class="footer">
+        <div class="wrap footer-inner">
+          <div>
+            <div class="footer-name">Michael Gauthier</div>
+            <div class="footer-links">
+              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+              <span class="sep">|</span>
+              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
             </div>
-          </a>
-
-          <a class="tile" href="project.html?id=arcgis-inspections">
-            <div class="tile-img" style="background-image:url('assets/images/projects/arcgis-inspections.jpg');"></div>
-            <div class="tile-body">
-              <h3>ArcGIS mobile inspection system</h3>
-              <p>Survey123 and Field Maps workflow replacing paper forms with offline field capture, map geometry, photos, and signatures.</p>
-              <span class="tile-cta">Open</span>
-            </div>
-          </a>
-
-          <a class="tile" href="project.html?id=recycling-pond">
-            <div class="tile-img" style="background-image:url('assets/images/projects/recycling-pond.jpg');"></div>
-            <div class="tile-body">
-              <h3>Recycling center pond redesign</h3>
-              <p>Topographic survey, 3D surface model, three design options, profiles, plan set production, and bid support.</p>
-              <span class="tile-cta">Open</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="center">
-          <a class="btn" href="projects.html">See all projects</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="footer">
-      <div class="wrap footer-inner">
-        <div>
-          <div class="footer-name">Michael Gauthier</div>
-          <div class="footer-links">
-            <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-            <span class="sep">|</span>
-            <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
           </div>
+          <div class="muted">© <span id="year"></span></div>
         </div>
-        <div class="muted">© <span id="year"></span></div>
-      </div>
+      </section>
     </section>
   </main>
 
-  <script src="projects-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
