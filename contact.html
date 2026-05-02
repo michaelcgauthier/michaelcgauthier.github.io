@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | Michael Gauthier</title>
+  <meta name="description" content="Contact Michael Gauthier." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="index.html">Michael Gauthier</a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="projects.html">Projects</a>
+        <a class="nav-link" href="resume.html">Resume</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link active" href="contact.html">Contact</a>
+
+        <a class="btn" href="assets/docs/Michael_Gauthier_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="btn btn-secondary" href="assets/docs/Michael_Gauthier_Portfolio.pdf" target="_blank" rel="noopener">Portfolio</a>
+
+        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email"><span class="icon">✉</span></a>
+        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon">in</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="light">
+    <section class="wrap section">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Contact</h1>
+          <p class="page-sub">
+            Email is the fastest way to reach me. The message form below opens your email app with the subject and message pre filled.
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-card">
+          <h2 class="mini-title">Details</h2>
+          <div class="contact-line"><span class="label">Email</span><a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a></div>
+          <div class="contact-line"><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">linkedin.com/in/mgauthier1</a></div>
+          <div class="contact-line"><span class="label">Location</span><span>Boston and New York</span></div>
+          <div class="contact-actions">
+            <a class="btn" href="assets/docs/Michael_Gauthier_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+            <a class="btn btn-secondary" href="projects.html">Projects</a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <h2 class="mini-title">Send a message</h2>
+          <label class="field">
+            <span>Name</span>
+            <input type="text" id="cName" required>
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" id="cEmail" required>
+          </label>
+          <label class="field">
+            <span>Message</span>
+            <textarea id="cMessage" rows="7" required></textarea>
+          </label>
+          <button class="btn" type="submit">Open email</button>
+          <p class="muted small">This site uses mailto. It does not store messages.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-name">Michael Gauthier</div>
+          <div class="footer-links">
+            <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+            <span class="sep">|</span>
+            <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <div class="muted">© <span id="year"></span></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="projects-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
