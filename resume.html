@@ -6,95 +6,94 @@
   <title>Resume | Michael Gauthier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="topbar lightbar">
     <div class="wrap topbar-inner">
       <div class="brandblock">
-        <div class="brand light">Michael Gauthier</div>
-        <div class="subtitle light">Mechanical Engineering Student</div>
+        <div class="brand">Michael Gauthier</div>
+        <div class="subtitle">Mechanical Engineering Student</div>
       </div>
 
-      <button class="menu-btn light" id="menuBtn" aria-label="Open menu">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
 
       <nav class="nav" id="nav">
         <a class="nav-link light" href="index.html">Home</a>
         <a class="nav-link light" href="projects.html">Projects</a>
-        <a class="nav-link light" href="resume.html">Resume</a>
+        <a class="nav-link light active" href="resume.html">Resume</a>
         <a class="nav-link light" href="about.html">About</a>
         <a class="nav-link light" href="contact.html">Contact</a>
-
         <a class="icon-link light" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
         <a class="icon-link light" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
     </div>
   </header>
 
-  <main class="light" style="padding-top:var(--navH);">
+  <main class="light">
     <section class="wrap section">
       <div class="page-head">
         <div>
           <h1 class="page-title">Resume</h1>
-          <p class="page-sub">Download the PDF or view it below. The right column lists technical tools and lab equipment.</p>
+          <p class="page-sub">View below or download as a PDF.</p>
         </div>
         <div class="head-actions">
-          <a class="btn light" href="assets/docs/Michael_Gauthier_Resume.pdf" download>Download</a>
-          <a class="btn btn-secondary light" href="contact.html">Contact</a>
+          <a class="btn btn-primary" href="assets/docs/Michael_Gauthier_Resume.pdf" download>Download PDF</a>
+          <a class="btn" href="contact.html">Contact</a>
         </div>
       </div>
 
       <div class="resume-layout">
-        <div class="resume-view">
+        <div>
           <iframe class="pdf" src="assets/docs/Michael_Gauthier_Resume.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
         </div>
 
         <aside class="resume-skills">
-          <h2 class="mini-title">Technical skills</h2>
+          <h2 class="mini-title">Technical tools</h2>
 
           <div class="skill-block">
             <h3>CAD and design</h3>
-            <p>AutoCAD, AutoCAD Civil 3D, SolidWorks, Fusion 360, 2D drawings, 3D modeling, GD and T fundamentals, plan set layouts, profiles, details, blocks, georeferenced base layers.</p>
+            <p>AutoCAD, AutoCAD Civil 3D, SolidWorks, Fusion 360, 2D drawings, 3D modeling, GD and T fundamentals, plan sets, profiles, details, blocks, georeferenced base layers.</p>
           </div>
 
           <div class="skill-block">
-            <h3>Programming</h3>
-            <p>Python, MATLAB, C plus plus, Java, JavaScript, Arduino, OCR data extraction, file automation, batch processing, Excel.</p>
+            <h3>Programming and analysis</h3>
+            <p>Python, MATLAB, C plus plus, Java, JavaScript, Arduino, OCR extraction, batch processing, Excel.</p>
           </div>
 
           <div class="skill-block">
-            <h3>GIS tools</h3>
-            <p>ArcGIS Pro, ArcGIS Online, Survey123, Field Maps, layer schemas, attributes, map based field capture.</p>
+            <h3>GIS</h3>
+            <p>ArcGIS Pro, ArcGIS Online, Survey123, Field Maps, attribute schemas, mobile data capture, PDF export workflows.</p>
           </div>
 
           <div class="skill-block">
-            <h3>Testing and lab equipment</h3>
-            <p>Instron tensile, compression, bending, torsion, buckling, Bluehill, Charpy impact, Rockwell hardness, microscopy, polariscope stress visualization, MATLAB plots and property extraction.</p>
+            <h3>Testing</h3>
+            <p>Instron tensile, compression, bending, torsion, buckling, Bluehill, Charpy impact, Rockwell hardness, microscopy, polariscope stress visualization, MATLAB property extraction.</p>
           </div>
 
           <div class="skill-block">
-            <h3>Fabrication and field equipment</h3>
-            <p>Total station, Trimble GPS and GNSS, 3D printing, laser cutting, laser engraving, power tools, prototype assembly, equipment troubleshooting.</p>
+            <h3>Equipment</h3>
+            <p>Total station, Trimble GPS and GNSS, 3D printing, laser cutting, laser engraving, prototype assembly, equipment troubleshooting.</p>
           </div>
         </aside>
       </div>
-    </section>
 
-    <section class="footer">
-      <div class="wrap footer-inner">
-        <div>
-          <div class="footer-name">Michael Gauthier</div>
-          <div class="footer-links">
-            <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-            <span class="sep">|</span>
-            <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+      <section class="footer">
+        <div class="wrap footer-inner">
+          <div>
+            <div class="footer-name">Michael Gauthier</div>
+            <div class="footer-links">
+              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+              <span class="sep">|</span>
+              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
           </div>
+          <div class="muted">© <span id="year"></span></div>
         </div>
-        <div class="muted">© <span id="year"></span></div>
-      </div>
+      </section>
     </section>
   </main>
 
