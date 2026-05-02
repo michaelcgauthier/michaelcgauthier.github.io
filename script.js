@@ -3,7 +3,9 @@ yearEls.forEach(el => el.textContent = new Date().getFullYear());
 
 const menuBtn = document.getElementById("menuBtn");
 const nav = document.getElementById("nav");
-if (menuBtn && nav) menuBtn.addEventListener("click", () => nav.classList.toggle("open"));
+if (menuBtn && nav) {
+  menuBtn.addEventListener("click", () => nav.classList.toggle("open"));
+}
 
 function getParam(name){
   const url = new URL(window.location.href);
@@ -14,7 +16,7 @@ function parallaxUpdate(){
   const els = document.querySelectorAll("[data-parallax='true']");
   const y = window.scrollY || 0;
   els.forEach(el => {
-    const speed = parseFloat(el.getAttribute("data-parallax-speed") || "0.25");
+    const speed = parseFloat(el.getAttribute("data-parallax-speed") || "0.18");
     const offset = Math.round(y * speed);
     el.style.backgroundPosition = `center calc(50% + ${offset}px)`;
   });
@@ -53,57 +55,40 @@ if (root && window.PROJECTS) {
   const tags = (p.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
 
   root.innerHTML = `
-    <section class="project-hero" data-parallax="true" data-parallax-speed="0.22" style="background-image:url('${p.hero}')">
+    <section class="hero thin" data-parallax="true" data-parallax-speed="0.18" style="background-image:url('${p.hero}');">
       <div class="hero-overlay"></div>
-      <div class="wrap project-hero-content">
-        <p class="kicker">${p.kicker || ""}</p>
-        <h1 class="project-title">${p.title}</h1>
-        <p class="project-intro">${p.intro || ""}</p>
-        <div class="tags" style="margin-top:14px;">${tags}</div>
+      <div class="wrap hero-content">
+        <div class="hero-center">
+          <h1>${p.title}</h1>
+          <p>${p.intro || ""}</p>
+          <div class="tags" style="justify-content:center; margin-top:16px;">${tags}</div>
+        </div>
       </div>
     </section>
 
-    <section class="project-content">
-      <div class="wrap">
-        <div class="block">
-          <h2>What, how, results</h2>
-          <div class="triad">
-            <div class="mini">
-              <h3>What</h3>
-              <ul>${(p.what || []).map(x => `<li>${x}</li>`).join("")}</ul>
-            </div>
-            <div class="mini">
-              <h3>How</h3>
-              <ul>${(p.how || []).map(x => `<li>${x}</li>`).join("")}</ul>
-            </div>
-            <div class="mini">
-              <h3>Results</h3>
-              <ul>${(p.results || []).map(x => `<li>${x}</li>`).join("")}</ul>
-            </div>
-          </div>
-        </div>
-
+    <section class="light">
+      <div class="wrap section">
         ${(p.sections || []).map(s => `
-          <div class="block">
-            <h2>${s.title}</h2>
-            ${(s.paragraphs || []).map(par => `<p>${par}</p>`).join("")}
+          <div class="bullet" style="margin-bottom:14px;">
+            <div class="b-title">${s.title}</div>
+            ${(s.paragraphs || []).map(par => `<div class="b-text" style="margin-top:8px;">${par}</div>`).join("")}
           </div>
         `).join("")}
       </div>
-    </section>
 
-    <section class="footer">
-      <div class="wrap footer-inner">
-        <div>
-          <div class="footer-name">Michael Gauthier</div>
-          <div class="footer-links">
-            <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-            <span class="sep">|</span>
-            <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+      <section class="footer">
+        <div class="wrap footer-inner">
+          <div>
+            <div class="footer-name">Michael Gauthier</div>
+            <div class="footer-links">
+              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+              <span class="sep">|</span>
+              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
           </div>
+          <div class="muted">© <span id="year"></span></div>
         </div>
-        <div class="muted">© <span id="year"></span></div>
-      </div>
+      </section>
     </section>
   `;
   if (!isMobile) parallaxUpdate();
