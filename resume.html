@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resume | Michael Gauthier</title>
+  <meta name="description" content="Resume of Michael Gauthier." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="index.html">Michael Gauthier</a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="projects.html">Projects</a>
+        <a class="nav-link active" href="resume.html">Resume</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+
+        <a class="btn" href="assets/docs/Michael_Gauthier_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="btn btn-secondary" href="assets/docs/Michael_Gauthier_Portfolio.pdf" target="_blank" rel="noopener">Portfolio</a>
+
+        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email"><span class="icon">✉</span></a>
+        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon">in</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="light">
+    <section class="wrap section">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Resume</h1>
+          <p class="page-sub">
+            Download the PDF or view it directly below. The right column includes a full technical skills list for quick scanning.
+          </p>
+        </div>
+        <div class="head-actions">
+          <a class="btn" href="assets/docs/Michael_Gauthier_Resume.pdf" download>Download PDF</a>
+          <a class="btn btn-secondary" href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div class="resume-layout">
+        <div class="resume-view">
+          <iframe class="pdf" src="assets/docs/Michael_Gauthier_Resume.pdf"></iframe>
+        </div>
+
+        <aside class="resume-skills">
+          <h2 class="mini-title">Technical skills</h2>
+
+          <div class="skill-block">
+            <h3>CAD and design</h3>
+            <p>AutoCAD, AutoCAD Civil 3D, SolidWorks, Fusion 360, engineering drawings, 2D drafting, 3D modeling, GD and T fundamentals, plan set production, details, profiles, blocks and attributes, georeferenced CAD data.</p>
+          </div>
+
+          <div class="skill-block">
+            <h3>Programming and analysis</h3>
+            <p>Python, MATLAB, C plus plus, Java, JavaScript, Arduino, SQL familiarity, Xcode, Visual Studio, CLion, Maple, OCR automation, data extraction, data processing, engineering calculations, workflow automation, debugging, Excel, Microsoft 365.</p>
+          </div>
+
+          <div class="skill-block">
+            <h3>Testing and validation</h3>
+            <p>Instron tensile, compression, bending, torsion, buckling, Bluehill, Charpy impact, Fracta, Rockwell hardness, stress strain analysis, failure analysis, yield strength, ultimate tensile strength, Young modulus, shear modulus, beam deflection testing.</p>
+          </div>
+
+          <div class="skill-block">
+            <h3>Fabrication and equipment</h3>
+            <p>3D printing, laser cutting, laser engraving, engraving machine modification, total station operation, Trimble GPS and GNSS, power tools, woodworking, prototype assembly, machine troubleshooting, field measurement.</p>
+          </div>
+
+          <div class="skill-block">
+            <h3>Engineering software</h3>
+            <p>ArcGIS Pro, Survey123, Field Maps, VueWorks, Samsara, Abaqus, Simulink familiarity, ANSYS familiarity, LabVIEW familiarity, Minitab familiarity, Silhouette Studio, iMovie, Clipchamp.</p>
+          </div>
+
+          <div class="skill-block">
+            <h3>Coursework</h3>
+            <p>Thermal Systems Analysis and Design, Measurement and Analysis with Thermal Applications, Mechanical Engineering Computation and Design, Dynamics, Thermodynamics, Fluid Dynamics, Mechanics of Materials, Introductory Materials Science.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="wrap footer-inner">
+        <div>
+          <div class="footer-name">Michael Gauthier</div>
+          <div class="footer-links">
+            <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+            <span class="sep">|</span>
+            <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <div class="muted">© <span id="year"></span></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="projects-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
