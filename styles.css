@@ -87,6 +87,11 @@ main.noPad{
   background: transparent !important;
 }
 
+.topbar{
+  padding: 0 48px;
+}
+
+
 .brandblock{
   display:flex;
   flex-direction:column;
@@ -569,6 +574,10 @@ main.noPad{
   .topbar.lightbar .nav{
     background: rgba(255,255,255,.72);
     border: 1px solid rgba(2,8,23,.10);
+  }
+
+  .topbar{
+  padding: 0 14px;
   }
 
   .nav.open{ display:flex; }
