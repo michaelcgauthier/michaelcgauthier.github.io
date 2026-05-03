@@ -3,9 +3,7 @@ yearEls.forEach(el => el.textContent = new Date().getFullYear());
 
 const menuBtn = document.getElementById("menuBtn");
 const nav = document.getElementById("nav");
-if (menuBtn && nav) {
-  menuBtn.addEventListener("click", () => nav.classList.toggle("open"));
-}
+if (menuBtn && nav) menuBtn.addEventListener("click", () => nav.classList.toggle("open"));
 
 function getParam(name){
   const url = new URL(window.location.href);
@@ -30,15 +28,20 @@ if (!isMobile) {
 
 const grid = document.getElementById("projectsGrid");
 if (grid && window.PROJECTS) {
-  grid.innerHTML = window.PROJECTS.map(p => {
-    const tags = (p.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
+  const tag = getParam("tag");
+  const list = tag
+    ? window.PROJECTS.filter(p => (p.tags || []).some(t => t.toLowerCase() === tag.toLowerCase()))
+    : window.PROJECTS;
+
+  grid.innerHTML = list.map(p => {
+    const pills = (p.tags || []).slice(0,4).map(t => `<span class="pill">${t}</span>`).join("");
     return `
       <a class="project-card" href="project.html?id=${encodeURIComponent(p.id)}">
         <div class="project-thumb" style="background-image:url('${p.cover}')"></div>
         <div class="project-body">
           <h3>${p.title}</h3>
           <p>${p.preview}</p>
-          <div class="tags">${tags}</div>
+          <div class="pills">${pills}</div>
           <span class="readmore">Read more</span>
         </div>
       </a>
@@ -52,45 +55,47 @@ if (root && window.PROJECTS) {
   const p = window.PROJECTS.find(x => x.id === id) || window.PROJECTS[0];
 
   document.title = `${p.title} | Michael Gauthier`;
-  const tags = (p.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
+
+  const pills = (p.tags || []).map(t => `<span class="pill">${t}</span>`).join("");
 
   root.innerHTML = `
-    <section class="hero thin" data-parallax="true" data-parallax-speed="0.18" style="background-image:url('${p.hero}');">
+    <section class="hero thin" data-parallax="true" data-parallax-speed="0.18" style="background-image:url('${p.hero}'); background-position:center 35%;">
       <div class="hero-overlay"></div>
       <div class="wrap hero-content">
         <div class="hero-center">
-          <h1>${p.title}</h1>
-          <p>${p.intro || ""}</p>
-          <div class="tags" style="justify-content:center; margin-top:16px;">${tags}</div>
+          <h1 class="hero-title">${p.title}</h1>
+          <p class="hero-sub">${p.intro || ""}</p>
+          <div class="pills" style="justify-content:center;">${pills}</div>
         </div>
       </div>
     </section>
 
-    <section class="light">
+    <section class="surface">
       <div class="wrap section">
         ${(p.sections || []).map(s => `
-          <div class="bullet" style="margin-bottom:14px;">
-            <div class="b-title">${s.title}</div>
-            ${(s.paragraphs || []).map(par => `<div class="b-text" style="margin-top:8px;">${par}</div>`).join("")}
+          <div class="card" style="padding:18px; margin-bottom:14px;">
+            <div style="font-weight:900; font-size:16px;">${s.title}</div>
+            ${(s.paragraphs || []).map(par => `<div class="p-muted" style="margin-top:8px;">${par}</div>`).join("")}
           </div>
         `).join("")}
-      </div>
 
-      <section class="footer">
-        <div class="wrap footer-inner">
-          <div>
-            <div class="footer-name">Michael Gauthier</div>
-            <div class="footer-links">
-              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-              <span class="sep">|</span>
-              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+        <section class="footer">
+          <div class="wrap footer-inner">
+            <div>
+              <div class="footer-name">Michael Gauthier</div>
+              <div>
+                <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+                <span class="sep">|</span>
+                <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+              </div>
             </div>
+            <div>© <span id="year"></span></div>
           </div>
-          <div class="muted">© <span id="year"></span></div>
-        </div>
-      </section>
+        </section>
+      </div>
     </section>
   `;
+
   if (!isMobile) parallaxUpdate();
 }
 
