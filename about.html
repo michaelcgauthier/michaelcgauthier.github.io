@@ -39,56 +39,38 @@
       <div class="hero-overlay"></div>
       <div class="wrap hero-content">
         <div class="hero-center">
-          <h1>About</h1>
-          <p>Background, interests, and the kind of engineering work I like to do.</p>
+          <h1 class="hero-title">About</h1>
+          <p class="hero-sub">Background, leadership, and the kind of engineering work I like to do.</p>
         </div>
       </div>
     </section>
 
-    <section class="light">
+    <section class="surface">
       <div class="wrap section">
-        <div class="about-layout">
-          <div class="about-photo">
-            <img src="assets/images/all/headshot.jpeg" alt="Headshot">
+        <div class="card" style="padding:18px;">
+          <div style="display:grid; grid-template-columns: 320px 1fr; gap:18px; align-items:start;">
+            <div class="card" style="padding:0; overflow:hidden; border-radius: var(--r2);">
+              <img src="assets/images/all/headshot.jpeg" alt="Headshot" style="width:100%; height:320px; object-fit:cover; object-position:center 25%;">
+            </div>
+            <div>
+              <div class="h2">Quick background</div>
+              <div class="p-muted" style="margin-top:10px;">
+                Mechanical Engineering student at Northeastern University graduating May 2027 with a minor in Entrepreneurial Startups.
+                Current Mechanical and Construction Engineering co op with work across CAD plan sets, ArcGIS workflows, Python automation, and field measurement.
+              </div>
+              <div class="p-muted" style="margin-top:10px;">
+                Studied abroad in Madrid in Fall 2023. Living and traveling throughout Spain and Europe broadened how I think about communication and working in new environments, and strengthened my Spanish.
+              </div>
+            </div>
           </div>
+        </div>
 
-          <div class="about-text">
-            <h2 class="section-title">Background</h2>
-            <p class="section-sub">
-              I am a Mechanical Engineering student at Northeastern University graduating May 2027 with a minor in Entrepreneurial Startups. I am currently a Mechanical and Construction Engineering Co op. My work spans CAD plan sets, precision field measurement with survey equipment, ArcGIS system development, and Python automation tools used across an engineering office.
-            </p>
-
-            <p class="section-sub">
-              I studied abroad in Madrid during Fall 2023. Living and traveling throughout Spain and Europe broadened how I think about communication, problem solving, and working in new environments. It also helped my Spanish a lot. I have studied Spanish since third grade and I can speak, read, and write it.
-            </p>
-
-            <h2 class="section-title">Clubs and leadership</h2>
-            <div class="bullets">
-              <div class="bullet">
-                <div class="b-title">CA Light Designs</div>
-                <div class="b-text">Founded and ran a custom engraved LED sign business. Owned product design, production, machine setup improvements, customer communication, and order fulfillment.</div>
-              </div>
-
-              <div class="bullet">
-                <div class="b-title">NU Electric Racing</div>
-                <div class="b-text">Tire optimization work focused on reducing rotational inertia and supporting tire material selection and analysis using MATLAB.</div>
-              </div>
-
-              <div class="bullet">
-                <div class="b-title">NU Give a Hand</div>
-                <div class="b-text">Supported prosthetic hand design iteration using SolidWorks and prototyping, focusing on mechanical function, fit, and assembly.</div>
-              </div>
-
-              <div class="bullet">
-                <div class="b-title">Coding with a Cause club outreach</div>
-                <div class="b-text">Planned and ran web design and coding outreach sessions for middle school students, helping students build their own websites.</div>
-              </div>
-            </div>
-
-            <div style="margin-top:18px;">
-              <a class="btn btn-primary" href="projects.html">Projects</a>
-              <a class="btn" href="contact.html" style="margin-left:10px;">Contact</a>
-            </div>
+        <div class="card" style="padding:18px; margin-top:14px;">
+          <div class="h2">Leadership and clubs</div>
+          <div class="p-muted" style="margin-top:10px;">
+            NU Electric Racing: tire optimization work focused on reducing rotational inertia and supporting tire material selection and analysis.
+            NU Give a Hand: prosthetic hand design iteration in SolidWorks with a focus on mechanical function and assembly.
+            High school leadership: founded a business club, led coding outreach for middle school students, and ran community programs.
           </div>
         </div>
 
@@ -96,13 +78,13 @@
           <div class="wrap footer-inner">
             <div>
               <div class="footer-name">Michael Gauthier</div>
-              <div class="footer-links">
+              <div>
                 <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
                 <span class="sep">|</span>
                 <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
               </div>
             </div>
-            <div class="muted">© <span id="year"></span></div>
+            <div>© <span id="year"></span></div>
           </div>
         </section>
       </div>
