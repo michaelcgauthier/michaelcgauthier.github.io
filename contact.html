@@ -22,72 +22,59 @@
       </button>
 
       <nav class="nav" id="nav">
-        <a class="nav-link light" href="index.html">Home</a>
-        <a class="nav-link light" href="projects.html">Projects</a>
-        <a class="nav-link light" href="resume.html">Resume</a>
-        <a class="nav-link light" href="about.html">About</a>
-        <a class="nav-link light active" href="contact.html">Contact</a>
-        <a class="icon-link light" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
-        <a class="icon-link light" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="projects.html">Projects</a>
+        <a class="nav-link" href="resume.html">Resume</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link active" href="contact.html">Contact</a>
+        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
+        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
     </div>
   </header>
 
-  <main class="light">
+  <main class="surface">
     <section class="wrap section">
       <div class="page-head">
         <div>
           <h1 class="page-title">Contact</h1>
-          <p class="page-sub">The form below opens an email with your message pre filled.</p>
+          <p class="p-muted">This form opens an email with your message filled in.</p>
         </div>
       </div>
 
-      <div class="contact-layout">
-        <div class="contact-card">
-          <h2 class="mini-title">Details</h2>
-          <div class="contact-line"><span class="label">Email</span><a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a></div>
-          <div class="contact-line"><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">linkedin.com/in/mgauthier1</a></div>
-          <div class="contact-line"><span class="label">Location</span><span class="muted">Boston and New York</span></div>
-        </div>
+      <div class="card" style="padding:18px;">
+        <form id="contactForm" style="display:grid; gap:12px;">
+          <label style="display:grid; gap:6px;">
+            <span style="font-weight:900; font-size:13px;">Name</span>
+            <input id="cName" required style="padding:10px 12px; border-radius:12px; border:1px solid rgba(2,8,23,.14);">
+          </label>
 
-        <div class="contact-form">
-          <h2 class="mini-title">Send a message</h2>
-          <form id="contactForm">
-            <label class="field">
-              <span>Name</span>
-              <input id="cName" required>
-            </label>
+          <label style="display:grid; gap:6px;">
+            <span style="font-weight:900; font-size:13px;">Email</span>
+            <input id="cEmail" type="email" required style="padding:10px 12px; border-radius:12px; border:1px solid rgba(2,8,23,.14);">
+          </label>
 
-            <label class="field">
-              <span>Email</span>
-              <input id="cEmail" type="email" required>
-            </label>
+          <label style="display:grid; gap:6px;">
+            <span style="font-weight:900; font-size:13px;">Message</span>
+            <textarea id="cMessage" rows="7" required style="padding:10px 12px; border-radius:12px; border:1px solid rgba(2,8,23,.14);"></textarea>
+          </label>
 
-            <label class="field">
-              <span>Message</span>
-              <textarea id="cMessage" rows="7" required></textarea>
-            </label>
-
-            <div style="margin-top:14px;">
-              <button class="btn btn-primary" type="submit">Open email</button>
-            </div>
-
-            <p class="muted small" style="margin-top:10px;">This site uses mailto and does not store messages.</p>
-          </form>
-        </div>
+          <button class="btn btn-primary" type="submit" style="justify-self:start;">Open email</button>
+          <div class="p-muted" style="font-size:12px;">This site uses mailto and does not store messages.</div>
+        </form>
       </div>
 
       <section class="footer">
         <div class="wrap footer-inner">
           <div>
             <div class="footer-name">Michael Gauthier</div>
-            <div class="footer-links">
+            <div>
               <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
               <span class="sep">|</span>
               <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
             </div>
           </div>
-          <div class="muted">© <span id="year"></span></div>
+          <div>© <span id="year"></span></div>
         </div>
       </section>
     </section>
