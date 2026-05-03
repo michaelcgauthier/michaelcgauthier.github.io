@@ -44,6 +44,10 @@ img{ display:block; max-width:100%; }
 
 main{ padding-top: var(--navH); }
 
+main.noPad{
+  padding-top: 0 !important;
+}
+
 .topbar{
   position: fixed;
   top:0; left:0; right:0;
@@ -53,7 +57,7 @@ main{ padding-top: var(--navH); }
   align-items:center;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  background: var(--glassDark);
+  background: rgba(10,15,26,.30);
   border-bottom: 1px solid rgba(255,255,255,.10);
   color:#fff;
 }
@@ -70,6 +74,17 @@ main{ padding-top: var(--navH); }
   justify-content:space-between;
   gap:18px;
   width:100%;
+}
+
+.topbar.clearbar{
+  background: transparent !important;
+  border-bottom: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.topbar.clearbar .icon-link{
+  background: transparent !important;
 }
 
 .brandblock{
@@ -225,6 +240,10 @@ main{ padding-top: var(--navH); }
 
 .hero-home-shift{
   transform: translateY(-10vh);
+}
+
+.hero{
+  padding-top: var(--navH);
 }
 
 .section{
