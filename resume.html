@@ -22,76 +22,65 @@
       </button>
 
       <nav class="nav" id="nav">
-        <a class="nav-link light" href="index.html">Home</a>
-        <a class="nav-link light" href="projects.html">Projects</a>
-        <a class="nav-link light active" href="resume.html">Resume</a>
-        <a class="nav-link light" href="about.html">About</a>
-        <a class="nav-link light" href="contact.html">Contact</a>
-        <a class="icon-link light" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
-        <a class="icon-link light" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="projects.html">Projects</a>
+        <a class="nav-link active" href="resume.html">Resume</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
+        <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
     </div>
   </header>
 
-  <main class="light">
+  <main class="surface">
     <section class="wrap section">
       <div class="page-head">
         <div>
           <h1 class="page-title">Resume</h1>
-          <p class="page-sub">View below or download as a PDF.</p>
+          <p class="p-muted">View below or download.</p>
         </div>
-        <div class="head-actions">
+        <div class="actions">
           <a class="btn btn-primary" href="assets/docs/Michael_Gauthier_Resume.pdf" download>Download PDF</a>
-          <a class="btn" href="contact.html">Contact</a>
         </div>
       </div>
 
       <div class="resume-layout">
-        <div>
+        <div class="card" style="padding:0; overflow:hidden;">
           <iframe class="pdf" src="assets/docs/Michael_Gauthier_Resume.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
         </div>
 
-        <aside class="resume-skills">
-          <h2 class="mini-title">Technical tools</h2>
-
-          <div class="skill-block">
+        <div class="card" style="padding:16px;">
+          <div class="side">
             <h3>CAD and design</h3>
-            <p>AutoCAD, AutoCAD Civil 3D, SolidWorks, Fusion 360, 2D drawings, 3D modeling, GD and T fundamentals, plan sets, profiles, details, blocks, georeferenced base layers.</p>
+            <p>AutoCAD, Civil 3D, SolidWorks, Fusion 360, plan sets, profiles, details, blocks, georeferenced base layers.</p>
           </div>
-
-          <div class="skill-block">
+          <div class="side">
             <h3>Programming and analysis</h3>
             <p>Python, MATLAB, C plus plus, Java, JavaScript, Arduino, OCR extraction, batch processing, Excel.</p>
           </div>
-
-          <div class="skill-block">
-            <h3>GIS</h3>
-            <p>ArcGIS Pro, ArcGIS Online, Survey123, Field Maps, attribute schemas, mobile data capture, PDF export workflows.</p>
-          </div>
-
-          <div class="skill-block">
+          <div class="side">
             <h3>Testing</h3>
-            <p>Instron tensile, compression, bending, torsion, buckling, Bluehill, Charpy impact, Rockwell hardness, microscopy, polariscope stress visualization, MATLAB property extraction.</p>
+            <p>Instron tensile, compression, bending, torsion, buckling, Bluehill, impact and hardness testing, MATLAB property extraction.</p>
           </div>
-
-          <div class="skill-block">
-            <h3>Equipment</h3>
-            <p>Total station, Trimble GPS and GNSS, 3D printing, laser cutting, laser engraving, prototype assembly, equipment troubleshooting.</p>
+          <div class="side">
+            <h3>Field equipment</h3>
+            <p>Total station, Trimble GPS and GNSS, survey workflows tied into CAD and GIS.</p>
           </div>
-        </aside>
+        </div>
       </div>
 
       <section class="footer">
         <div class="wrap footer-inner">
           <div>
             <div class="footer-name">Michael Gauthier</div>
-            <div class="footer-links">
+            <div>
               <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
               <span class="sep">|</span>
               <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
             </div>
           </div>
-          <div class="muted">© <span id="year"></span></div>
+          <div>© <span id="year"></span></div>
         </div>
       </section>
     </section>
