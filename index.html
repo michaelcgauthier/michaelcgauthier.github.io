@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Michael Gauthier | Portfolio</title>
+  <title>Michael Gauthier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -22,12 +22,11 @@
       </button>
 
       <nav class="nav" id="nav">
-        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="index.html">Home</a>
         <a class="nav-link" href="projects.html">Projects</a>
         <a class="nav-link" href="resume.html">Resume</a>
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-link" href="contact.html">Contact</a>
-
         <a class="icon-link" href="mailto:gauthier.mi@northeastern.edu" aria-label="Email">✉</a>
         <a class="icon-link" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
       </nav>
@@ -35,104 +34,125 @@
   </header>
 
   <main>
-    <section class="hero" style="background-image:url('assets/images/all/HomePageBackground.png');">
+    <section class="hero full" data-parallax="true" data-parallax-speed="0.12"
+      style="background-image:url('assets/images/all/HomePageBackground.png');">
       <div class="hero-overlay"></div>
+
       <div class="wrap hero-content">
-        <div class="hero-center">
-          <h1>Michael Gauthier</h1>
-          <div class="subline">
-            Northeastern University Mechanical Engineering student graduating May 2027. Currently a Mechanical and Construction Engineering Co op.
-          </div>
-          <div class="hero-actions">
-            <a class="btn" href="projects.html">Projects</a>
-            <a class="btn btn-secondary" href="resume.html">Resume</a>
-          </div>
+        <div class="hero-center hero-home-shift">
+          <h1 class="hero-title">Michael Gauthier</h1>
+          <p class="hero-sub">
+            Mechanical Engineering student at Northeastern University. Current Mechanical and Construction Engineering co op.
+            My work spans CAD plan sets, office automation in Python, ArcGIS workflow design, field measurement, and testing.
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="light">
+    <section class="surface">
       <div class="wrap section">
-        <h2 class="section-title">Quick overview</h2>
-        <p class="section-sub">
-          I build CAD plan sets and existing conditions drawings, digitize inspection workflows with ArcGIS, write Python automation tools, and work across field measurement and office design. I also run long form project work through student teams and personal builds.
-        </p>
+        <h2 class="h2">Timeline</h2>
+        <p class="p-muted">Click any item to jump to related projects.</p>
 
-        <div class="timeline-wrap">
-          <div class="timeline-row">
-            <div class="tl-card">
-              <div class="tl-img"><img src="assets/images/all/wellesleylogo.png" alt=""></div>
-              <div class="tl-body">
-                <p class="tl-title">Town of Wellesley</p>
-                <p class="tl-meta">Mechanical and Construction Engineering Co op</p>
-              </div>
-            </div>
+        <div class="card timeline-wrap">
+          <div class="timeline">
+            <div class="timeline-line"></div>
 
-            <div class="tl-card">
-              <div class="tl-img"><img src="assets/images/all/ElectricRacingClubPic.png" alt=""></div>
-              <div class="tl-body">
-                <p class="tl-title">NU Electric Racing</p>
-                <p class="tl-meta">Tire optimization and inertia reduction</p>
-              </div>
-            </div>
+            <div class="timeline-items">
+              <a class="ti" href="projects.html?tag=Wellesley">
+                <div class="ti-branch"></div>
+                <div class="ti-logo"><img src="assets/images/all/wellesleylogo.png" alt="Town of Wellesley"></div>
+                <div class="ti-text">
+                  <div class="ti-title">Town of Wellesley</div>
+                  <div>Co op</div>
+                </div>
+              </a>
 
-            <div class="tl-card">
-              <div class="tl-img"><img src="assets/images/all/NUGiveAHandClubPic.png" alt=""></div>
-              <div class="tl-body">
-                <p class="tl-title">NU Give a Hand</p>
-                <p class="tl-meta">Prosthetic hand design and iteration</p>
-              </div>
-            </div>
+              <a class="ti" href="projects.html?tag=Clean%20Energy">
+                <div class="ti-branch"></div>
+                <div class="ti-logo"><img src="assets/images/all/project3.jpeg" alt="Clean Energy Exhibit"></div>
+                <div class="ti-text">
+                  <div class="ti-title">Clean Energy Exhibit</div>
+                  <div>Cornerstone</div>
+                </div>
+              </a>
 
-            <div class="tl-card">
-              <div class="tl-img"><img src="assets/images/all/calightdesignslogo.png" alt=""></div>
-              <div class="tl-body">
-                <p class="tl-title">CA Light Designs</p>
-                <p class="tl-meta">Founder and product manufacturing</p>
-              </div>
-            </div>
+              <a class="ti" href="projects.html?tag=CA%20Light%20Designs">
+                <div class="ti-branch"></div>
+                <div class="ti-logo"><img src="assets/images/all/calightdesignslogo.png" alt="CA Light Designs"></div>
+                <div class="ti-text">
+                  <div class="ti-title">CA Light Designs</div>
+                  <div>Founder</div>
+                </div>
+              </a>
 
-            <div class="tl-card">
-              <div class="tl-img"><img src="assets/images/all/westfieldlogo.png" alt=""></div>
-              <div class="tl-body">
-                <p class="tl-title">Westfield NJ</p>
-                <p class="tl-meta">Lifeguard and swim instructor summers</p>
-              </div>
-            </div>
+              <a class="ti" href="projects.html?tag=NU%20Electric%20Racing">
+                <div class="ti-branch"></div>
+                <div class="ti-logo"><img src="assets/images/all/ElectricRacingClubPic.png" alt="NU Electric Racing"></div>
+                <div class="ti-text">
+                  <div class="ti-title">NU Electric Racing</div>
+                  <div>Tire team</div>
+                </div>
+              </a>
 
-            <div class="tl-card">
-              <div class="tl-img"><img src="assets/images/all/proejct1.jpeg" alt=""></div>
-              <div class="tl-body">
-                <p class="tl-title">Clean energy exhibit</p>
-                <p class="tl-meta">Arduino, MATLAB, CAD, 3D printing</p>
-              </div>
-            </div>
+              <a class="ti" href="projects.html?tag=NU%20Give%20a%20Hand">
+                <div class="ti-branch"></div>
+                <div class="ti-logo"><img src="assets/images/all/NUGiveAHandClubPic.png" alt="NU Give a Hand"></div>
+                <div class="ti-text">
+                  <div class="ti-title">NU Give a Hand</div>
+                  <div>Prosthetics</div>
+                </div>
+              </a>
 
-            <div class="tl-card">
-              <div class="tl-img"><img src="assets/images/all/AboutMeBackgroundBanner.png" alt=""></div>
-              <div class="tl-body">
-                <p class="tl-title">Study abroad</p>
-                <p class="tl-meta">Madrid Fall 2023</p>
-              </div>
+              <a class="ti" href="projects.html?tag=Westfield%20Pool">
+                <div class="ti-branch"></div>
+                <div class="ti-logo"><img src="assets/images/all/westfieldlogo.png" alt="Westfield Pool"></div>
+                <div class="ti-text">
+                  <div class="ti-title">Westfield Pool</div>
+                  <div>Lifeguard</div>
+                </div>
+              </a>
+
+              <a class="ti" href="projects.html?tag=Soccer">
+                <div class="ti-branch"></div>
+                <div class="ti-logo"><img src="assets/images/all/westfieldsoccer.png" alt="Soccer Ref"></div>
+                <div class="ti-text">
+                  <div class="ti-title">Soccer Ref</div>
+                  <div>Leadership</div>
+                </div>
+              </a>
+
+              <a class="ti" href="about.html">
+                <div class="ti-branch"></div>
+                <div class="ti-logo"><img src="assets/images/all/headshot.jpeg" alt="About"></div>
+                <div class="ti-text">
+                  <div class="ti-title">About</div>
+                  <div>More</div>
+                </div>
+              </a>
             </div>
           </div>
         </div>
 
+        <div style="margin-top:18px;">
+          <a class="btn btn-primary" href="projects.html">View projects</a>
+          <a class="btn" href="resume.html" style="margin-left:10px;">Resume</a>
+        </div>
+
+        <section class="footer">
+          <div class="wrap footer-inner">
+            <div>
+              <div class="footer-name">Michael Gauthier</div>
+              <div>
+                <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+                <span class="sep">|</span>
+                <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+              </div>
+            </div>
+            <div>© <span id="year"></span></div>
+          </div>
+        </section>
       </div>
-
-      <section class="footer">
-        <div class="wrap footer-inner">
-          <div>
-            <div class="footer-name">Michael Gauthier</div>
-            <div class="footer-links">
-              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-              <span class="sep">|</span>
-              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-          </div>
-          <div class="muted">© <span id="year"></span></div>
-        </div>
-      </section>
     </section>
   </main>
 
