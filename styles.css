@@ -197,9 +197,13 @@ main.noPad{
 }
 
 .hero.full{
-  min-height: 92vh;
+  min-height: 100vh;
   display:flex;
   align-items:center;
+}
+
+.hero-parallax-text{
+  will-change: transform;
 }
 
 .hero.thin{
