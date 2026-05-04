@@ -379,6 +379,25 @@ main.noPad{
   background: rgba(43,108,255,.34);
 }
 
+.ti-duration{
+  width: 100%;
+  max-width: 92px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(11,18,32,.08);
+  border: 1px solid rgba(11,18,32,.08);
+  overflow:hidden;
+}
+
+.ti-duration::after{
+  content:"";
+  display:block;
+  height:100%;
+  width: var(--w, 50%);
+  background: rgba(11,18,32,.35);
+  border-radius: 999px;
+}
+
 .projects-grid{
   margin-top: 18px;
   display:grid;
@@ -398,6 +417,16 @@ main.noPad{
 .project-card:hover{
   transform: translateY(-3px);
   box-shadow: var(--shadow2);
+}
+
+.project-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 26px 70px rgba(2,8,23,.18);
+}
+
+.ti:hover .ti-logo{
+  transform: translateY(-4px);
+  box-shadow: 0 24px 44px rgba(2,8,23,.18);
 }
 
 .project-thumb{
@@ -484,8 +513,8 @@ main.noPad{
 .btn:hover{ transform: translateY(-1px); }
 
 .btn-primary{
-  border-color: rgba(43,108,255,.22);
-  background: rgba(43,108,255,.10);
+  border: 1px solid rgba(2,8,23,.12);
+  background: rgba(2,8,23,.03);
 }
 
 .resume-layout{
@@ -527,8 +556,21 @@ main.noPad{
 }
 
 .footer{
-  padding: 18px 0 26px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(11,18,32,.10);
 }
+
+.footer-3{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items:center;
+  gap: 12px;
+}
+
+.footer-left{ justify-self:start; }
+.footer-center{ justify-self:center; font-weight:800; color: rgba(11,18,32,.78); }
+.footer-right{ justify-self:end; }
 
 .footer-inner{
   display:flex;
