@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <header class="topbar lightbar clearbar">
     <div class="wrap topbar-inner">
@@ -38,40 +39,49 @@
       <div class="page-head">
         <div>
           <h1 class="page-title">Contact</h1>
-          <p class="p-muted">Send a message or reach me directly.</p>
+          <p class="p-muted">I’m always happy to connect. Feel free to reach out.</p>
         </div>
       </div>
 
-      <div class="contact-grid">
-        <div class="card contact-card">
-          <h3 class="contact-title">Details</h3>
-
-          <div class="contact-line">
-            <span class="label">Email</span>
-            <a class="value" href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+      <div style="display:grid; grid-template-columns: 0.85fr 1.15fr; gap:16px; align-items:start;">
+        <!-- Left: details (smaller) -->
+        <div class="card" style="padding:16px;">
+          <div style="font-weight:900; font-size:16px;">Quick details</div>
+          <div class="p-muted" style="margin-top:8px;">
+            I’m currently looking for a co op for Fall 2026. I’m available July 1 through December 31.
+            I’m always happy to connect with anyone and learn more, so feel free to message me here or connect with me on LinkedIn.
           </div>
 
-          <div class="contact-line">
-            <span class="label">LinkedIn</span>
-            <a class="value" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">linkedin.com/in/mgauthier1</a>
+          <div style="margin-top:14px; display:grid; gap:10px;">
+            <div style="display:flex; gap:10px; align-items:baseline;">
+              <div style="min-width:74px; font-weight:900; font-size:13px; color: rgba(11,18,32,.72);">Email</div>
+              <a href="mailto:gauthier.mi@northeastern.edu" style="font-weight:700;">gauthier.mi@northeastern.edu</a>
+            </div>
+
+            <div style="display:flex; gap:10px; align-items:baseline;">
+              <div style="min-width:74px; font-weight:900; font-size:13px; color: rgba(11,18,32,.72);">LinkedIn</div>
+              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener" style="font-weight:700;">linkedin.com/in/mgauthier1</a>
+            </div>
+
+            <div style="display:flex; gap:10px; align-items:baseline;">
+              <div style="min-width:74px; font-weight:900; font-size:13px; color: rgba(11,18,32,.72);">Location</div>
+              <div style="color: rgba(11,18,32,.78); font-weight:600;">Boston, MA and New York City</div>
+            </div>
           </div>
 
-          <div class="contact-line">
-            <span class="label">Location</span>
-            <span class="value">Boston, MA and New York City</span>
-          </div>
-
-          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn" href="mailto:gauthier.mi@northeastern.edu">Email me</a>
-            <a class="btn" href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+          <div class="p-muted" style="margin-top:14px; font-size:12px;">
+            Note: messages aren’t stored on this site. Submitting the form opens your email client with the message filled in.
           </div>
         </div>
 
+        <!-- Right: form -->
         <div class="card" style="padding:18px;">
-          <h3 class="contact-title" style="margin-top:0;">Send a message</h3>
-          <p class="p-muted" style="margin-top:6px;">This opens an email with your message filled in.</p>
+          <div style="font-weight:900; font-size:16px;">Send a message</div>
+          <div class="p-muted" style="margin-top:6px;">
+            Fill this out and it will open your email with the subject and message pre filled.
+          </div>
 
-          <form id="contactForm" style="display:grid; gap:12px; margin-top:12px;">
+          <form id="contactForm" style="margin-top:14px; display:grid; gap:12px;">
             <label style="display:grid; gap:6px;">
               <span style="font-weight:900; font-size:13px;">Name</span>
               <input id="cName" required class="contact-input">
@@ -88,7 +98,6 @@
             </label>
 
             <button class="btn" type="submit" style="justify-self:start;">Open email</button>
-            <div class="p-muted" style="font-size:12px;">This site uses mailto and does not store messages.</div>
           </form>
         </div>
       </div>
