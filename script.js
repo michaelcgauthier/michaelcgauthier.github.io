@@ -106,7 +106,7 @@ if (contactForm) {
     const name = document.getElementById("cName").value.trim();
     const email = document.getElementById("cEmail").value.trim();
     const msg = document.getElementById("cMessage").value.trim();
-    const subject = encodeURIComponent(`Portfolio message from ${name}`);
+    const subject = encodeURIComponent(`Message From Michael's Engineering Portfolio`);
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
     window.location.href = `mailto:gauthier.mi@northeastern.edu?subject=${subject}&body=${body}`;
   });
