@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"> 
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -22,7 +22,7 @@
       </button>
 
       <nav class="nav" id="nav">
-        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="index.html">Home</a>
         <a class="nav-link" href="projects.html">Projects</a>
         <a class="nav-link" href="resume.html">Resume</a>
         <a class="nav-link" href="about.html">About</a>
@@ -34,108 +34,209 @@
   </header>
 
   <main class="noPad">
+    <!-- HERO -->
     <section class="hero full" data-parallax="true" data-parallax-speed="0.08"
       style="background-image:url('assets/images/all/HomePageBackground.png');">
       <div class="hero-overlay"></div>
-
       <div class="wrap hero-content">
-        <div class="hero-center hero-home-shift hero-parallax-text" data-parallax-text="true" data-parallax-text-speed="0.22">
+        <div class="hero-center hero-home-shift hero-parallax-text" data-parallax-text="true" data-parallax-text-speed="0.28">
           <h1 class="hero-title">Michael Gauthier</h1>
           <p class="hero-sub">
             Mechanical Engineering student at Northeastern University. Current Mechanical and Construction Engineering co op.
-            My work spans CAD plan sets, office automation in Python, ArcGIS workflow design, field measurement, and testing.
+            My work focuses on CAD plan sets, field measurement, automation in Python, and building clean systems that make engineering work faster and more reliable.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- ABOUT ME (brief) -->
     <section class="surface">
       <div class="wrap section">
-        <h2 class="h2">Timeline</h2>
-        <p class="p-muted">Click any item to jump to related projects.</p>
+        <div class="home-about card">
+          <div class="home-about-left">
+            <img class="home-headshot" src="assets/images/all/headshot.jpeg" alt="Headshot">
 
-        <div class="card timeline-wrap">
-          <div class="timeline">
-            <div class="timeline-line"></div>
-
-            <div class="timeline-items">
-              <a class="ti" href="projects.html">
-                <div class="ti-branch"></div>
-                <div class="ti-logo"><img src="assets/images/all/wellesleylogo.png" alt="Town of Wellesley"></div>
-                <div class="ti-duration" style="--w:92%"></div>
-                <div class="ti-text"><div class="ti-title">Town of Wellesley</div><div>Co op</div></div>
-              </a>
-
-              <a class="ti" href="projects.html">
-                <div class="ti-branch"></div>
-                <div class="ti-logo"><img src="assets/images/all/project3.jpeg" alt="Clean Energy Exhibit"></div>
-                <div class="ti-duration" style="--w:36%"></div>
-                <div class="ti-text"><div class="ti-title">Clean Energy Exhibit</div><div>Cornerstone</div></div>
-              </a>
-
-              <a class="ti" href="projects.html">
-                <div class="ti-branch"></div>
-                <div class="ti-logo"><img src="assets/images/all/calightdesignslogo.png" alt="CA Light Designs"></div>
-                <div class="ti-duration" style="--w:86%"></div>
-                <div class="ti-text"><div class="ti-title">CA Light Designs</div><div>Founder</div></div>
-              </a>
-
-              <a class="ti" href="projects.html">
-                <div class="ti-branch"></div>
-                <div class="ti-logo"><img src="assets/images/all/ElectricRacingClubPic.png" alt="NU Electric Racing"></div>
-                <div class="ti-duration" style="--w:44%"></div>
-                <div class="ti-text"><div class="ti-title">NU Electric Racing</div><div>Tire team</div></div>
-              </a>
-
-              <a class="ti" href="projects.html">
-                <div class="ti-branch"></div>
-                <div class="ti-logo"><img src="assets/images/all/NUGiveAHandClubPic.png" alt="NU Give a Hand"></div>
-                <div class="ti-duration" style="--w:40%"></div>
-                <div class="ti-text"><div class="ti-title">NU Give a Hand</div><div>Prosthetics</div></div>
-              </a>
-
-              <a class="ti" href="projects.html">
-                <div class="ti-branch"></div>
-                <div class="ti-logo"><img src="assets/images/all/westfieldlogo.png" alt="Westfield Pool"></div>
-                <div class="ti-duration" style="--w:78%"></div>
-                <div class="ti-text"><div class="ti-title">Westfield Pool</div><div>Lifeguard / Swim</div></div>
-              </a>
-
-              <a class="ti" href="projects.html">
-                <div class="ti-branch"></div>
-                <div class="ti-logo"><img src="assets/images/all/westfieldsoccer.png" alt="Soccer Ref"></div>
-                <div class="ti-duration" style="--w:48%"></div>
-                <div class="ti-text"><div class="ti-title">Soccer Ref</div><div>Leadership</div></div>
-              </a>
-
-              <a class="ti" href="about.html">
-                <div class="ti-branch"></div>
-                <div class="ti-logo"><img src="assets/images/all/headshot.jpeg" alt="About"></div>
-                <div class="ti-duration" style="--w:22%"></div>
-                <div class="ti-text"><div class="ti-title">Leadership</div><div>More</div></div>
-              </a>
+            <div class="home-about-buttons">
+              <a class="btn" href="resume.html">View resume</a>
+              <a class="btn" href="projects.html">View projects</a>
             </div>
+          </div>
+
+          <div class="home-about-right">
+            <h2 class="h2">About me</h2>
+            <p class="p-muted">
+              I’m a Mechanical Engineering major at Northeastern University. I genuinely love what I do and I’m happiest when I’m building something that has a clear purpose and a clean end result.
+              Right now I’m working as a Mechanical and Construction Engineering co op. I started full time last fall, and they asked me to stay on, so I’m balancing engineering work and classes.
+            </p>
+            <p class="p-muted" style="margin-top:10px;">
+              My day to day work is a mix of design and execution: AutoCAD plan sets, georeferenced base layers, field measurement, and workflow automation.
+              I’ve built Python tools that process batches of engineering files faster, and ArcGIS inspection workflows that standardize field data collection and make it usable immediately for engineering review.
+              I like work that connects real constraints, data, and design decisions in a practical way.
+            </p>
           </div>
         </div>
 
+        <!-- TIMELINE -->
         <div style="margin-top:18px;">
-          <a class="btn btn-primary" href="projects.html">View projects</a>
+          <h2 class="h2">Timeline</h2>
+          <p class="p-muted">A quick view of my experience. Click any block to jump to projects.</p>
+        </div>
+
+        <div class="card timeline-vertical">
+          <div class="tv-line"></div>
+
+          <!-- Wellesley -->
+          <a class="tv-item tv-lg" href="projects.html" aria-label="Town of Wellesley">
+            <div class="tv-year">2025–Now</div>
+            <div class="tv-block">
+              <div class="tv-logo">
+                <img src="assets/images/all/wellesleylogo.png" alt="Town of Wellesley">
+              </div>
+              <div class="tv-text">
+                <div class="tv-title">Mechanical and Construction Engineering Co op</div>
+                <div class="tv-company">Town of Wellesley Engineering Division</div>
+                <div class="tv-dates">Jul 2025 – Present</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Brandy -->
+          <a class="tv-item tv-md" href="projects.html" aria-label="Brandy Melville">
+            <div class="tv-year">2024–Now</div>
+            <div class="tv-block tv-alt">
+              <div class="tv-logo">
+                <img src="assets/images/all/project4.jpeg" alt="Brandy Melville">
+              </div>
+              <div class="tv-text">
+                <div class="tv-title">Stock Associate</div>
+                <div class="tv-company">Brandy Melville</div>
+                <div class="tv-dates">Sep 2024 – Present</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- CA Light Designs -->
+          <a class="tv-item tv-lg" href="projects.html" aria-label="CA Light Designs">
+            <div class="tv-year">2021–2024</div>
+            <div class="tv-block">
+              <div class="tv-logo">
+                <img src="assets/images/all/calightdesignslogo.png" alt="CA Light Designs">
+              </div>
+              <div class="tv-text">
+                <div class="tv-title">Founder and Owner</div>
+                <div class="tv-company">CA Light Designs</div>
+                <div class="tv-dates">Mar 2021 – Aug 2024</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- NU Electric Racing -->
+          <a class="tv-item tv-sm" href="projects.html" aria-label="NU Electric Racing">
+            <div class="tv-year">2024–Now</div>
+            <div class="tv-block tv-alt">
+              <div class="tv-logo">
+                <img src="assets/images/all/ElectricRacingClubPic.png" alt="NU Electric Racing">
+              </div>
+              <div class="tv-text">
+                <div class="tv-title">Tire Optimization Team</div>
+                <div class="tv-company">NU Electric Racing</div>
+                <div class="tv-dates">2024 – Present</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- NU Give a Hand -->
+          <a class="tv-item tv-sm" href="projects.html" aria-label="NU Give a Hand">
+            <div class="tv-year">2024–Now</div>
+            <div class="tv-block">
+              <div class="tv-logo">
+                <img src="assets/images/all/NUGiveAHandClubPic.png" alt="NU Give a Hand">
+              </div>
+              <div class="tv-text">
+                <div class="tv-title">Prosthetic Hand Design Team</div>
+                <div class="tv-company">NU Give a Hand</div>
+                <div class="tv-dates">2024 – Present</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Coding with a Cause -->
+          <a class="tv-item tv-md" href="projects.html" aria-label="Coding with a Cause">
+            <div class="tv-year">2022–2023</div>
+            <div class="tv-block tv-alt">
+              <div class="tv-logo">
+                <img src="assets/images/all/project5.jpeg" alt="Coding with a Cause">
+              </div>
+              <div class="tv-text">
+                <div class="tv-title">Club President</div>
+                <div class="tv-company">Coding with a Cause</div>
+                <div class="tv-dates">2022 – 2023</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Entrepreneurship club -->
+          <a class="tv-item tv-md" href="projects.html" aria-label="Entrepreneurship club">
+            <div class="tv-year">2021–2023</div>
+            <div class="tv-block">
+              <div class="tv-logo">
+                <img src="assets/images/all/project6.jpeg" alt="Entrepreneurship club">
+              </div>
+              <div class="tv-text">
+                <div class="tv-title">Club President</div>
+                <div class="tv-company">Entrepreneurship Club</div>
+                <div class="tv-dates">2021 – 2023</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Pool -->
+          <a class="tv-item tv-lg" href="projects.html" aria-label="Westfield Pool">
+            <div class="tv-year">2020–2023</div>
+            <div class="tv-block tv-alt">
+              <div class="tv-logo">
+                <img src="assets/images/all/westfieldlogo.png" alt="Westfield Pool">
+              </div>
+              <div class="tv-text">
+                <div class="tv-title">Lifeguard and Swim Instructor</div>
+                <div class="tv-company">Westfield Memorial Pool</div>
+                <div class="tv-dates">Jul 2020 – Aug 2023</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Soccer -->
+          <a class="tv-item tv-md" href="projects.html" aria-label="Soccer Referee">
+            <div class="tv-year">2018–2020</div>
+            <div class="tv-block">
+              <div class="tv-logo">
+                <img src="assets/images/all/westfieldsoccer.png" alt="Soccer Referee">
+              </div>
+              <div class="tv-text">
+                <div class="tv-title">Soccer Referee</div>
+                <div class="tv-company">Westfield Soccer Association</div>
+                <div class="tv-dates">Sep 2018 – May 2020</div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div style="margin-top:16px;">
+          <a class="btn" href="projects.html">Projects</a>
           <a class="btn" href="resume.html" style="margin-left:10px;">Resume</a>
         </div>
 
-        <section class="footer">
-          <div class="wrap footer-inner">
-            <div>
-              <div class="footer-name">Michael Gauthier</div>
-              <div>
-                <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-                <span class="sep">|</span>
-                <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
-              </div>
+        <footer class="footer">
+          <div class="wrap footer-inner footer-3">
+            <div class="footer-left">
+              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+              <span class="sep">|</span>
+              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
             </div>
-            <div>© <span id="year"></span></div>
+            <div class="footer-center">Michael Gauthier Engineering Portfolio</div>
+            <div class="footer-right">© <span id="year"></span></div>
           </div>
-        </section>
+        </footer>
       </div>
     </section>
   </main>
