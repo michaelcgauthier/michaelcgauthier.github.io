@@ -492,6 +492,20 @@ main.noPad{
   font-weight: 900;
 }
 
+.contact-input{
+  font: inherit;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(2,8,23,.14);
+  outline:none;
+  background:#fff;
+}
+
+.contact-input:focus{
+  border-color: rgba(43,108,255,.45);
+  box-shadow: 0 0 0 3px rgba(43,108,255,.10);
+}
+
 .actions{
   display:flex;
   gap:10px;
