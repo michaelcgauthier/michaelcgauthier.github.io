@@ -807,7 +807,7 @@ main{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
-}
+} 
 
 .btn{
   display:inline-flex;
@@ -885,6 +885,22 @@ main{
   }
   .home-headshot{
     height: 250px;
+  }
+}
+
+@media (min-width: 900px) and (min-height: 780px){
+  body.contact-page{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.contact-page main{
+    flex: 1 0 auto;
+  }
+
+  body.contact-page footer.footer{
+    margin-top: auto;
   }
 }
 
