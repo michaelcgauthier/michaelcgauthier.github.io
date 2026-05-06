@@ -585,6 +585,10 @@ main.noPad{ padding-top: 0 !important; }
   font-size: 12.5px;
 }
 
+.contact-footer-spacer{
+  height: 160px;
+}
+
 /* CONTACT + RESUME */
 .page-head{
   display:flex;
