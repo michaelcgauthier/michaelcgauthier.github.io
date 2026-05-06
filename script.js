@@ -14,7 +14,7 @@ function parallaxUpdate(){
   const els = document.querySelectorAll("[data-parallax='true']");
   const y = window.scrollY || 0;
   els.forEach(el => {
-    const speed = parseFloat(el.getAttribute("data-parallax-speed") || "0.18");
+    const speed = parseFloat(el.getAttribute("data-parallax-speed") || "0.10");
     const offset = Math.round(y * speed);
     el.style.backgroundPosition = `center calc(50% + ${offset}px)`;
   });
@@ -59,7 +59,7 @@ if (root && window.PROJECTS) {
   const pills = (p.tags || []).map(t => `<span class="pill">${t}</span>`).join("");
 
   root.innerHTML = `
-    <section class="hero thin" data-parallax="true" data-parallax-speed="0.18" style="background-image:url('${p.hero}'); background-position:center 35%;">
+    <section class="hero thin" data-parallax="true" data-parallax-speed="0.10" style="background-image:url('${p.hero}'); background-position:center 35%;">
       <div class="hero-overlay"></div>
       <div class="wrap hero-content">
         <div class="hero-center">
