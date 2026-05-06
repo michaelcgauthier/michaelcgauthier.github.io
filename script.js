@@ -18,6 +18,7 @@ function parallaxUpdate(){
     const offset = Math.round(y * speed);
     el.style.backgroundPosition = `center calc(50% + ${offset}px)`;
   });
+  el.style.transform = `translate3d(0,0,0) scale(1.03)`;
 }
 
 const isMobile = window.matchMedia("(max-width: 720px)").matches;
