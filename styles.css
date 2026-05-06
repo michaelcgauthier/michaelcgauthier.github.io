@@ -84,8 +84,8 @@ main.noPad{ padding-top: 0 !important; }
 }
 
 .topbar.lightbar{
-  background: rgba(255,255,255,.62);
-  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,.78);
+  border-bottom: 1px solid rgba(11,18,32,.10);
   color: var(--text);
 }
 
@@ -218,6 +218,8 @@ main.noPad{ padding-top: 0 !important; }
   color:#fff;
   overflow:hidden;
   padding-top: var(--navH);
+  background-attachment: scroll;
+  transform: translateZ(0);
 }
 
 .hero.full{
