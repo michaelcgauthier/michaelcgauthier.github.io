@@ -34,25 +34,36 @@
     </div>
   </header>
 
-  <main class="surface">
-    <section class="wrap section">
-      <div class="actions">
-        <a class="btn" href="projects.html">Back to projects</a>
-      </div>
-
-      <div id="projectWrap" style="margin-top:14px;"></div>
-
-      <footer class="footer">
-        <div class="wrap footer-3">
-          <div class="footer-left">
-            <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
-            <span class="sep">|</span>
-            <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-          <div class="footer-center">Michael Gauthier Engineering Portfolio</div>
-          <div class="footer-right">© <span id="year"></span></div>
+  <main>
+    <section class="hero project-hero" style="--hero-bg: url('assets/images/all/ProjectsBannerBackground.png');" data-parallax="true" data-parallax-speed="0.10" data-parallax-scale="1.10">
+      <div class="hero-overlay"></div>
+      <div class="wrap hero-content">
+        <div class="hero-center">
+          <h1 id="projectHeroTitle" class="hero-title project-hero-title"></h1>
         </div>
-      </footer>
+      </div>
+    </section>
+
+    <section class="surface">
+      <div class="wrap section">
+        <div class="actions" style="margin-bottom:14px;">
+          <a class="btn" href="projects.html">Back to projects</a>
+        </div>
+
+        <div id="projectWrap"></div>
+
+        <footer class="footer">
+          <div class="wrap footer-3">
+            <div class="footer-left">
+              <a href="mailto:gauthier.mi@northeastern.edu">gauthier.mi@northeastern.edu</a>
+              <span class="sep">|</span>
+              <a href="https://www.linkedin.com/in/mgauthier1" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+            <div class="footer-center">Michael Gauthier Engineering Portfolio</div>
+            <div class="footer-right">© <span id="year"></span></div>
+          </div>
+        </footer>
+      </div>
     </section>
   </main>
 
@@ -62,6 +73,7 @@
   <script>
     (function(){
       const root = document.getElementById("projectWrap");
+      const heroTitle = document.getElementById("projectHeroTitle");
       const params = new URLSearchParams(window.location.search);
       const slug = params.get("slug");
 
@@ -70,14 +82,11 @@
           <div class="card" style="padding:18px;">
             <div class="h2">Projects data not loading</div>
             <p class="p-muted" style="margin-top:10px;">
-              project.html loaded, but projects-data.js did not run.
-              This is almost always a path or syntax error in projects-data.js.
-            </p>
-            <p class="p-muted" style="margin-top:10px;">
-              Fix: confirm projects-data.js is in the repo root and refresh.
+              projects-data.js did not run. This usually means the script path is wrong or there is a syntax error inside projects-data.js.
             </p>
           </div>
         `;
+        heroTitle.textContent = "Project";
         return;
       }
 
@@ -90,6 +99,7 @@
             </p>
           </div>
         `;
+        heroTitle.textContent = "Project";
         return;
       }
 
@@ -105,46 +115,45 @@
             </p>
           </div>
         `;
+        heroTitle.textContent = "Project";
         return;
       }
 
       document.title = `${p.number}. ${p.title} | Michael Gauthier`;
+      heroTitle.textContent = `${p.number}. ${p.title}`;
 
       const imgMain = `assets/images/project${p.number}.jpg`;
 
       root.innerHTML = `
-        <div class="card" style="padding:18px;">
-          <div style="font-weight:900; font-size:22px;">${p.number}. ${p.title}</div>
+        <div class="project-detail card">
+          <div class="project-detail-top">
+            <div class="project-detail-photo">
+              <img src="${imgMain}" alt="${p.title}" loading="lazy">
+              <div class="project-detail-photo-note">Add image later at: ${imgMain}</div>
+            </div>
 
-          <div style="margin-top:14px;">
-            <div style="font-weight:900;">${p.skillsLabel}</div>
-            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.65;">${p.skills}</div>
+            <div class="project-detail-text">
+              <div class="project-detail-block">
+                <div class="project-detail-label">${p.contextLabel}</div>
+                <div class="project-detail-body">${p.context}</div>
+              </div>
+
+              <div class="project-detail-block" style="margin-top:16px;">
+                <div class="project-detail-label">${p.howLabel}</div>
+                <div class="project-detail-body">${p.how}</div>
+              </div>
+
+              <div class="project-detail-skills" style="margin-top:16px;">
+                <div class="project-detail-label">${p.skillsLabel}</div>
+                <div class="project-detail-body">${p.skills}</div>
+              </div>
+            </div>
           </div>
 
-          <div style="margin-top:18px;">
-            <div style="font-weight:900;">${p.contextLabel}</div>
-            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.75;">${p.context}</div>
+          <div class="project-detail-results">
+            <div class="project-detail-label">${p.resultsLabel}</div>
+            <div class="project-detail-body">${p.results}</div>
           </div>
-
-          <div style="margin-top:18px;">
-            <div style="font-weight:900;">${p.howLabel}</div>
-            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.75;">${p.how}</div>
-          </div>
-
-          <div style="margin-top:18px;">
-            <div style="font-weight:900;">${p.resultsLabel}</div>
-            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.75;">${p.results}</div>
-          </div>
-        </div>
-
-        <div style="margin-top:18px;">
-          <div class="h2">Photos</div>
-          <div class="card" style="margin-top:12px; overflow:hidden;">
-            <img src="${imgMain}" alt="${p.title}" loading="lazy" style="width:100%; height:auto;">
-          </div>
-          <p class="p-muted" style="margin-top:10px;">
-            Add your image later at: <b>${imgMain}</b>
-          </p>
         </div>
       `;
     })();
