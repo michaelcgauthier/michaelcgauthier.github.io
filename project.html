@@ -78,6 +78,7 @@
       const slug = params.get("slug");
 
       if (!window.PROJECTS) {
+        heroTitle.textContent = "Project";
         root.innerHTML = `
           <div class="card" style="padding:18px;">
             <div class="h2">Projects data not loading</div>
@@ -86,11 +87,11 @@
             </p>
           </div>
         `;
-        heroTitle.textContent = "Project";
         return;
       }
 
       if (!slug) {
+        heroTitle.textContent = "Project";
         root.innerHTML = `
           <div class="card" style="padding:18px;">
             <div class="h2">No project selected</div>
@@ -99,7 +100,6 @@
             </p>
           </div>
         `;
-        heroTitle.textContent = "Project";
         return;
       }
 
@@ -107,6 +107,7 @@
       const p = projects.find(x => x.slug === slug);
 
       if (!p) {
+        heroTitle.textContent = "Project";
         root.innerHTML = `
           <div class="card" style="padding:18px;">
             <div class="h2">Project not found</div>
@@ -115,67 +116,67 @@
             </p>
           </div>
         `;
-        heroTitle.textContent = "Project";
         return;
       }
 
-      document.title = `${p.number}. ${p.title} | Michael Gauthier`;
-      heroTitle.textContent = `${p.number}. ${p.title}`;
+      document.title = `${p.title} | Michael Gauthier`;
+      heroTitle.textContent = p.title;
 
       const imgMain = `assets/images/project${p.number}.jpg`;
 
       const skillList = (p.skills || "")
         .split(",")
         .map(s => s.trim())
-        .filter(Boolean);
+        .filter(Boolean)
+        .slice(0, 10);
 
-      const pillHTML = skillList.slice(0, 10).map(s =>
+      const pillHTML = skillList.map(s =>
         `<span class="project-skill-pill">${s}</span>`
       ).join("");
 
-      const extraCount = Math.max(0, skillList.length - 10);
-
-      const skillsTopHTML = `
-        <div class="project-skill-top">
-          <div class="project-detail-label">${p.skillsLabel}</div>
-          <div class="project-skill-pills">
-            ${pillHTML}
-            ${extraCount > 0 ? `<span class="project-skill-pill">+${extraCount} more</span>` : ""}
-          </div>
-        </div>
-      `;
-
       root.innerHTML = `
-        <div class="project-detail card">
-          <div style="font-weight:900; font-size:22px;">${p.number}. ${p.title}</div>
+        <div class="project-detail card" style="padding:18px;">
+          <div style="font-weight:900; font-size:22px; text-align:center; letter-spacing:.2px; margin: 6px 0 18px;">
+            ${p.title}
+          </div>
 
-          ${skillsTopHTML}
+          <div class="project-detail-top" style="display:grid; grid-template-columns: 1fr 320px; gap:18px; align-items:start;">
+            <div>
+              <div class="project-skill-pills" style="margin-top:0;">
+                ${pillHTML}
+              </div>
 
-          <div class="project-detail-top">
-            <div class="project-detail-photo">
-              <img src="${imgMain}" alt="${p.title}" loading="lazy">
-              <div class="project-detail-photo-note">Add image later at: ${imgMain}</div>
-            </div>
-
-            <div class="project-detail-text">
-              <div class="project-detail-block">
+              <div style="margin-top:16px;">
                 <div class="project-detail-label">${p.contextLabel}</div>
                 <div class="project-detail-body">${p.context}</div>
               </div>
 
-              <div class="project-detail-block" style="margin-top:16px;">
+              <div style="margin-top:16px;">
                 <div class="project-detail-label">${p.howLabel}</div>
                 <div class="project-detail-body">${p.how}</div>
               </div>
             </div>
+
+            <div class="project-detail-photo" style="overflow:hidden; border-radius:14px; border:1px solid rgba(2,8,23,.10); background:#fff; box-shadow: 0 14px 36px rgba(2,8,23,.10);">
+              <img src="${imgMain}" alt="${p.title}" loading="lazy" style="width:100%; height:auto; display:block;">
+              <div class="project-detail-photo-note" style="padding:10px 12px; font-size:12.5px; color: rgba(11,18,32,.62); border-top: 1px solid rgba(2,8,23,.08);">
+                Add image later at: ${imgMain}
+              </div>
+            </div>
           </div>
 
-          <div class="project-detail-results">
+          <div class="project-detail-results" style="margin-top:18px; padding-top:18px; border-top:1px solid rgba(2,8,23,.08);">
             <div class="project-detail-label">${p.resultsLabel}</div>
             <div class="project-detail-body">${p.results}</div>
           </div>
         </div>
       `;
+
+      const mq = window.matchMedia("(max-width: 720px)");
+      if (mq.matches) {
+        const top = root.querySelector(".project-detail-top");
+        if (top) top.style.gridTemplateColumns = "1fr";
+      }
     })();
   </script>
 </body>
