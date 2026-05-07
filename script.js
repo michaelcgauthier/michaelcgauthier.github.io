@@ -37,8 +37,8 @@ if (grid && window.PROJECTS) {
   grid.innerHTML = list.map(p => {
     const pills = (p.tags || []).slice(0,4).map(t => `<span class="pill">${t}</span>`).join("");
     return `
-      <a class="project-card" href="project.html?id=${encodeURIComponent(p.id)}">
-        <div class="project-thumb" style="background-image:url('${p.cover}')"></div>
+      <a class="project-card" href="project.html?slug=${encodeURIComponent(p.slug)}">
+        <div class="project-thumb" style="background-image:url('${p.thumb}')"></div>
         <div class="project-body">
           <h3>${p.title}</h3>
           <p>${p.preview}</p>
@@ -52,8 +52,8 @@ if (grid && window.PROJECTS) {
 
 const root = document.getElementById("projectRoot");
 if (root && window.PROJECTS) {
-  const id = getParam("id");
-  const p = window.PROJECTS.find(x => x.id === id) || window.PROJECTS[0];
+  const slug = getParam("slug");
+  const p = window.PROJECTS.find(x => x.slug === slug) || window.PROJECTS[0];
 
   document.title = `${p.title} | Michael Gauthier`;
 
