@@ -1,6 +1,6 @@
 window.PROJECTS = [
   {
-    id: "project-1",
+    slug: "project-1",
     number: 1,
     title: "Python OCR Porgram for Converting Inspection Sketches into CAD/GIS Linework",
     thumb: "assets/images/project1.jpg",
@@ -18,7 +18,7 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-2",
+    slug: "project-2",
     number: 2,
     title: "Digitization of an inspection workflow through ArcGIS, replacing paper forms.",
     thumb: "assets/images/project2.jpg",
@@ -36,7 +36,7 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-3",
+    slug: "project-3",
     number: 3,
     title: "Detention Pond Redesign from Field Survey & CAD modeling to Construction Planning",
     thumb: "assets/images/project3.jpg",
@@ -54,7 +54,7 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-4",
+    slug: "project-4",
     number: 4,
     title: "Robotic Crawler Pipe Inspection and New Pipe Repair Design",
     thumb: "assets/images/project4.jpg",
@@ -72,7 +72,7 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-5",
+    slug: "project-5",
     number: 5,
     title: "Town-Wide 3D CAD Utility Map, Orthoimagery, and Contour Base Map System",
     thumb: "assets/images/project5.jpg",
@@ -90,7 +90,7 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-6",
+    slug: "project-6",
     number: 6,
     title: "Custom LED Sign Bussiness Founder (Design Work, Manufacturing, Machine Optimization)",
     thumb: "assets/images/project6.jpg",
@@ -108,7 +108,7 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-7",
+    slug: "project-7",
     number: 7,
     title: "Interactive Clean Energy Educational Exhibit with Wind Turbine, House Model, LEDs, and Arduino/MATLAB Game",
     thumb: "assets/images/project7.jpg",
@@ -126,9 +126,9 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-8",
+    slug: "project-8",
     number: 8,
-    title: "Northeastern University Mechancial Engineering Labratory Work & Modeling",
+    title: "Northeastern University Mechanical Engineering Laboratory Work & Modeling",
     note: "(a through d below should all be within the same project button, just make them different tiles on the same page)",
     subsections: [
       {
@@ -148,6 +148,8 @@ window.PROJECTS = [
       },
       {
         title: "b. Impact, Hardness, Microstructure, Stress Concentration, and XRD Materials Analysis",
+        thumb: "assets/images/projectb.jpg",
+        images: ["assets/images/projectb.jpg"],
         previewLabel: "Preview Blurb",
         preview: "Measured fracture energy, hardness, microstructure, stress concentrations, polymer crystal growth, and crystal structure using Charpy impact testing, Rockwell hardness, optical microscopy, polarized microscopy, polariscope testing, XRD, and density measurements.",
         skillsLabel: "Key Skills Used",
@@ -161,6 +163,8 @@ window.PROJECTS = [
       },
       {
         title: "c. Torsional Vibration and Whitworth Quick Return Motion Testing",
+        thumb: "assets/images/projectc.jpg",
+        images: ["assets/images/projectc.jpg"],
         previewLabel: "Preview Blurb",
         preview: "Tested mechanical motion and vibration systems using an ECP torsional vibration system, Whitworth Quick Return mechanism, ultrasonic sensor, laser tachometer, Python, and MATLAB to compare measured motion with analytical models.",
         skillsLabel: "Key Skills Used",
@@ -174,6 +178,8 @@ window.PROJECTS = [
       },
       {
         title: "d. Sensor Measurement, Thermal Data Collection, and Uncertainty Analysis",
+        thumb: "assets/images/projectd.jpg",
+        images: ["assets/images/projectd.jpg"],
         previewLabel: "Preview Blurb",
         preview: "Collected and analyzed measurement data using calipers, micrometers, temperature sensors, RTDs, thermocouples, lux sensors, Arduino, MATLAB, and uncertainty analysis to study measurement accuracy and environmental variation.",
         skillsLabel: "Key Skills Used",
@@ -189,9 +195,11 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-9",
+    slug: "project-9",
     number: 9,
     title: "Formula-Style Electric Race Car Tire Inertia Analysis",
+    thumb: "assets/images/project9.jpg",
+    images: ["assets/images/project9.jpg"],
     previewLabel: "Preview Blurb",
     preview: "Supported NU Electric Racing’s tire optimization work by evaluating tire material choices, mass distribution, rotational inertia, and MATLAB plots used to study acceleration and efficiency tradeoffs in a Formula-style electric race car.",
     skillsLabel: "Key Skills Used",
@@ -205,9 +213,11 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-10",
+    slug: "project-10",
     number: 10,
     title: "SolidWorks Prosthetic Hand Mechanism Design",
+    thumb: "assets/images/project10.jpg",
+    images: ["assets/images/project10.jpg"],
     previewLabel: "Preview Blurb",
     preview: "Worked on NU Give a Hand’s prosthetic hand section by modeling hand mechanisms in SolidWorks and improving part geometry, finger motion, assembly fit, and 3D-printable design features.",
     skillsLabel: "Key Skills Used",
@@ -221,9 +231,11 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-11",
+    slug: "project-11",
     number: 11,
     title: "Intersection Safety Redesign with Lane and Signal Concepts",
+    thumb: "assets/images/project11.jpg",
+    images: ["assets/images/project11.jpg"],
     previewLabel: "Preview Blurb",
     preview: "Created CAD graphics for a problematic intersection by using root-cause analysis to study accident patterns, then developed redesign concepts with added lanes, left-turn lanes, and signal changes.",
     skillsLabel: "Key Skills Used",
@@ -237,9 +249,11 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-12",
+    slug: "project-12",
     number: 12,
     title: "Python Program with OCR for File Organization and Search Index",
+    thumb: "assets/images/project12.jpg",
+    images: ["assets/images/project12.jpg"],
     previewLabel: "Preview Blurb",
     preview: "Wrote a Python OCR script that processed thousands of scanned project files, extracted addresses and project names, renamed the files, organized them into a searchable folder hub, and reduced coworker lookup time by 75%.",
     skillsLabel: "Key Skills Used",
@@ -253,9 +267,11 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-13",
+    slug: "project-13",
     number: 13,
     title: "Construction Time-Lapse Documentation for Field Projects",
+    thumb: "assets/images/project13.jpg",
+    images: ["assets/images/project13.jpg"],
     previewLabel: "Preview Blurb",
     preview: "Created multi-month construction time-lapse videos for Town of Wellesley projects, including a gas pump station redesign and tennis court redesign, to document field progress from start to finish.",
     skillsLabel: "Key Skills Used",
@@ -269,9 +285,11 @@ window.PROJECTS = [
   },
 
   {
-    id: "project-14",
+    slug: "project-14",
     number: 14,
     title: "Coding With a Cause Website Design Outreach Program",
+    thumb: "assets/images/project14.jpg",
+    images: ["assets/images/project14.jpg"],
     previewLabel: "Preview Blurb",
     preview: "Led a high school computer science outreach program that taught middle school students coding and website design, expanded from one school to three, and ended with students presenting their own websites.",
     skillsLabel: "Key Skills Used",
