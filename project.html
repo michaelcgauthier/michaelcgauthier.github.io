@@ -124,8 +124,33 @@
 
       const imgMain = `assets/images/project${p.number}.jpg`;
 
+      const skillList = (p.skills || "")
+        .split(",")
+        .map(s => s.trim())
+        .filter(Boolean);
+
+      const pillHTML = skillList.slice(0, 10).map(s =>
+        `<span class="project-skill-pill">${s}</span>`
+      ).join("");
+
+      const extraCount = Math.max(0, skillList.length - 10);
+
+      const skillsTopHTML = `
+        <div class="project-skill-top">
+          <div class="project-detail-label">${p.skillsLabel}</div>
+          <div class="project-skill-pills">
+            ${pillHTML}
+            ${extraCount > 0 ? `<span class="project-skill-pill">+${extraCount} more</span>` : ""}
+          </div>
+        </div>
+      `;
+
       root.innerHTML = `
         <div class="project-detail card">
+          <div style="font-weight:900; font-size:22px;">${p.number}. ${p.title}</div>
+
+          ${skillsTopHTML}
+
           <div class="project-detail-top">
             <div class="project-detail-photo">
               <img src="${imgMain}" alt="${p.title}" loading="lazy">
@@ -141,11 +166,6 @@
               <div class="project-detail-block" style="margin-top:16px;">
                 <div class="project-detail-label">${p.howLabel}</div>
                 <div class="project-detail-body">${p.how}</div>
-              </div>
-
-              <div class="project-detail-skills" style="margin-top:16px;">
-                <div class="project-detail-label">${p.skillsLabel}</div>
-                <div class="project-detail-body">${p.skills}</div>
               </div>
             </div>
           </div>
