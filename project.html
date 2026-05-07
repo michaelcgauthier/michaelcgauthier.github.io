@@ -124,58 +124,88 @@
 
       const imgMain = `assets/images/project${p.number}.jpg`;
 
-      const skillList = (p.skills || "")
-        .split(",")
-        .map(s => s.trim())
-        .filter(Boolean)
-        .slice(0, 10);
+      function pillsFromSkills(skillsStr){
+        const list = (skillsStr || "")
+          .split(",")
+          .map(s => s.trim())
+          .filter(Boolean)
+          .slice(0, 10);
 
-      const pillHTML = skillList.map(s =>
-        `<span class="project-skill-pill">${s}</span>`
-      ).join("");
+        return list.map(s => `<span class="project-skill-pill">${s}</span>`).join("");
+      }
 
-      root.innerHTML = `
-        <div class="project-detail card" style="padding:18px;">
-          <div style="font-weight:900; font-size:22px; text-align:center; letter-spacing:.2px; margin: 6px 0 14px;">
-            ${p.title}
-          </div>
+      function renderTile(title, skills, contextLabel, context, howLabel, how, resultsLabel, results){
+        const pills = pillsFromSkills(skills);
 
-          <div class="project-detail-top" style="display:grid; grid-template-columns: 1fr 320px; gap:18px; align-items:start;">
-            <div>
-              <div class="project-skill-pills" style="margin-top:10px;">
-                ${pillHTML}
+        return `
+          <div class="project-detail card" style="padding:18px; margin-bottom:16px;">
+            <div style="font-weight:900; font-size:20px; text-align:center; letter-spacing:.2px; margin: 6px 0 14px;">
+              ${title}
+            </div>
+
+            <div class="project-detail-top" style="display:grid; grid-template-columns: 1fr 320px; gap:18px; align-items:start;">
+              <div>
+                <div class="project-skill-pills" style="margin-top:10px;">
+                  ${pills}
+                </div>
+
+                <div style="margin-top:16px;">
+                  <div class="project-detail-label">${contextLabel}</div>
+                  <div class="project-detail-body">${context}</div>
+                </div>
+
+                <div style="margin-top:16px;">
+                  <div class="project-detail-label">${howLabel}</div>
+                  <div class="project-detail-body">${how}</div>
+                </div>
               </div>
 
-              <div style="margin-top:16px;">
-                <div class="project-detail-label">${p.contextLabel}</div>
-                <div class="project-detail-body">${p.context}</div>
-              </div>
-
-              <div style="margin-top:16px;">
-                <div class="project-detail-label">${p.howLabel}</div>
-                <div class="project-detail-body">${p.how}</div>
+              <div class="project-detail-photo" style="overflow:hidden; border-radius:14px; border:1px solid rgba(2,8,23,.10); background:#fff; box-shadow: 0 14px 36px rgba(2,8,23,.10);">
+                <img src="${imgMain}" alt="${title}" loading="lazy" style="width:100%; height:auto; display:block;">
+                <div class="project-detail-photo-note" style="padding:10px 12px; font-size:12.5px; color: rgba(11,18,32,.62); border-top: 1px solid rgba(2,8,23,.08);">
+                  Add image later at: ${imgMain}
+                </div>
               </div>
             </div>
 
-            <div class="project-detail-photo" style="overflow:hidden; border-radius:14px; border:1px solid rgba(2,8,23,.10); background:#fff; box-shadow: 0 14px 36px rgba(2,8,23,.10);">
-              <img src="${imgMain}" alt="${p.title}" loading="lazy" style="width:100%; height:auto; display:block;">
-              <div class="project-detail-photo-note" style="padding:10px 12px; font-size:12.5px; color: rgba(11,18,32,.62); border-top: 1px solid rgba(2,8,23,.08);">
-                Add image later at: ${imgMain}
-              </div>
+            <div class="project-detail-results" style="margin-top:18px; padding-top:18px; border-top:1px solid rgba(2,8,23,.08);">
+              <div class="project-detail-label">${resultsLabel}</div>
+              <div class="project-detail-body">${results}</div>
             </div>
           </div>
+        `;
+      }
 
-          <div class="project-detail-results" style="margin-top:18px; padding-top:18px; border-top:1px solid rgba(2,8,23,.08);">
-            <div class="project-detail-label">${p.resultsLabel}</div>
-            <div class="project-detail-body">${p.results}</div>
-          </div>
-        </div>
-      `;
+      if (Array.isArray(p.subsections) && p.subsections.length > 0) {
+        const tiles = p.subsections.map(s => renderTile(
+          s.title,
+          s.skills,
+          s.contextLabel,
+          s.context,
+          s.howLabel,
+          s.how,
+          s.resultsLabel,
+          s.results
+        )).join("");
+
+        root.innerHTML = tiles;
+      } else {
+        root.innerHTML = renderTile(
+          p.title,
+          p.skills,
+          p.contextLabel,
+          p.context,
+          p.howLabel,
+          p.how,
+          p.resultsLabel,
+          p.results
+        );
+      }
 
       const mq = window.matchMedia("(max-width: 720px)");
       if (mq.matches) {
-        const top = root.querySelector(".project-detail-top");
-        if (top) top.style.gridTemplateColumns = "1fr";
+        const tops = root.querySelectorAll(".project-detail-top");
+        tops.forEach(t => t.style.gridTemplateColumns = "1fr");
       }
     })();
   </script>
