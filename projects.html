@@ -73,7 +73,7 @@
         <div class="project-thumb" style="background-image:url('${p.thumb}')"></div>
         <div class="project-body">
           <h3>${p.number}. ${p.title}</h3>
-          <p>${p.preview}</p>
+          <p>${p.preview || (p.subsections && p.subsections[0] ? p.subsections[0].preview : "")}</p>
           <div class="readmore">Read more</div>
         </div>
       </a>
