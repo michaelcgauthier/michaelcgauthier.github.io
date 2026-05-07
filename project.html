@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=999" />
+  <link rel="stylesheet" href="styles.css?v=1000" />
 </head>
 
 <body>
@@ -67,8 +67,8 @@
     </section>
   </main>
 
-  <script src="projects-data.js?v=999"></script>
-  <script src="script.js?v=999"></script>
+  <script src="projects-data.js?v=1000"></script>
+  <script src="script.js?v=1000"></script>
 
   <script>
     (function(){
@@ -122,8 +122,6 @@
       document.title = `${p.title} | Michael Gauthier`;
       heroTitle.textContent = p.title;
 
-      const imgMain = `assets/images/project${p.number}.jpg`;
-
       function pillsFromSkills(skillsStr){
         const list = (skillsStr || "")
           .split(",")
@@ -134,18 +132,30 @@
         return list.map(s => `<span class="project-skill-pill">${s}</span>`).join("");
       }
 
-      function renderTile(title, skills, contextLabel, context, howLabel, how, resultsLabel, results){
+      function secondImagePath(path){
+        if (!path) return "";
+        const i = path.lastIndexOf(".");
+        if (i === -1) return path + "-2";
+        return path.slice(0, i) + "-2" + path.slice(i);
+      }
+
+      function renderTile(tileTitle, skills, contextLabel, context, howLabel, how, resultsLabel, results, imgRight, imgLeft){
         const pills = pillsFromSkills(skills);
 
+        const rightSrc = imgRight || "";
+        const leftSrc  = imgLeft  || "";
+
         return `
-          <div class="project-detail card" style="padding:18px; margin-bottom:16px;">
-            <div style="font-weight:900; font-size:20px; text-align:center; letter-spacing:.2px; margin: 6px 0 14px;">
-              ${title}
+          <div class="card" style="padding:18px; margin-bottom:16px;">
+            <div style="font-weight:900; font-size:20px; text-align:center; letter-spacing:.2px; margin: 6px 0 10px;">
+              ${tileTitle}
             </div>
+
+            <div style="height:8px;"></div>
 
             <div class="project-detail-top" style="display:grid; grid-template-columns: 1fr 320px; gap:18px; align-items:start;">
               <div>
-                <div class="project-skill-pills" style="margin-top:10px;">
+                <div class="project-skill-pills" style="margin-top:0;">
                   ${pills}
                 </div>
 
@@ -161,35 +171,54 @@
               </div>
 
               <div class="project-detail-photo" style="overflow:hidden; border-radius:14px; border:1px solid rgba(2,8,23,.10); background:#fff; box-shadow: 0 14px 36px rgba(2,8,23,.10);">
-                <img src="${imgMain}" alt="${title}" loading="lazy" style="width:100%; height:auto; display:block;">
+                <img src="${rightSrc}" alt="${tileTitle}" loading="lazy" style="width:100%; height:auto; display:block;">
                 <div class="project-detail-photo-note" style="padding:10px 12px; font-size:12.5px; color: rgba(11,18,32,.62); border-top: 1px solid rgba(2,8,23,.08);">
-                  Add image later at: ${imgMain}
+                  Add image later at: ${rightSrc}
                 </div>
               </div>
             </div>
 
-            <div class="project-detail-results" style="margin-top:18px; padding-top:18px; border-top:1px solid rgba(2,8,23,.08);">
-              <div class="project-detail-label">${resultsLabel}</div>
-              <div class="project-detail-body">${results}</div>
+            <div style="margin-top:18px; padding-top:18px; border-top:1px solid rgba(2,8,23,.08);">
+              <div style="display:grid; grid-template-columns: 320px 1fr; gap:18px; align-items:start;">
+                <div class="project-detail-photo" style="overflow:hidden; border-radius:14px; border:1px solid rgba(2,8,23,.10); background:#fff; box-shadow: 0 14px 36px rgba(2,8,23,.10);">
+                  <img src="${leftSrc}" alt="${tileTitle}" loading="lazy" style="width:100%; height:auto; display:block;">
+                  <div class="project-detail-photo-note" style="padding:10px 12px; font-size:12.5px; color: rgba(11,18,32,.62); border-top: 1px solid rgba(2,8,23,.08);">
+                    Add image later at: ${leftSrc}
+                  </div>
+                </div>
+
+                <div>
+                  <div class="project-detail-label">${resultsLabel}</div>
+                  <div class="project-detail-body">${results}</div>
+                </div>
+              </div>
             </div>
           </div>
         `;
       }
 
       if (Array.isArray(p.subsections) && p.subsections.length > 0) {
-        const tiles = p.subsections.map(s => renderTile(
-          s.title,
-          s.skills,
-          s.contextLabel,
-          s.context,
-          s.howLabel,
-          s.how,
-          s.resultsLabel,
-          s.results
-        )).join("");
+        const tiles = p.subsections.map(s => {
+          const imgRight = s.image || `assets/images/project${p.number}.jpg`;
+          const imgLeft  = secondImagePath(imgRight);
+          return renderTile(
+            s.title,
+            s.skills,
+            s.contextLabel,
+            s.context,
+            s.howLabel,
+            s.how,
+            s.resultsLabel,
+            s.results,
+            imgRight,
+            imgLeft
+          );
+        }).join("");
 
         root.innerHTML = tiles;
       } else {
+        const imgRight = `assets/images/project${p.number}.jpg`;
+        const imgLeft  = `assets/images/project${p.number}-2.jpg`;
         root.innerHTML = renderTile(
           p.title,
           p.skills,
@@ -198,14 +227,16 @@
           p.howLabel,
           p.how,
           p.resultsLabel,
-          p.results
+          p.results,
+          imgRight,
+          imgLeft
         );
       }
 
       const mq = window.matchMedia("(max-width: 720px)");
       if (mq.matches) {
-        const tops = root.querySelectorAll(".project-detail-top");
-        tops.forEach(t => t.style.gridTemplateColumns = "1fr");
+        root.querySelectorAll(".project-detail-top").forEach(t => t.style.gridTemplateColumns = "1fr");
+        root.querySelectorAll("[style*='grid-template-columns: 320px 1fr']").forEach(t => t.style.gridTemplateColumns = "1fr");
       }
     })();
   </script>
