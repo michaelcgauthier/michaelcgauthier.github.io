@@ -1,359 +1,270 @@
 window.PROJECTS = [
   {
-    id: "inspection-sketches",
-    title: "Automated CAD and GIS conversion of hand drawn inspection sketches",
-    kicker: "Python automation",
-    cover: "assets/images/all/proejct1.jpeg",
-    hero: "assets/images/all/proejct1.jpeg",
-    preview: "Python OCR workflow converting scanned inspection sketches into vector linework and structured inspection records used for drafting and contractor reference.",
-    tags: ["Python", "OCR", "AutoCAD", "ArcGIS", "Georeferencing"],
-    intro: "Converted scanned utility inspection checklists and sketches into organized vector geometry with extracted metadata so engineers could start from clean digital records instead of paper drawings.",
-    what: [
-      "Converted scanned inspection sketches into CAD and GIS vector linework",
-      "Extracted inspection fields such as address, inspector info, pipe size, pipe material, and notes",
-      "Created clean digital geometry that can be used as a drafting starting point"
-    ],
-    how: [
-      "Used OCR to read text fields from scanned inspection PDFs",
-      "Converted hand drawn sketch geometry into vector based linework",
-      "Attached extracted fields as attributes or comments",
-      "Aligned output using address and nearby mapped features"
-    ],
-    results: [
-      "Converted dozens of sketches into organized CAD and GIS linework",
-      "Improved consistency and readability versus paper sketches",
-      "Reduced initial drafting time by about 50 percent based on a before and after time study"
-    ],
-    sections: [
+    id: "project-1",
+    number: 1,
+    title: "Python OCR Porgram for Converting Inspection Sketches into CAD/GIS Linework",
+    previewLabel: "Preview Blurb",
+    preview: "Wrote a Python OCR and vector-conversion tool that read scanned utility inspection forms, extracted addresses and pipe attributes, converted hand sketches into CAD/GIS linework, georeferenced the output, and reduced initial drafting time by about 50%.",
+    skillsLabel: "Key Skills Used",
+    skills: "Python, pytesseract OCR, scanned PDF processing, image-to-vector conversion, AutoCAD drafting support, GIS vector creation, georeferencing, address extraction, scale correction, rotation correction, attribute mapping, debugging, and time study analysis.",
+    contextLabel: "What / Context",
+    context: "Before the ArcGIS inspection system was created, the Town had hundreds of scanned inspection forms with hand-drawn utility sketches. These sketches showed pipe locations, utility ties, field measurements, and nearby landmarks, but many were messy and difficult to use as drafting references. My boss originally asked me to manually redraw the sketches in AutoCAD so they could be cleaned up and shared with contractors. Since there were hundreds of files, I knew manual drafting would take a long time and would repeat the same steps over and over.",
+    howLabel: "How / Tools",
+    how: "I wrote a Python program that opened each scanned inspection file, used pytesseract OCR to read the address and checklist information, and converted the hand-drawn sketch into CAD/GIS vector linework. The program extracted pipe size, pipe material, address, inspection notes, and other checklist data, then attached those values to the converted geometry as attributes or comments. The address mattered because the code used it to locate the inspection on the map. The program placed the output in the correct CAD/GIS coordinate system, then scaled and rotated the sketch based on existing street and house geometry already drafted in CAD. This turned the sketch from a scanned image into aligned vector geometry that could be used directly in CAD and GIS.",
+    resultsLabel: "Results / Outcomes",
+    results: "The output was a set of cleaned, scaled, and georeferenced CAD/GIS sketches with inspection information attached. I tested the workflow on dozens of hand-drawn sketches and produced organized drawings that could be used as drafting starting points or sent to contractors. Staff no longer had to start with a messy scanned sketch or redraw every line from scratch. I completed a before-and-after time study and found that the tool reduced initial drafting time by about 50%. The project took a repetitive manual drafting assignment and turned it into an automated workflow using OCR, coordinate alignment, and vector geometry."
+  },
+
+  {
+    id: "project-2",
+    number: 2,
+    title: "Digitization of an inspection workflow through ArcGIS, replacing paper forms.",
+    previewLabel: "Preview Blurb",
+    preview: "Built a phone/tablet inspection workflow in ArcGIS Survey123 and Field Maps so inspectors could complete checklists, draw mapped utility vectors, attach photos, collect signatures, work offline, and export finished inspection PDFs automatically.",
+    skillsLabel: "Key Skills Used",
+    skills: "ArcGIS Survey123, ArcGIS Field Maps, ArcGIS Online, ESRI workflows, mobile forms, offline field data collection, GIS vector editing, attribute tables, photo attachments, contractor signatures, PDF exports, and network drive organization.",
+    contextLabel: "What / Context",
+    context: "The Town of Wellesley used paper forms for utility, drain, and water inspections. Each inspection included checklist items, inspector name, date, location, utility information, pipe size, pipe material, field measurements, contractor signature, photos, and a sketch showing dimension ties to fixed landmarks such as manholes, poles, houses, or nearby utilities. The paper process created extra work because inspectors had to complete forms by hand, draw sketches manually, scan the documents, rename the files, save them to the network drive, and later interpret the scanned information. The sketches were also inconsistent because each person drew them differently.",
+    howLabel: "How / Tools",
+    how: "I built a digital inspection workflow using ArcGIS Survey123, ArcGIS Field Maps, ArcGIS Online, and ESRI tools. I created a mobile form with the same checklist items from the paper form, plus fields for inspector name, date, address, utility information, photo uploads, and contractor signatures. In Field Maps, I set up the map workflow so inspectors could zoom into the work area, draw utility vectors directly on the map, and add attributes such as pipe size, pipe material, dimensional ties, and nearby reference points. I also set up offline use so the form could be completed in low-signal areas and uploaded automatically once the phone or tablet reconnected to Wi-Fi. After submission, the inspection data appeared in ESRI and could be exported as a PDF matching the original paper form format.",
+    resultsLabel: "Results / Outcomes",
+    results: "The system replaced the paper process for the inspection types I digitized. Inspectors could complete the checklist, draw mapped utility geometry, attach photos, collect signatures, and generate the final inspection PDF without scanning paper forms. I first built the workflow for utility inspections, then expanded it to drain and water inspections. I also installed and configured the forms on staff phones so the office could use the system in the field. The process made inspection records cleaner, connected field information directly to GIS, reduced manual file handling, and made it easier for future staff to understand where utility features were located."
+  },
+
+  {
+    id: "project-3",
+    number: 3,
+    title: "Detention Pond Redesign from Field Survey & CAD modeling to Construction Planning",
+    previewLabel: "Preview Blurb",
+    preview: "Collected 500+ total station survey points, built a 3D CAD surface model, created three detention pond redesign options, and supported the final plan set, specifications, bid calculations, and construction planning for a failing stormwater basin.",
+    skillsLabel: "Key Skills Used",
+    skills: "Total station surveying, AutoCAD, 3D surface modeling, contour generation, datum conversion, drainage design, pipe networks, plan/profile drawings, construction details, specifications, bid tabulation, field documentation, and redline revisions.",
+    contextLabel: "What / Context",
+    context: "At the Town of Wellesley Engineering Division, I worked on the redesign of a detention pond next to a recycling center. Several drainage networks discharged into the pond, but the pond was not draining correctly. It was collecting trash and debris, holding water longer than intended, and creating maintenance problems. I first reviewed the site in dry conditions to see the existing layout, then returned during rain to observe how water entered, moved through, and sat inside the basin. That field review showed that the redesign needed to improve water infiltration, slow down trash movement, and make the basin easier to maintain.",
+    howLabel: "How / Tools",
+    how: "I helped complete the topographic survey over about three days and operated the total station to capture 500+ points in the field. I collected elevations and coordinates across the top of slope, side slopes, basin bottom, surrounding pavement, edge of pavement, start of roadway, catch basins, poles, trees, utilities, water limits, and other existing site features. I uploaded the survey data into CAD, converted the elevations to the correct Wellesley/Massachusetts datum, built a 3D surface model, and interpolated between points to create major and minor contour lines. I then created the drawing package with a title sheet, contract number, site image, existing conditions sheet, and three redesign options. The first option used a snake-shaped basin to increase the water travel path and give stormwater more time to infiltrate. The second option used three lowered basin areas separated by raised berms so trash would be slowed or trapped while water could still pass through and seep into the ground. The third option kept the existing layout mostly intact as a lower-cost construction option. I also created side profiles, utility pipe network drawings, drain/sewer/water information, catch basin details, outfall details, installation details, and presentation graphics with CAD hatching, grass, shrubs, trees, and water.",
+    resultsLabel: "Results / Outcomes",
+    results: "The final drawing package included the surveyed CAD base, 3D surface, contour plan, existing conditions plan, three proposed design plans, side profiles, utility/pipe network layouts, construction details, specifications, bid calculations, and bid tabulation comparing contractor costs. My supervisor redlined the drawings multiple times, and I revised the package after each review. The Town selected the second design with the three lowered basin areas and raised berms, and that option moved into construction planning. The project changed the pond redesign from a rough field problem into a documented construction option with survey data, grading information, design alternatives, cost comparisons, and clear drawings for review."
+  },
+
+  {
+    id: "project-4",
+    number: 4,
+    title: "Robotic Crawler Pipe Inspection and New Pipe Repair Design",
+    previewLabel: "Preview Blurb",
+    preview: "Reviewed robotic crawler sensor data from a damaged drainage pipe, identified the concavity causing blockage and downstream overflow, mapped the surrounding utilities in AutoCAD, and helped design a new manhole installation that fixed the pipe and improved drainage flow.",
+    skillsLabel: "Key Skills Used",
+    skills: "AutoCAD, robotic crawler inspection review, remote inspection data analysis, existing conditions drafting, utility coordination, drainage design, manhole layout, plan set production, cost-aware design, field verification, and PE-reviewed drawings.",
+    contextLabel: "What / Context",
+    context: "At the Town of Wellesley, I worked on a street drainage failure where a pipe had a major concavity and breakage. Soil was entering through the damaged section and blocking the pipe. There was also a downstream manhole where water was overflowing, so the issue was affecting more than one point in the drainage system. The repair needed to fix the damaged pipe section, reduce flow problems downstream, and avoid unnecessary full pipe replacement if a simpler design could solve the issue.",
+    howLabel: "How / Tools",
+    how: "The pipe was inspected using a remote-controlled robotic crawler rover. The rover traveled through the inside of the pipe and collected data using a camera, lights, night vision, thermal sensor, motion sensors, and other inspection sensors. I reviewed the footage and sensor data to locate the damaged section, confirm the concavity, and understand how the blockage was affecting flow. In AutoCAD, I mapped the pipe, outlets, and surrounding utilities using the town-wide utility layer I had created. I brought in nearby sewer, water, drain, gas, electric, manholes, and other existing conditions so the repair could be designed around the full utility layout. I considered patch work as one option, then developed the new manhole installation option. The manhole was selected because it was cheaper and easier than replacing the entire pipe, gave crews access to the damaged area, and took some flow demand away from the downstream manhole that had been overflowing.",
+    resultsLabel: "Results / Outcomes",
+    results: "The selected repair was the new manhole installation. I helped produce the CAD design information used to support the construction work, and the repair was installed in the field. After construction, I returned with the robotic crawler rover and collected follow-up footage and sensor data. The post-repair inspection showed that the damaged section had been fixed and that water was no longer overflowing at the downstream manhole. The work solved the pipe damage, improved drainage behavior along the street, and confirmed the repair using inspection data rather than assumption."
+  },
+
+  {
+    id: "project-5",
+    number: 5,
+    title: "Town-Wide 3D CAD Utility Map, Orthoimagery, and Contour Base Map System",
+    previewLabel: "Preview Blurb",
+    preview: "Created a reusable town-wide CAD base by converting GIS utility data, 2025 MassDOT orthophotography, and drone-derived elevation contours into georeferenced drafting files used by the engineering office to start plan sets faster.",
+    skillsLabel: "Key Skills Used",
+    skills: "AutoCAD, Civil 3D, ArcGIS, GIS-to-CAD conversion, georeferencing, utility mapping, CAD blocks, CAD points, MassDOT orthoimagery, 2025 aerial imagery, tile creation, contour generation, elevation interpolation, and coordinate systems.",
+    contextLabel: "What / Context",
+    context: "When engineers and drafters at the Town of Wellesley started a new plan set, they often needed to gather existing utilities, aerial imagery, and elevation references before design work could begin. That setup work repeated across many projects. I created a town-wide CAD base system so staff could copy the project area they needed into a drawing and begin with existing conditions already aligned.",
+    howLabel: "How / Tools",
+    how: "I exported town utility data from GIS and brought it into AutoCAD. The CAD file included water lines, drain lines, sewer lines, manholes, catch basins, poles, electric lines, electric manholes, and other utility features across Wellesley. I georeferenced the data to the correct coordinate system and created both block-based and point-based versions so staff could choose the format that worked best for their drafting style. I also created a 2025 orthoimagery resource by taking the MassDOT ortho layer, reducing it to Wellesley, and exporting overlapping 200 ft by 200 ft georeferenced image tiles. The overlap prevented gaps when a project area crossed a tile boundary. For elevation information, I created a town-wide contour layer using drone-derived elevation data collected by a contractor with about one-foot accuracy. I interpolated between the elevation points to create contour information that could be used during early design review.",
+    resultsLabel: "Results / Outcomes",
+    results: "The final files included the town-wide CAD utility base, the 2025 georeferenced orthoimagery tile set, and the town-wide contour layer. Engineers began using these files by copying project areas into their CAD drawings instead of rebuilding the same existing conditions every time. The system made plan set setup faster, improved consistency across drawings, and gave the office a shared CAD reference for utilities, imagery, and elevation data."
+  },
+
+  {
+    id: "project-6",
+    number: 6,
+    title: "Custom LED Sign Bussiness Founder (Design Work, Manufacturing, Machine Optimization)",
+    previewLabel: "Preview Blurb",
+    preview: "Founded and operated CA Light Designs, designing custom acrylic LED signs, engraving and assembling each product, modifying the engraving machine for better precision and speed, building the Wix/Etsy/Instagram/TikTok sales system, and doubling order volume through production improvements.",
+    skillsLabel: "Key Skills Used",
+    skills: "Product design, Silhouette Studio, acrylic engraving, LED product assembly, machine modification, design for manufacturability, production workflow improvement, tooling research, quality control, Wix, Etsy, Instagram, TikTok, customer communication, and order fulfillment.",
+    contextLabel: "What / Context",
+    context: "CA Light Designs was a custom engraved LED sign business that I started in high school and ran myself through senior year. I designed and manufactured personalized acrylic LED signs, mostly for colleges, celebrations, and decorative use. I handled customer communication, design layout, engraving setup, acrylic production, LED assembly, quality checks, packaging, order fulfillment, website updates, and marketing. The project required more than making one product; I had to create a repeatable production workflow that could handle custom designs while keeping quality consistent.",
+    howLabel: "How / Tools",
+    how: "For each order, I worked with the customer to understand the school, logo, name, message, or design style they wanted. I created the layout in CAD-like design software and Silhouette Studio, then adjusted the geometry so the engraving would cut cleanly into acrylic and light evenly in the LED base. I had to control line thickness, spacing, engraving depth, acrylic size, alignment, and how the light would travel through the engraved design. As demand increased, the engraving machine became the production bottleneck. The original metal cutting attachment had a sharp edge, but it was too dull and not strong enough for the material and finish quality I needed. I researched compatible replacement parts, modified the engraving setup, and adjusted the machine speed so it could produce cleaner lines faster. I also built the CA Light Designs website on Wix and created Etsy, Instagram, and TikTok pages to bring in customers, show finished products, and manage sales.",
+    resultsLabel: "Results / Outcomes",
+    results: "The work produced finished custom LED signs, a repeatable engraving and assembly process, an improved engraving machine setup, a Wix website, an Etsy storefront, and social media sales channels. The machine changes improved engraving quality and reduced production time, which let me complete more orders as demand grew. The business received strong customer feedback and five-star reviews, and the improved production and marketing workflow helped double order volume year over year. The project combined product design, acrylic material behavior, machine setup, tooling changes, manufacturing speed, quality control, customer feedback, and order fulfillment."
+  },
+
+  {
+    id: "project-7",
+    number: 7,
+    title: "Interactive Clean Energy Educational Exhibit with Wind Turbine, House Model, LEDs, and Arduino/MATLAB Game",
+    previewLabel: "Preview Blurb",
+    preview: "Designed and built an interactive clean energy exhibit with a laser-cut house, SolidWorks-modeled 3D-printed wind turbine, Arduino/MATLAB trivia game, LED feedback, push buttons, iPad visuals, and a chime system for Boston middle school students.",
+    skillsLabel: "Key Skills Used",
+    skills: "SolidWorks, AutoCAD, MATLAB, Arduino, 3D printing, laser cutting, LED wiring, push-button circuits, woodworking, exhibit design, prototyping, and user-focused design.",
+    contextLabel: "What / Context",
+    context: "In Cornerstone of Engineering at Northeastern, my group and I built an interactive clean energy exhibit for an end-of-semester exposition where Boston middle school students came to campus. The goal was to teach clean energy through a physical model and interactive game. We wanted students to see wind energy turn into a visible output, answer questions, and receive immediate feedback from the system.",
+    howLabel: "How / Tools",
+    how: "I helped design the exhibit layout in AutoCAD and worked on the physical build using wood, circuits, 3D-printed components, and laser-cut parts. We laser cut a house model and placed LEDs throughout it. We modeled the wind turbine in SolidWorks and 3D printed it so students could spin it. When the turbine spun, LEDs on the house lit up to show how wind energy can power a load. We also created a MATLAB/Arduino trivia game connected to an iPad. The iPad displayed a welcome screen, a short clean energy video, and about eight true-or-false questions. Students answered with a green button for true and a red button for false. Correct answers triggered lights and a chime. The exhibit also included wiring space, buttons, labels, and support structure so the system could be used repeatedly during the event.",
+    resultsLabel: "Results / Outcomes",
+    results: "The final exhibit included the laser-cut house, SolidWorks turbine model, 3D-printed turbine, LED lighting system, push-button controls, Arduino/MATLAB game, iPad visuals, and chime feedback. During the exposition, the code ran without glitches and the physical parts stayed intact during repeated student use. Students answered the questions, spun the turbine, saw the lights respond, and connected the turbine motion to clean energy output. The project received strong feedback from students, teachers, peers, and instructors."
+  },
+
+  {
+    id: "project-8",
+    number: 8,
+    title: "Northeastern University Mechancial Engineering Labratory Work & Modeling",
+    note: "(a through d below should all be within the same project button, just make them different tiles on the same page)",
+    subsections: [
       {
-        title: "Overview",
-        paragraphs: [
-          "The engineering office had hundreds of scanned utility inspection forms containing checklist items, inspector information, addresses, measurements, and hand drawn sketches. These sketches document utilities and reference ties to surrounding features so they can be found years later.",
-          "My supervisor originally asked me to manually recreate these drawings in AutoCAD. Since there were hundreds of forms, I built a Python workflow to convert the paper sketches into usable CAD and GIS linework."
-        ]
+        title: "a. Instron Mechanical Testing and MATLAB Stress-Strain Analysis",
+        previewLabel: "Preview Blurb",
+        preview: "Used Instron testing systems, Bluehill software, and MATLAB to run tensile, bending, compression, torsion, and buckling tests, then calculated material properties from load, displacement, torque, and strain data.",
+        skillsLabel: "Key Skills Used",
+        skills: "Instron 5582, Instron MicroTorsion, Bluehill, MATLAB, tensile testing, bending testing, compression testing, torsion testing, buckling testing, stress-strain curves, Young’s modulus, yield strength, ultimate tensile strength, shear modulus, and failure analysis.",
+        contextLabel: "What / Context",
+        context: "In Intro to Materials Science and Mechanics of Materials at Northeastern, I completed several labs studying how materials respond to load. The labs covered tension, bending, compression, torsion, buckling, elastic deformation, plastic deformation, yield, ultimate strength, and fracture. The goal was to take the equations from class and connect them to data collected from testing machines.",
+        howLabel: "How / Tools",
+        how: "I used the Instron 5582 for tensile and bending tests and the Instron MicroTorsion system for torsional testing. I used Bluehill software to configure the tests, control the machines, record data, and export results. I also worked with compression and buckling setups to study how different samples failed under axial load. After collecting the data, I used MATLAB to plot stress-strain curves, identify the elastic region, calculate Young’s modulus from the slope, locate yield behavior, find ultimate tensile strength, and compare failure behavior between materials. For torsion, I used torque and angular deformation data to analyze shear response and calculate shear modulus.",
+        resultsLabel: "Results / Outcomes",
+        results: "The work produced lab reports, stress-strain graphs, material property calculations, and failure analysis. I calculated Young’s modulus, yield strength, ultimate tensile strength, shear modulus, and other values depending on the test. I also compared how different loading modes changed failure behavior. These labs gave me direct experience setting up mechanical tests, using Instron and Bluehill systems, processing test data in MATLAB, and turning raw machine data into engineering conclusions."
       },
       {
-        title: "What I built",
-        paragraphs: [
-          "I wrote a Python program that scans inspection PDFs, uses OCR to extract key fields, identifies the sketch region, and converts sketch geometry into vector based linework.",
-          "The workflow reads fields such as address, inspection data, pipe size, pipe material, and inspector name, then attaches that information to the resulting geometry for long term reference."
-        ]
+        title: "b. Impact, Hardness, Microstructure, Stress Concentration, and XRD Materials Analysis",
+        previewLabel: "Preview Blurb",
+        preview: "Measured fracture energy, hardness, microstructure, stress concentrations, polymer crystal growth, and crystal structure using Charpy impact testing, Rockwell hardness, optical microscopy, polarized microscopy, polariscope testing, XRD, and density measurements.",
+        skillsLabel: "Key Skills Used",
+        skills: "Charpy impact testing, Fracta software, liquid nitrogen testing, furnace heating, Rockwell hardness tester, optical microscopy, polished and etched samples, polarized optical microscope, polariscope, WAXD-RAPID2 XRD, Archimedes density method, fracture energy, phase percentage measurement, and material identification.",
+        contextLabel: "What / Context",
+        context: "In my materials labs, I studied how material behavior changes with temperature, hardness, internal structure, stress concentration, polymer crystal growth, and crystal structure. These tests helped explain why materials fail differently even when they are placed under similar loads. The focus was on connecting the material’s internal structure and test conditions to its mechanical behavior.",
+        howLabel: "How / Tools",
+        how: "I used an Instron Charpy Impact Tester with Fracta software to measure fracture energy under sudden loading. I tested samples after liquid nitrogen cooling and furnace heating to compare toughness at different temperatures. I used a digital Rockwell hardness tester to compare metal hardness values and relate hardness to strength. For microstructure work, I used optical microscopes to examine polished and etched metal samples and estimate phase percentages in alloys. I used a polarized optical microscope to observe polymer crystal growth and a polariscope to see stress concentrations in plastic parts. I also used a WAXD-RAPID2 X-ray diffractometer and Archimedes density measurements to help identify crystal structure.",
+        resultsLabel: "Results / Outcomes",
+        results: "The work produced fracture energy data, hardness values, microscope observations, phase percentage estimates, crystal-growth observations, stress concentration images, XRD results, density measurements, and written analysis. The tests showed how temperature affects impact toughness, how hardness relates to strength, how microstructure changes material behavior, and how stress concentrations appear in transparent plastic parts. The XRD and density work connected measured material data to crystal structure identification."
       },
       {
-        title: "Results",
-        paragraphs: [
-          "The workflow produced cleaner and more consistent digital records than the original hand sketches. It also reduced the time required to start drafting because engineers could begin from vector geometry instead of manually tracing paper drawings."
-        ]
-      }
-    ]
-  },
-
-  {
-    id: "arcgis-inspections",
-    title: "Digital field inspection system with ArcGIS mobile data collection",
-    kicker: "Workflow design",
-    cover: "assets/images/all/proejct2.jpeg",
-    hero: "assets/images/all/proejct2.jpeg",
-    preview: "Survey123 and Field Maps system replacing paper inspection forms with offline field capture, mapped geometry, photos, signatures, and standardized exports.",
-    tags: ["ArcGIS", "Survey123", "Field Maps", "GIS"],
-    intro: "Replaced paper inspection forms with a mobile GIS workflow so inspections are consistent, accessible, and available to engineers immediately after syncing.",
-    what: [
-      "Replaced paper inspection forms with phone and tablet workflows",
-      "Captured checklist fields, photos, signatures, and mapped geometry",
-      "Designed offline use and automatic syncing back to office systems"
-    ],
-    how: [
-      "Built structured forms in Survey123",
-      "Configured Field Maps for map based geometry and attributes",
-      "Enabled offline saving and automatic upload on WiFi",
-      "Set up exports matching the original form format"
-    ],
-    results: [
-      "Reduced manual paperwork and scanning steps",
-      "Improved consistency of inspection records",
-      "Expanded the workflow to additional inspection types"
-    ],
-    sections: [
-      {
-        title: "Overview",
-        paragraphs: [
-          "The previous inspection workflow relied on paper checklists, handwritten notes, manual sketches, and physical signatures. Forms then had to be stored, scanned, organized, and found later.",
-          "I designed a digital inspection workflow using Survey123 and Field Maps so field staff could capture structured data and map geometry and sync it automatically to office systems."
-        ]
+        title: "c. Torsional Vibration and Whitworth Quick Return Motion Testing",
+        previewLabel: "Preview Blurb",
+        preview: "Tested mechanical motion and vibration systems using an ECP torsional vibration system, Whitworth Quick Return mechanism, ultrasonic sensor, laser tachometer, Python, and MATLAB to compare measured motion with analytical models.",
+        skillsLabel: "Key Skills Used",
+        skills: "ECP Model 205a Torsional Vibration System, Modified Whitworth Quick Return Apparatus, Go!Motion ultrasonic sensor, non-contact laser tachometer, Python, MATLAB, damping coefficients, kinematics, velocity, acceleration, RPM testing, and error analysis.",
+        contextLabel: "What / Context",
+        context: "In Dynamics and Vibrations, I completed labs comparing analytical mechanical models with measured data. One lab studied viscous damping in a torsional vibration system with different mass center-distance settings, including 9 cm and 4 cm. Another lab studied the position, velocity, and acceleration of a modified Whitworth Quick Return mechanism at 40, 60, and 80 RPM. Both labs showed how friction, alignment, sensor setup, and energy losses affect the difference between theoretical and measured motion.",
+        howLabel: "How / Tools",
+        how: "For the torsional vibration lab, I used the ECP Model 205a Torsional Vibration System and its software to record amplitude counts as the system oscillated and decayed. I used the measured decay to calculate experimental damping coefficients and compared them to theoretical values. For the Whitworth Quick Return lab, I used the mechanism, a Go!Motion ultrasonic distance sensor, a non-contact laser tachometer, and Python/MATLAB calculation models. I measured slider position, compared it to rigid-body kinematic equations, and analyzed position, velocity, and acceleration at different RPM settings.",
+        resultsLabel: "Results / Outcomes",
+        results: "In the torsional vibration lab, the experimental damping coefficients were consistently higher than the theoretical values. One result was about 0.111 rad/s compared with a theoretical value of 0.05 rad/s. The difference was likely caused by measurement error, slight mass positioning error, and energy loss from the initial angular pulse. In the Whitworth Quick Return lab, the data confirmed asymmetric slider motion: the forward stroke was slower and the return stroke was faster. The measured peak-to-peak motion was smaller than the theoretical prediction, likely because of friction, sensor baseline shifts, and alignment offsets. The final work included plots, calculations, comparison tables, and written error analysis."
       },
       {
-        title: "Results",
-        paragraphs: [
-          "The system improved convenience and consistency for inspections and reduced the number of steps required to get inspection data into a usable format for engineers."
-        ]
+        title: "d. Sensor Measurement, Thermal Data Collection, and Uncertainty Analysis",
+        previewLabel: "Preview Blurb",
+        preview: "Collected and analyzed measurement data using calipers, micrometers, temperature sensors, RTDs, thermocouples, lux sensors, Arduino, MATLAB, and uncertainty analysis to study measurement accuracy and environmental variation.",
+        skillsLabel: "Key Skills Used",
+        skills: "Arduino, MATLAB, RTDs, thermocouples, temperature sensors, lux sensors, iPhone 14 ambient light sensor, Physics Toolbox app, calipers, micrometers, uncertainty analysis, sensor placement, data plotting, and measurement error analysis.",
+        contextLabel: "What / Context",
+        context: "In Measurement and Analysis with Thermal Applications and physics labs, I studied how measurement setup affects data quality. These labs covered precision, random error, systematic error, temperature distribution, lighting uniformity, sensor placement, and uncertainty. The goal was to understand what the measured value meant, what could have affected it, and how much confidence should be placed in the result.",
+        howLabel: "How / Tools",
+        how: "In one uncertainty lab, I used calipers and micrometers to measure a solid cylinder and a metallic thread, then calculated volume and area while comparing random and systematic error. In thermal and measurement labs, I used Arduino-based setups with temperature sensors, RTDs, and thermocouples, then processed readings in MATLAB. In a smartphone sensor lab, I used an iPhone 14 ambient light sensor with the Physics Toolbox app to measure light levels at four coordinates on a study desk. In a classroom temperature uniformity project, I collected temperature data in Richards, Dodge, and Ryder halls under normal conditions and disturbed HVAC conditions, including open doors or windows.",
+        resultsLabel: "Results / Outcomes",
+        results: "The uncertainty lab showed that precise tools like micrometers reduce scale error, but systematic and random error still affect final calculations. The smartphone sensor lab found an average illumination of 6302.5 lux, with readings ranging from 7568.2 lux to 3912.0 lux, showing that the desk was bright but unevenly lit. The classroom temperature project produced mean temperatures and temperature ranges near windows, doors, vents, and center locations to evaluate comfort and HVAC effects. The final work included plots, calculations, tables, and written analysis based on measured data."
       }
     ]
   },
 
   {
-    id: "recycling-pond",
-    title: "Recycling center pond redesign and 3D site model",
-    kicker: "Survey and surface modeling",
-    cover: "assets/images/all/project3.jpeg",
-    hero: "assets/images/all/project3.jpeg",
-    preview: "Operated total station for a full topographic survey, built a 3D surface model, developed three design options with profiles, and supported plan production and bid comparisons.",
-    tags: ["Civil 3D", "Total station", "Contours", "Profiles", "Plan sets"],
-    intro: "Topographic survey and redesign package for a detention pond that was not draining properly, including alternatives, profiles, and plan set production used for construction planning.",
-    what: [
-      "Investigated drainage issues and documented field conditions",
-      "Collected more than 500 survey points and built a 3D surface model",
-      "Designed three redesign options and produced plan sheets and profiles",
-      "Supported bid cost tabulation and comparisons"
-    ],
-    how: [
-      "Surveyed the full site with total station workflows over multiple days",
-      "Built contours and surface in Civil 3D and ensured elevation datum consistency",
-      "Created three design alternatives with plan views and profiles",
-      "Produced presentation graphics for review"
-    ],
-    results: [
-      "Delivered an existing conditions model and three design alternatives",
-      "One option selected and advanced for construction planning",
-      "Supported bidding and documentation workflows"
-    ],
-    sections: [
-      {
-        title: "Overview",
-        paragraphs: [
-          "A detention pond next to the recycling center was not functioning as intended. It collected debris and did not drain properly.",
-          "I supported a redesign through field observation, topographic surveying, CAD surface modeling, design alternatives, profiles, and plan set production."
-        ]
-      }
-    ]
+    id: "project-9",
+    number: 9,
+    title: "Formula-Style Electric Race Car Tire Inertia Analysis",
+    previewLabel: "Preview Blurb",
+    preview: "Supported NU Electric Racing’s tire optimization work by evaluating tire material choices, mass distribution, rotational inertia, and MATLAB plots used to study acceleration and efficiency tradeoffs in a Formula-style electric race car.",
+    skillsLabel: "Key Skills Used",
+    skills: "Rotational inertia analysis, tire material evaluation, MATLAB plotting, data analysis, vehicle dynamics, acceleration efficiency, wheel/tire mass distribution, team-based design, and Formula-style race car development.",
+    contextLabel: "What / Context",
+    context: "NU Electric Racing is Northeastern’s student team that designs and builds a Formula-style electric race car to compete against other schools. I volunteered on the tire optimization section. The focus was on how tire selection affects the full vehicle, especially acceleration and efficiency. Since tires rotate, their mass and radius directly affect rotational inertia. A heavier tire or a tire with more mass farther from the center requires more energy to accelerate, which can slow the car down.",
+    howLabel: "How / Tools",
+    how: "I worked with the group to evaluate tire material choices, mass distribution, rotational inertia, and performance tradeoffs. We looked at how tire mass and geometry affect the energy required to spin the wheel and how that connects to acceleration. I helped with group modules used to analyze data and create MATLAB graphs and plots. The work connected dynamics concepts to the car system, including mass moment of inertia, angular acceleration, tire material, traction needs, and the tradeoff between reducing tire inertia and keeping enough grip and durability for racing.",
+    resultsLabel: "Results / Outcomes",
+    results: "The work produced group calculations, MATLAB plots, and data-based comparisons used in tire selection and optimization discussions. The analysis helped the tire section compare how different tire choices could affect rotational inertia, acceleration, and efficiency. The project gave me experience working on a vehicle subsystem where a single component choice affects the performance of the full car."
   },
 
   {
-    id: "cad-toolkit",
-    title: "CAD base layers and imagery library for faster plan set starts",
-    kicker: "CAD and GIS systems",
-    cover: "assets/images/all/project4.jpeg",
-    hero: "assets/images/all/project4.jpeg",
-    preview: "Created georeferenced CAD utility base layers and orthophoto tiles so engineers can start designs with existing conditions already loaded.",
-    tags: ["AutoCAD", "ArcGIS", "Georeferencing", "Orthophotos"],
-    intro: "Built reusable CAD resources used across the office: town wide utility layers, orthophoto tiles, and elevation contour resources for faster existing conditions setup.",
-    what: [
-      "Built a town wide utility layer in CAD exported from GIS",
-      "Created orthophoto tile library aligned to CAD coordinates",
-      "Created elevation and contour resources for reference"
-    ],
-    how: [
-      "Exported GIS layers and imported into CAD with coordinate alignment",
-      "Created block based and point based variants",
-      "Tiled orthophotos into manageable sizes with overlap",
-      "Processed elevation information into usable references"
-    ],
-    results: [
-      "Reduced drafting setup time by starting with existing conditions already loaded",
-      "Improved consistency across plan sets"
-    ],
-    sections: [
-      {
-        title: "Overview",
-        paragraphs: [
-          "To help engineers start plan sets faster, I built reusable CAD base layers from GIS exports and created an ortho imagery tile library that drops into CAD at the correct coordinates."
-        ]
-      }
-    ]
+    id: "project-10",
+    number: 10,
+    title: "SolidWorks Prosthetic Hand Mechanism Design",
+    previewLabel: "Preview Blurb",
+    preview: "Worked on NU Give a Hand’s prosthetic hand section by modeling hand mechanisms in SolidWorks and improving part geometry, finger motion, assembly fit, and 3D-printable design features.",
+    skillsLabel: "Key Skills Used",
+    skills: "SolidWorks, prosthetic hand design, mechanism modeling, 3D printing, linkage geometry, assembly design, design iteration, human-centered design, and prototype refinement.",
+    contextLabel: "What / Context",
+    context: "NU Give a Hand is a Northeastern club where students design and build prosthetic hands for people in need. I worked on the hand section, which focused on the CAD model and mechanical mechanisms of the prosthetic hand. The design needed to be functional, lightweight, printable, durable, and simple enough to assemble.",
+    howLabel: "How / Tools",
+    how: "I worked directly in SolidWorks on the hand model and mechanism layout. I focused on how the parts fit together, how the fingers moved, and how geometry changes affected grip motion. I reviewed linkage movement, part clearance, print orientation, material use, and assembly constraints. The main design challenge was translating motion into useful finger movement while keeping the parts simple enough to print and assemble.",
+    resultsLabel: "Results / Outcomes",
+    results: "The work produced SolidWorks models and design improvements to the prosthetic hand mechanism. The changes focused on improving the geometry, motion, and manufacturability of the hand components. The project gave me experience with CAD assemblies, mechanism design, 3D-printable components, and design decisions where comfort, function, assembly, and durability all matter."
   },
 
   {
-    id: "drainage-repair",
-    title: "Drainage repair design using inspection footage and existing utilities",
-    kicker: "Design options",
-    cover: "assets/images/all/project5.jpeg",
-    hero: "assets/images/all/project5.jpeg",
-    preview: "Mapped existing utilities, reviewed robotic pipe inspection footage, created repair options, and supported a final design implemented by construction crews.",
-    tags: ["AutoCAD", "Plan sets", "Utility coordination"],
-    intro: "Reviewed inspection footage, built existing conditions in CAD, and produced repair options for a damaged drainage pipe section.",
-    what: [
-      "Documented a damaged pipe section causing sediment buildup and blockage",
-      "Mapped existing utilities and existing conditions in CAD",
-      "Developed repair options including patch and manhole concepts"
-    ],
-    how: [
-      "Inserted existing utility context in CAD",
-      "Reviewed inspection video and mapped outlets and break location",
-      "Produced multiple repair concepts and drawings for review"
-    ],
-    results: [
-      "Final concept selected and implemented in the field",
-      "Improved maintenance access and reduced future risk of blockage"
-    ],
-    sections: [
-      {
-        title: "Overview",
-        paragraphs: [
-          "A damaged drainage pipe created a cavity and allowed soil to enter the system. I supported the repair plan by reviewing inspection footage, mapping existing conditions, and producing repair alternatives."
-        ]
-      }
-    ]
+    id: "project-11",
+    number: 11,
+    title: "Intersection Safety Redesign with Lane and Signal Concepts",
+    previewLabel: "Preview Blurb",
+    preview: "Created CAD graphics for a problematic intersection by using root-cause analysis to study accident patterns, then developed redesign concepts with added lanes, left-turn lanes, and signal changes.",
+    skillsLabel: "Key Skills Used",
+    skills: "AutoCAD, intersection layout, lane geometry, traffic signal concept design, Five Whys, Six Sigma-style root cause analysis, existing conditions review, safety-focused design, and presentation graphics.",
+    contextLabel: "What / Context",
+    context: "At the Town of Wellesley, I worked on redesign graphics for an intersection that had repeated traffic problems and accidents. The goal was to understand what was causing the unsafe traffic movement and create design options that could improve driver flow, reduce conflict points, and make the intersection clearer.",
+    howLabel: "How / Tools",
+    how: "I used root-cause methods such as Five Whys and Six Sigma-style problem breakdown to think through the causes of the accidents. I considered turning conflicts, lack of left-turn space, unclear lane use, signal placement, driver decision points, and the existing intersection geometry. I then used AutoCAD to create several design graphics showing added lanes, dedicated left-turn lanes, and traffic signal changes. I focused on making each option clear enough to compare how the added geometry or signal change would affect traffic movement.",
+    resultsLabel: "Results / Outcomes",
+    results: "The work produced CAD-based redesign graphics showing multiple intersection improvement concepts. My supervisor selected one of my design options, and it moved into the construction phase. The selected concept addressed the accident-prone layout by changing how vehicles entered, turned, and moved through the intersection. The work turned an observed safety problem into clear design options that could be reviewed, compared, and implemented."
   },
 
   {
-    id: "materials-testing",
-    title: "Mechanical and materials testing laboratory work",
-    kicker: "Testing and validation",
-    cover: "assets/images/all/proejct6.jpeg",
-    hero: "assets/images/all/proejct6.jpeg",
-    preview: "Instron tensile, bending, torsion, and impact testing with Bluehill plus MATLAB analysis and materials characterization methods.",
-    tags: ["Instron", "Bluehill", "MATLAB", "Impact testing"],
-    intro: "Hands on testing work across mechanics of materials and materials science including test setup, data collection, and MATLAB analysis.",
-    what: [
-      "Ran tensile, bending, torsion, compression, buckling, impact, and hardness tests",
-      "Used Bluehill for test setup, control, and data export",
-      "Calculated material properties and interpreted stress strain behavior"
-    ],
-    how: [
-      "Configured and executed tests on Instron systems",
-      "Processed results in MATLAB to compute properties and generate plots",
-      "Compared impact energy across temperature conditions"
-    ],
-    results: [
-      "Built comfort with test setup and interpreting mechanical behavior",
-      "Produced lab reports, plots, and calculated properties"
-    ],
-    sections: [
-      {
-        title: "Overview",
-        paragraphs: [
-          "I have completed multiple lab sequences using Instron systems and Bluehill software. I collected data in real time and used MATLAB to generate plots and extract properties such as modulus, yield strength, and ultimate strength."
-        ]
-      }
-    ]
+    id: "project-12",
+    number: 12,
+    title: "Python Program with OCR for File Organization and Search Index",
+    previewLabel: "Preview Blurb",
+    preview: "Wrote a Python OCR script that processed thousands of scanned project files, extracted addresses and project names, renamed the files, organized them into a searchable folder hub, and reduced coworker lookup time by 75%.",
+    skillsLabel: "Key Skills Used",
+    skills: "Python, pytesseract OCR, scanned PDF processing, file renaming automation, folder structure design, project indexing, metadata extraction, debugging, and time study analysis.",
+    contextLabel: "What / Context",
+    context: "The Town of Wellesley had thousands of scanned archive files that were difficult to search. Many documents were poorly named, stored in scattered folders, or missing clear labels. Coworkers often had to open files one by one just to identify the project, address, or location. This slowed down research and made it harder to find older project information needed for current engineering work.",
+    howLabel: "How / Tools",
+    how: "My boss gave me criteria for how the files should be sorted, and I wrote a Python script to automate the process. The program used pytesseract OCR to read scanned PDFs and extract information such as project address, project location, project name, and other identifying text. Based on that information, the script renamed each file with a specific file name, moved it into the correct folder, and created a structured folder hub with an index showing where files could be found. I wrote the first version in about a day and ran it on thousands of files.",
+    resultsLabel: "Results / Outcomes",
+    results: "The program organized thousands of files in minutes. It produced renamed documents, structured folders, and a searchable index that staff could use to find archive records. I completed a before-and-after time study and found that file lookup time decreased by 75%. Coworkers were able to find old project files much faster, which helped with record review, design research, and project history lookup."
   },
 
   {
-    id: "clean-energy",
-    title: "Clean energy exhibit with wind turbine and interactive game",
-    kicker: "Design build test",
-    cover: "assets/images/all/proejct7.jpeg",
-    hero: "assets/images/all/proejct7.jpeg",
-    preview: "Laser cut house, SolidWorks wind turbine, 3D printed parts, LEDs, MATLAB and Arduino game logic designed for repeated student use.",
-    tags: ["SolidWorks", "Arduino", "MATLAB", "3D printing"],
-    intro: "Designed an interactive exhibit teaching middle school students clean energy concepts using a physical model and programmed game logic.",
-    what: [
-      "Built an interactive exhibit teaching clean energy through hands on engagement",
-      "Designed a wind turbine in CAD and 3D printed parts",
-      "Programmed MATLAB and Arduino game logic tied to buttons and LEDs"
-    ],
-    how: [
-      "Laser cut a house model and integrated LEDs",
-      "Designed and printed a turbine that physically rotates",
-      "Programmed a trivia style game with feedback"
-    ],
-    results: [
-      "Reliable operation under repeated student use",
-      "Strong feedback on design and execution"
-    ],
-    sections: [
-      {
-        title: "Overview",
-        paragraphs: [
-          "For a Northeastern exposition, I helped build a clean energy exhibit for visiting middle school students. The build included a wind turbine model, LED lighting, and a button based game driven by MATLAB and Arduino."
-        ]
-      }
-    ]
+    id: "project-13",
+    number: 13,
+    title: "Construction Time-Lapse Documentation for Field Projects",
+    previewLabel: "Preview Blurb",
+    preview: "Created multi-month construction time-lapse videos for Town of Wellesley projects, including a gas pump station redesign and tennis court redesign, to document field progress from start to finish.",
+    skillsLabel: "Key Skills Used",
+    skills: "Construction documentation, field progress tracking, video editing, iMovie, Clipchamp, project sequencing, visual communication, and design-to-construction documentation.",
+    contextLabel: "What / Context",
+    context: "At Wellesley, I created time-lapse videos for construction projects around town, including projects I helped design. Two examples were a gas pump station redesign and a tennis court redesign, each documented over about four months. The goal was to record how each project changed over time and show the sequence from early construction through final conditions.",
+    howLabel: "How / Tools",
+    how: "I recorded and organized footage from the sites over multiple months, then edited the clips using iMovie and Clipchamp. I selected footage that showed major project stages, including site preparation, equipment movement, construction progress, installation work, and final conditions. I arranged the clips in order so the final videos showed the project timeline clearly.",
+    resultsLabel: "Results / Outcomes",
+    results: "The final videos condensed months of construction into clear visual summaries. They showed the project sequence, made field progress easier to communicate, and created a record of how the work was built. The videos also helped connect the design and plan set stage to the field construction stage."
   },
 
   {
-    id: "ca-light",
-    title: "CA Light Designs: custom LED product design and production",
-    kicker: "Product development",
-    cover: "assets/images/all/project8.jpeg",
-    hero: "assets/images/all/project8.jpeg",
-    preview: "Founded a custom engraved LED sign business, improved engraving hardware and workflow, built the website, and handled customer orders end to end.",
-    tags: ["Product design", "Manufacturing", "Laser engraving", "Customer support"],
-    intro: "Founded and ran a custom LED sign business including design, production, equipment improvements, online presence, and customer communication.",
-    what: [
-      "Designed and manufactured custom engraved LED signs",
-      "Modified engraving setup to improve output and throughput",
-      "Built a Wix website and ran online storefronts",
-      "Handled customer communication and fulfillment"
-    ],
-    how: [
-      "Created engraving designs and ran production workflow",
-      "Improved machine performance through part and setup changes",
-      "Marketed through web and social platforms"
-    ],
-    results: [
-      "Over 200 sales",
-      "Strong customer satisfaction and repeat direct orders"
-    ],
-    sections: [
-      {
-        title: "Overview",
-        paragraphs: [
-          "CA Light Designs was a custom engraved LED sign business I started and ran. I owned product design, production, machine improvements, website setup, and customer communication."
-        ]
-      }
-    ]
-  },
-
-  {
-    id: "clubs",
-    title: "NU Electric Racing and NU Give a Hand",
-    kicker: "Student engineering teams",
-    cover: "assets/images/all/project9.jpeg",
-    hero: "assets/images/all/project9.jpeg",
-    preview: "Tire inertia reduction work for an electric race car plus prosthetic hand CAD iteration and mechanism improvement work.",
-    tags: ["Vehicle performance", "SolidWorks", "Mechanisms", "Team projects"],
-    intro: "Applied CAD and analysis outside class through student teams focused on vehicle performance and assistive device design.",
-    what: [
-      "Worked on tire optimization focused on reducing rotational inertia",
-      "Supported tire material selection and calculation work",
-      "Worked on prosthetic hand CAD iteration and mechanism improvements"
-    ],
-    how: [
-      "Used analysis and calculation modules to evaluate inertia and performance tradeoffs",
-      "Modeled prosthetic hand components in CAD and iterated on mechanical function"
-    ],
-    results: [
-      "Built applied design experience outside coursework",
-      "Strengthened design iteration and team collaboration skills"
-    ],
-    sections: [
-      {
-        title: "Overview",
-        paragraphs: [
-          "NU Electric Racing is a student team that designs a car and competes with other schools. My focus was tire performance, specifically reducing rotational inertia and evaluating tire material tradeoffs.",
-          "NU Give a Hand supports prosthetic hand design for people in need. My involvement focused on CAD iteration and improving the mechanics of the hand."
-        ]
-      }
-    ]
-  },
-
-  {
-    id: "timelapse",
-    title: "Construction timelapse documentation and graphics",
-    kicker: "Technical communication",
-    cover: "assets/images/all/project10.jpeg",
-    hero: "assets/images/all/project10.jpeg",
-    preview: "Multi month construction timelapse videos plus supporting graphics for layout changes used for clear communication and documentation.",
-    tags: ["Documentation", "Video editing", "Communication"],
-    intro: "Created visual documentation for construction projects and produced supporting graphics for concept changes.",
-    what: [
-      "Created timelapse videos documenting construction progress over months",
-      "Produced clear visual summaries for internal sharing"
-    ],
-    how: [
-      "Recorded consistent viewpoints over long durations",
-      "Edited into clear timelapse sequences"
-    ],
-    results: [
-      "Clear visual records for communication and documentation"
-    ],
-    sections: [
-      {
-        title: "Overview",
-        paragraphs: [
-          "I created timelapse videos for multi month construction projects including a gas station pump redesign and a tennis court redesign. This work supported documentation and communication."
-        ]
-      }
-    ]
+    id: "project-14",
+    number: 14,
+    title: "Coding With a Cause Website Design Outreach Program",
+    previewLabel: "Preview Blurb",
+    preview: "Led a high school computer science outreach program that taught middle school students coding and website design, expanded from one school to three, and ended with students presenting their own websites.",
+    skillsLabel: "Key Skills Used",
+    skills: "Lesson planning, presentation design, outreach coordination, Scratch, Wix, basic web design, coding instruction, event planning, team leadership, and technical communication.",
+    contextLabel: "What / Context",
+    context: "From September 2022 to June 2023, I served as President of Coding With a Cause, the computer science club at my high school. I was in charge of planning outreach events where club members taught middle school students basic coding and website design. The goal was to make coding understandable for younger students and give them a project they could build and show.",
+    howLabel: "How / Tools",
+    how: "My co-president and I planned monthly outreach events, created presentations, wrote lesson plans, and organized activities. We used beginner-friendly tools such as Scratch and Wix so students could learn coding logic, design structure, and website layout without needing advanced programming knowledge. I focused the outreach around website building because it let students create something personal and visual by the end of the program.",
+    resultsLabel: "Results / Outcomes",
+    results: "The program started with one middle school and expanded to three more because the first sessions went well. Attendance grew over time, and by the end of the year, students had built their own websites showing their designs, creativity, and coding knowledge. The work produced lesson plans, presentations, outreach sessions, and student-created websites."
   }
 ];
