@@ -7,8 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=99" />
+  <link rel="stylesheet" href="styles.css?v=999" />
 </head>
+
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
@@ -39,7 +40,7 @@
         <a class="btn" href="projects.html">Back to projects</a>
       </div>
 
-      <div id="projectWrap"></div>
+      <div id="projectWrap" style="margin-top:14px;"></div>
 
       <footer class="footer">
         <div class="wrap footer-3">
@@ -55,32 +56,61 @@
     </section>
   </main>
 
-  <script src="projects-data.js?v=99"></script>
-  <script src="script.js?v=99"></script>
+  <script src="projects-data.js?v=999"></script>
+  <script src="script.js?v=999"></script>
+
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const slug = params.get("slug");
+    (function(){
+      const root = document.getElementById("projectWrap");
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("slug");
 
-    const items = (window.PROJECTS || []);
-    const p = items.find(x => x.slug === slug);
+      if (!window.PROJECTS) {
+        root.innerHTML = `
+          <div class="card" style="padding:18px;">
+            <div class="h2">Projects data not loading</div>
+            <p class="p-muted" style="margin-top:10px;">
+              project.html loaded, but projects-data.js did not run.
+              This is almost always a path or syntax error in projects-data.js.
+            </p>
+            <p class="p-muted" style="margin-top:10px;">
+              Fix: confirm projects-data.js is in the repo root and refresh.
+            </p>
+          </div>
+        `;
+        return;
+      }
 
-    const root = document.getElementById("projectWrap");
+      if (!slug) {
+        root.innerHTML = `
+          <div class="card" style="padding:18px;">
+            <div class="h2">No project selected</div>
+            <p class="p-muted" style="margin-top:10px;">
+              This page needs a URL like: project.html?slug=project-1
+            </p>
+          </div>
+        `;
+        return;
+      }
 
-    if (!p) {
-      root.innerHTML = `
-        <div class="card" style="padding:18px;">
-          <div class="h2">Project not found</div>
-          <p class="p-muted">Go back to Projects and try again.</p>
-        </div>
-      `;
-    } else {
+      const projects = window.PROJECTS.slice().sort((a,b)=>a.number-b.number);
+      const p = projects.find(x => x.slug === slug);
+
+      if (!p) {
+        root.innerHTML = `
+          <div class="card" style="padding:18px;">
+            <div class="h2">Project not found</div>
+            <p class="p-muted" style="margin-top:10px;">
+              Could not find a project with slug: <b>${slug}</b>
+            </p>
+          </div>
+        `;
+        return;
+      }
+
       document.title = `${p.number}. ${p.title} | Michael Gauthier`;
 
-      const gallery = (p.images || []).map(src => `
-        <div class="card" style="overflow:hidden;">
-          <img src="${src}" alt="${p.title}" loading="lazy" style="width:100%; height:auto;">
-        </div>
-      `).join("");
+      const imgMain = `assets/images/project${p.number}.jpg`;
 
       root.innerHTML = `
         <div class="card" style="padding:18px;">
@@ -88,33 +118,36 @@
 
           <div style="margin-top:14px;">
             <div style="font-weight:900;">${p.skillsLabel}</div>
-            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.6;">${p.skills}</div>
+            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.65;">${p.skills}</div>
           </div>
 
           <div style="margin-top:18px;">
             <div style="font-weight:900;">${p.contextLabel}</div>
-            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.7;">${p.context}</div>
+            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.75;">${p.context}</div>
           </div>
 
           <div style="margin-top:18px;">
             <div style="font-weight:900;">${p.howLabel}</div>
-            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.7;">${p.how}</div>
+            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.75;">${p.how}</div>
           </div>
 
           <div style="margin-top:18px;">
             <div style="font-weight:900;">${p.resultsLabel}</div>
-            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.7;">${p.results}</div>
+            <div style="margin-top:6px; color: rgba(11,18,32,.72); line-height:1.75;">${p.results}</div>
           </div>
         </div>
 
         <div style="margin-top:18px;">
           <div class="h2">Photos</div>
-          <div class="projects-grid" style="grid-template-columns: repeat(2, 1fr); margin-top:12px;">
-            ${gallery || `<div class="p-muted">Add images later to assets/images/project${p.number}.jpg</div>`}
+          <div class="card" style="margin-top:12px; overflow:hidden;">
+            <img src="${imgMain}" alt="${p.title}" loading="lazy" style="width:100%; height:auto;">
           </div>
+          <p class="p-muted" style="margin-top:10px;">
+            Add your image later at: <b>${imgMain}</b>
+          </p>
         </div>
       `;
-    }
+    })();
   </script>
 </body>
 </html>
