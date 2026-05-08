@@ -56,29 +56,38 @@ if (grid && window.PROJECTS) {
   if (prefersReduced) return;
 
   const heroes = Array.from(document.querySelectorAll('[data-parallax="true"]'));
+  const basePos = new WeakMap();
+  let started = false;
 
-  function getBasePercent(hero) {
-    const attr = hero.getAttribute('data-parallax-base');
-    if (attr) return parseFloat(attr);
+  function captureBase(hero) {
+    if (basePos.has(hero)) return;
 
     const computed = getComputedStyle(hero).backgroundPosition.split(' ');
-    const y = computed[1] || '35%';
-    const m = y.match(/-?\d+(\.\d+)?/);
-    return m ? parseFloat(m[0]) : 35;
+    const baseX = computed[0] || 'center';
+    const baseY = computed[1] || '35%';
+
+    basePos.set(hero, { baseX, baseY });
   }
 
   function onScroll() {
     const y = window.scrollY || window.pageYOffset;
 
+    if (!started) {
+      if (y === 0) return;
+      started = true;
+      heroes.forEach(captureBase);
+    }
+
     heroes.forEach(hero => {
       const speed = parseFloat(hero.getAttribute('data-parallax-speed') || '0.08');
-      const base = getBasePercent(hero);
-
       const rect = hero.getBoundingClientRect();
       const heroTop = rect.top + y;
       const offset = (y - heroTop) * speed;
 
-      hero.style.backgroundPosition = `center calc(${base}% + ${offset}px)`;
+      const base = basePos.get(hero);
+      if (!base) return;
+
+      hero.style.backgroundPosition = `${base.baseX} calc(${base.baseY} + ${offset}px)`;
 
       const center = hero.querySelector('.hero-center');
       if (center) {
@@ -89,10 +98,13 @@ if (grid && window.PROJECTS) {
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  onScroll();
-})();
+  window.addEventListener('resize', () => {
+    started = false;
+    basePos.clear?.();
+  });
 
+  // IMPORTANT: no onScroll() call here (prevents initial snap)
+})();
 
 const root = document.getElementById("projectRoot");
 if (root && window.PROJECTS) {
