@@ -212,12 +212,13 @@ main.noPad{ padding-top: 0 !important; }
 /* HERO */
 .hero{
   position:relative;
+  margin-top: calc(var(--navH) * -1);
+  padding-top: var(--navH);
   background-size: cover;
   background-position: center;
   background-repeat:no-repeat;
   color:#fff;
   overflow:hidden;
-  padding-top: var(--navH);
   background-attachment: scroll;
   transform: translateZ(0);
 }
@@ -251,9 +252,11 @@ main.noPad{ padding-top: 0 !important; }
 }
 
 .hero-center{
-  text-align:center;
+  text-align: center;
   max-width: 920px;
   margin: 0 auto;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .hero-title{
