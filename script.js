@@ -98,6 +98,42 @@ if (root && window.PROJECTS) {
   if (!isMobile) parallaxUpdate();
 }
 
+(function(){
+  function buildTimelineYears(){
+    const alt = document.querySelector(".timeline-alt");
+    if(!alt) return;
+
+    const rail = alt.querySelector(".timeline-years");
+    if(!rail) return;
+
+    rail.innerHTML = "";
+
+    const rows = Array.from(alt.querySelectorAll(".timeline-row[data-year]"));
+    if(!rows.length) return;
+
+    const seen = new Set();
+
+    rows.forEach(row => {
+      const y = row.getAttribute("data-year");
+      if(!y || seen.has(y)) return;
+      seen.add(y);
+
+      const r = row.getBoundingClientRect();
+      const a = alt.getBoundingClientRect();
+      const top = (r.top - a.top) + (r.height * 0.5);
+
+      const el = document.createElement("div");
+      el.className = "timeline-year-label";
+      el.style.top = `${top}px`;
+      el.textContent = y === "Present" ? "Present" : y;
+      rail.appendChild(el);
+    });
+  }
+
+  window.addEventListener("load", buildTimelineYears);
+  window.addEventListener("resize", buildTimelineYears);
+})();
+
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
   contactForm.addEventListener("submit", (e) => {
