@@ -475,8 +475,8 @@ main.noPad{ padding-top: 0 !important; }
 }
 
 .timeline-logo{
-  width: 68px;
-  height: 68px;
+  width: 70px;
+  height: 70px;
   border-radius: 16px;
   overflow:hidden;
   flex-shrink:0;
@@ -494,7 +494,7 @@ main.noPad{ padding-top: 0 !important; }
 .timeline-text{ min-width: 0; }
 
 .timeline-title{
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   line-height: 1.2;
   color: rgba(15,23,42,.95);
@@ -996,14 +996,14 @@ main.noPad{ padding-top: 0 !important; }
   }
 
   .timeline-logo{
-    width: 58px;
-    height: 58px;
+    width: 68px;
+    height: 68px;
     border-radius: 14px;
   }
 
-  .timeline-title{ font-size: 16px; }
-  .timeline-company{ font-size: 13.5px; }
-  .timeline-subdate{ font-size: 12px; }
+  .timeline-title{ font-size: 20px; }
+  .timeline-company{ font-size: 15.5px; }
+  .timeline-subdate{ font-size: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce){
