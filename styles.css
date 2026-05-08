@@ -237,6 +237,12 @@ main.noPad{ padding-top: 0 !important; }
   align-items:center;
 }
 
+.hero.full{
+  min-height: calc(100vh + var(--navH));
+  background-size: cover;
+  background-position: center;
+}
+
 .hero-overlay{
   position:absolute;
   inset:0;
