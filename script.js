@@ -50,6 +50,37 @@ if (grid && window.PROJECTS) {
   }).join("");
 }
 
+(function () {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  const heroes = Array.from(document.querySelectorAll('[data-parallax="true"]'));
+
+  function onScroll() {
+    const y = window.scrollY || window.pageYOffset;
+
+    heroes.forEach(hero => {
+      const speed = parseFloat(hero.getAttribute('data-parallax-speed') || '0.12');
+
+      const rect = hero.getBoundingClientRect();
+      const heroTop = rect.top + y;
+      const offset = (y - heroTop) * speed;
+
+      hero.style.backgroundPosition = `center calc(35% + ${offset}px)`;
+
+      const center = hero.querySelector('.hero-center');
+      if (center) {
+        const textOffset = (y - heroTop) * (speed * 1.9);
+        center.style.transform = `translate3d(0, ${textOffset}px, 0)`;
+      }
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+
 const root = document.getElementById("projectRoot");
 if (root && window.PROJECTS) {
   const slug = getParam("slug");
