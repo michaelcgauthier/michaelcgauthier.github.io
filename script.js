@@ -50,27 +50,39 @@ if (grid && window.PROJECTS) {
   }).join("");
 }
 
+
 (function () {
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReduced) return;
 
   const heroes = Array.from(document.querySelectorAll('[data-parallax="true"]'));
 
+  function getBasePercent(hero) {
+    const attr = hero.getAttribute('data-parallax-base');
+    if (attr) return parseFloat(attr);
+
+    const computed = getComputedStyle(hero).backgroundPosition.split(' ');
+    const y = computed[1] || '35%';
+    const m = y.match(/-?\d+(\.\d+)?/);
+    return m ? parseFloat(m[0]) : 35;
+  }
+
   function onScroll() {
     const y = window.scrollY || window.pageYOffset;
 
     heroes.forEach(hero => {
-      const speed = parseFloat(hero.getAttribute('data-parallax-speed') || '0.12');
+      const speed = parseFloat(hero.getAttribute('data-parallax-speed') || '0.08');
+      const base = getBasePercent(hero);
 
       const rect = hero.getBoundingClientRect();
       const heroTop = rect.top + y;
       const offset = (y - heroTop) * speed;
 
-      hero.style.backgroundPosition = `center calc(35% + ${offset}px)`;
+      hero.style.backgroundPosition = `center calc(${base}% + ${offset}px)`;
 
       const center = hero.querySelector('.hero-center');
       if (center) {
-        const textOffset = (y - heroTop) * (speed * 1.9);
+        const textOffset = (y - heroTop) * (speed * 2.4);
         center.style.transform = `translate3d(0, ${textOffset}px, 0)`;
       }
     });
@@ -80,6 +92,7 @@ if (grid && window.PROJECTS) {
   window.addEventListener('resize', onScroll);
   onScroll();
 })();
+
 
 const root = document.getElementById("projectRoot");
 if (root && window.PROJECTS) {
