@@ -92,7 +92,25 @@ if (grid && window.PROJECTS) {
       const center = hero.querySelector('.hero-center');
       if (center) {
         const textOffset = (y - heroTop) * (speed * 2.4);
-        center.style.transform = `translate3d(0, ${textOffset}px, 0)`;
+        const key = "__baseTy";
+          if (center[key] === undefined) {
+            const cs = getComputedStyle(center);
+            const t = cs.transform;
+            let baseTy = 0;
+
+          if (t && t !== "none") {
+            const m = t.match(/matrix.*\((.+)\)/);
+            if (m) {
+              const parts = m[1].split(",").map(x => parseFloat(x.trim()));
+              if (parts.length === 6) baseTy = parts[5] || 0;        // matrix(a,b,c,d,tx,ty)
+              if (parts.length === 16) baseTy = parts[13] || 0;      // matrix3d(..., ty, ...)
+            }
+          }
+
+          center[key] = baseTy;
+        }
+
+center.style.transform = `translate3d(0, ${center.__baseTy + textOffset}px, 0)`;
       }
     });
   }
