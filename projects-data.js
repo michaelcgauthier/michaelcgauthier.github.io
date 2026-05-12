@@ -3,7 +3,7 @@ window.PROJECTS = [
     slug: "project-1",
     number: 1,
     title: "Python OCR Tool for Converting Inspection Sketches into CAD/GIS Linework",
-    thumb: "assets/images/project1.jpg",
+    thumb: "assets/images/project3.jpg",
     images: ["assets/images/project3.jpg"],
     previewLabel: "Preview Blurb",
     preview: "Wrote a Python OCR and vector-conversion tool that read scanned utility inspection forms, extracted addresses and pipe attributes, converted hand sketches into CAD/GIS linework, georeferenced the output, and reduced initial drafting time by about 50%.",
@@ -304,4 +304,5 @@ window.PROJECTS = [
     how: "My co-president and I planned monthly outreach events, created presentations, wrote lesson plans, and organized activities. We used beginner-friendly tools such as Scratch and Wix so students could learn coding logic, design structure, and website layout without needing advanced programming knowledge. I focused the outreach around website building because it let students create something personal and visual by the end of the program.",
     resultsLabel: "Results / Outcomes",
     results: "The program started with one middle school and expanded to three more because the first sessions went well. Attendance grew over time, and by the end of the year, students had built their own websites showing their designs, creativity, and coding knowledge. The work produced lesson plans, presentations, outreach sessions, and student-created websites."
-  },
+  }
+];
