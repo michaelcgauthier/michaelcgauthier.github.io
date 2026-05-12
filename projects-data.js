@@ -2,7 +2,7 @@ window.PROJECTS = [
   {
     slug: "project-1",
     number: 1,
-    title: "Python OCR Porgram for Converting Inspection Sketches into CAD/GIS Linework",
+    title: "Python OCR Program for Converting Inspection Sketches into CAD/GIS Linework",
     thumb: "assets/images/project1.jpg",
     images: ["assets/images/project1.jpg"],
     previewLabel: "Preview Blurb",
@@ -56,7 +56,7 @@ window.PROJECTS = [
   {
     slug: "project-4",
     number: 4,
-    title: "Robotic Crawler Pipe Inspection and New Pipe Repair Design",
+    title: "Robotic Crawler Pipe Inspection and New Manhole Repair Design",
     thumb: "assets/images/project4.jpg",
     images: ["assets/images/project4.jpg"],
     previewLabel: "Preview Blurb",
@@ -66,15 +66,15 @@ window.PROJECTS = [
     contextLabel: "What / Context",
     context: "At the Town of Wellesley, I worked on a street drainage failure where a pipe had a major concavity and breakage. Soil was entering through the damaged section and blocking the pipe. There was also a downstream manhole where water was overflowing, so the issue was affecting more than one point in the drainage system. The repair needed to fix the damaged pipe section, reduce flow problems downstream, and avoid unnecessary full pipe replacement if a simpler design could solve the issue.",
     howLabel: "How / Tools",
-    how: "The pipe was inspected using a remote-controlled robotic crawler rover. The rover traveled through the inside of the pipe and collected data using a camera, lights, night vision, thermal sensor, motion sensors, and other inspection sensors. I reviewed the footage and sensor data to locate the damaged section, confirm the concavity, and understand how the blockage was affecting flow. In AutoCAD, I mapped the pipe, outlets, and surrounding utilities using the town-wide utility layer I had created. I brought in nearby sewer, water, drain, gas, electric, manholes, and other existing conditions so the repair could be designed around the full utility layout. I considered patch work as one option, then developed the new manhole installation option. The manhole was selected because it was cheaper and easier than replacing the entire pipe, gave crews access to the damaged area, and took some flow demand away from the downstream manhole that had been overflowing.",
+    how: "The pipe was inspected using a remote-controlled robotic crawler rover. The rover traveled through the inside of the pipe and collected data using a camera, lights, night vision, thermal sensor, motion sensors, and other inspection sensors. I reviewed the footage and sensor data to locate the damaged section, confirm the concavity, and understand how the blockage was affecting flow. In AutoCAD, I mapped the pipe, outlets, and surrounding utilities using town utility records and georeferenced CAD base information. I brought in nearby sewer, water, drain, gas, electric, manholes, and other existing conditions so the repair could be designed around the full utility layout. I considered patch work as one option, then developed the new manhole installation option. The manhole was selected because it was cheaper and easier than replacing the entire pipe, gave crews access to the damaged area, and took some flow demand away from the downstream manhole that had been overflowing.",
     resultsLabel: "Results / Outcomes",
-    results: "The selected repair was the new manhole installation. I helped produce the CAD design information used to support the construction work, and the repair was installed in the field. After construction, I returned with the robotic crawler rover and collected follow-up footage and sensor data. The post-repair inspection showed that the damaged section had been fixed and that water was no longer overflowing at the downstream manhole. The work solved the pipe damage, improved drainage behavior along the street, and confirmed the repair using inspection data rather than assumption."
+    results: "The selected repair was the new manhole installation. I helped produce the CAD design information used to support the construction work, and the repair was installed in the field. After construction, I returned with the robotic crawler rover and collected follow-up footage and sensor data. The post-repair inspection showed that the damaged section had been fixed and that water was no longer overflowing at the downstream manhole. The work solved the pipe damage, improved drainage behavior along the street, and confirmed the repair using inspection data rather than assumption. The utility mapping work for this project also connected to a larger CAD base system I later built for the office, so engineers could start future designs with existing utilities already aligned."
   },
 
   {
     slug: "project-5",
     number: 5,
-    title: "Town-Wide 3D CAD Utility Map, Orthoimagery, and Contour Base Map System",
+    title: "Town-Wide CAD Utility, Orthoimagery, and Contour Base Map System",
     thumb: "assets/images/project5.jpg",
     images: ["assets/images/project5.jpg"],
     previewLabel: "Preview Blurb",
@@ -82,17 +82,17 @@ window.PROJECTS = [
     skillsLabel: "Key Skills Used",
     skills: "AutoCAD, Civil 3D, ArcGIS, GIS-to-CAD conversion, georeferencing, utility mapping, CAD blocks, CAD points, MassDOT orthoimagery, 2025 aerial imagery, tile creation, contour generation, elevation interpolation, and coordinate systems.",
     contextLabel: "What / Context",
-    context: "When engineers and drafters at the Town of Wellesley started a new plan set, they often needed to gather existing utilities, aerial imagery, and elevation references before design work could begin. That setup work repeated across many projects. I created a town-wide CAD base system so staff could copy the project area they needed into a drawing and begin with existing conditions already aligned.",
+    context: "When engineers and drafters at the Town of Wellesley started a new plan set, they often needed three separate types of existing information before design work could begin: utility locations, aerial imagery, and elevation references. That setup work had to be repeated for many projects. I created a town-wide CAD base system so staff could copy the project area they needed into a drawing and begin with the main existing conditions already aligned.",
     howLabel: "How / Tools",
-    how: "I exported town utility data from GIS and brought it into AutoCAD. The CAD file included water lines, drain lines, sewer lines, manholes, catch basins, poles, electric lines, electric manholes, and other utility features across Wellesley. I georeferenced the data to the correct coordinate system and created both block-based and point-based versions so staff could choose the format that worked best for their drafting style. I also created a 2025 orthoimagery resource by taking the MassDOT ortho layer, reducing it to Wellesley, and exporting overlapping 200 ft by 200 ft georeferenced image tiles. The overlap prevented gaps when a project area crossed a tile boundary. For elevation information, I created a town-wide contour layer using drone-derived elevation data collected by a contractor with about one-foot accuracy. I interpolated between the elevation points to create contour information that could be used during early design review.",
+    how: "I built the system in three parts. First, I exported town utility data from GIS and brought it into AutoCAD. The CAD file included water lines, drain lines, sewer lines, manholes, catch basins, poles, electric lines, electric manholes, and other utility features across Wellesley. I georeferenced the data to the correct coordinate system and created both block-based and point-based versions so staff could choose the format that worked best for their drafting style. Second, I created a 2025 orthoimagery resource by taking the MassDOT ortho layer, reducing it to Wellesley, and exporting overlapping 200 ft by 200 ft georeferenced image tiles. The overlap prevented gaps when a project area crossed a tile boundary. Third, I created a town-wide contour layer using drone-derived elevation data collected by a contractor with about one-foot accuracy. I interpolated between the elevation points to create contour information that could be used during early design review.",
     resultsLabel: "Results / Outcomes",
-    results: "The final files included the town-wide CAD utility base, the 2025 georeferenced orthoimagery tile set, and the town-wide contour layer. Engineers began using these files by copying project areas into their CAD drawings instead of rebuilding the same existing conditions every time. The system made plan set setup faster, improved consistency across drawings, and gave the office a shared CAD reference for utilities, imagery, and elevation data."
+    results: "The final files included the town-wide CAD utility base, the 2025 georeferenced orthoimagery tile set, and the town-wide contour layer. Engineers began using these files by copying project areas into their CAD drawings instead of rebuilding the same existing conditions every time. The system made plan set setup faster, improved consistency across drawings, and gave the office a shared CAD reference for utilities, imagery, and elevation data. The utility base also supported later drainage and site design work because existing utilities could be brought into a project drawing much faster."
   },
 
   {
     slug: "project-6",
     number: 6,
-    title: "Custom LED Sign Bussiness Founder (Design Work, Manufacturing, Machine Optimization)",
+    title: "CA Light Designs — Custom LED Sign Design, Fabrication, and Machine Optimization",
     thumb: "assets/images/project6.jpg",
     images: ["assets/images/project6.jpg"],
     previewLabel: "Preview Blurb",
@@ -100,7 +100,7 @@ window.PROJECTS = [
     skillsLabel: "Key Skills Used",
     skills: "Product design, Silhouette Studio, acrylic engraving, LED product assembly, machine modification, design for manufacturability, production workflow improvement, tooling research, quality control, Wix, Etsy, Instagram, TikTok, customer communication, and order fulfillment.",
     contextLabel: "What / Context",
-    context: "CA Light Designs was a custom engraved LED sign business that I started in high school and ran myself through senior year. I designed and manufactured personalized acrylic LED signs, mostly for colleges, celebrations, and decorative use. I handled customer communication, design layout, engraving setup, acrylic production, LED assembly, quality checks, packaging, order fulfillment, website updates, and marketing. The project required more than making one product; I had to create a repeatable production workflow that could handle custom designs while keeping quality consistent.",
+    context: "CA Light Designs was a custom-engraved LED sign business that I started in high school and ran myself through senior year. I designed and manufactured personalized acrylic LED signs, mostly for colleges, celebrations, and decorative use. I handled customer communication, design layout, engraving setup, acrylic production, LED assembly, quality checks, packaging, order fulfillment, website updates, and marketing. The design, machine setup, and online sales channels were all part of the same process because each order started with a customer request and ended with a finished product that had to be made cleanly and shipped on time.",
     howLabel: "How / Tools",
     how: "For each order, I worked with the customer to understand the school, logo, name, message, or design style they wanted. I created the layout in CAD-like design software and Silhouette Studio, then adjusted the geometry so the engraving would cut cleanly into acrylic and light evenly in the LED base. I had to control line thickness, spacing, engraving depth, acrylic size, alignment, and how the light would travel through the engraved design. As demand increased, the engraving machine became the production bottleneck. The original metal cutting attachment had a sharp edge, but it was too dull and not strong enough for the material and finish quality I needed. I researched compatible replacement parts, modified the engraving setup, and adjusted the machine speed so it could produce cleaner lines faster. I also built the CA Light Designs website on Wix and created Etsy, Instagram, and TikTok pages to bring in customers, show finished products, and manage sales.",
     resultsLabel: "Results / Outcomes",
@@ -129,6 +129,10 @@ window.PROJECTS = [
     slug: "project-8",
     number: 8,
     title: "Northeastern University Mechanical Engineering Laboratory Work & Modeling",
+    thumb: "assets/images/project8.jpg",
+    images: ["assets/images/project8.jpg"],
+    previewLabel: "Preview Blurb",
+    preview: "Completed Northeastern mechanical engineering labs covering Instron testing, impact and hardness testing, microscopy and XRD materials analysis, torsional vibration and mechanism kinematics experiments, and sensor-based data collection with MATLAB and Arduino.",
     note: "(a through d below should all be within the same project button, just make them different tiles on the same page)",
     subsections: [
       {
@@ -241,7 +245,7 @@ window.PROJECTS = [
     skillsLabel: "Key Skills Used",
     skills: "AutoCAD, intersection layout, lane geometry, traffic signal concept design, Five Whys, Six Sigma-style root cause analysis, existing conditions review, safety-focused design, and presentation graphics.",
     contextLabel: "What / Context",
-    context: "At the Town of Wellesley, I worked on redesign graphics for an intersection that had repeated traffic problems and accidents. The goal was to understand what was causing the unsafe traffic movement and create design options that could improve driver flow, reduce conflict points, and make the intersection clearer.",
+    context: "At the Town of Wellesley, I worked on redesigning graphics for an intersection that had repeated traffic problems and accidents. The goal was to understand what was causing the unsafe traffic movement and create design options that could improve driver flow, reduce conflict points, and make the intersection clearer.",
     howLabel: "How / Tools",
     how: "I used root-cause methods such as Five Whys and Six Sigma-style problem breakdown to think through the causes of the accidents. I considered turning conflicts, lack of left-turn space, unclear lane use, signal placement, driver decision points, and the existing intersection geometry. I then used AutoCAD to create several design graphics showing added lanes, dedicated left-turn lanes, and traffic signal changes. I focused on making each option clear enough to compare how the added geometry or signal change would affect traffic movement.",
     resultsLabel: "Results / Outcomes",
@@ -300,5 +304,23 @@ window.PROJECTS = [
     how: "My co-president and I planned monthly outreach events, created presentations, wrote lesson plans, and organized activities. We used beginner-friendly tools such as Scratch and Wix so students could learn coding logic, design structure, and website layout without needing advanced programming knowledge. I focused the outreach around website building because it let students create something personal and visual by the end of the program.",
     resultsLabel: "Results / Outcomes",
     results: "The program started with one middle school and expanded to three more because the first sessions went well. Attendance grew over time, and by the end of the year, students had built their own websites showing their designs, creativity, and coding knowledge. The work produced lesson plans, presentations, outreach sessions, and student-created websites."
+  },
+
+  {
+    slug: "project-16",
+    number: 16,
+    title: "Construction Time-Lapse Documentation for Field Projects",
+    thumb: "assets/images/project16.jpg",
+    images: ["assets/images/project16.jpg"],
+    previewLabel: "Preview Blurb",
+    preview: "Created multi-month construction time-lapse videos for Town of Wellesley projects, including a gas pump station redesign and tennis court redesign, to document field progress from start to finish.",
+    skillsLabel: "Key Skills Used",
+    skills: "Construction documentation, field progress tracking, video editing, iMovie, Clipchamp, project sequencing, visual communication, and design-to-construction documentation.",
+    contextLabel: "What / Context",
+    context: "At Wellesley, I created time-lapse videos for construction projects around town. Two examples were a gas pump station redesign and a tennis court redesign, each documented over about four months. The goal was to record how each project changed over time and show the sequence from early construction through final conditions.",
+    howLabel: "How / Tools",
+    how: "I recorded and organized footage from the sites over multiple months, then edited the clips using iMovie and Clipchamp. I selected footage that showed major project stages, including site preparation, equipment movement, construction progress, installation work, and final conditions. I arranged the clips in order so the final videos showed the project timeline clearly.",
+    resultsLabel: "Results / Outcomes",
+    results: "The final videos condensed months of construction into clear visual summaries. They showed the project sequence, made field progress easier to communicate, and created a record of how the work was built. For projects where I also supported design or documentation work, the videos helped connect the plan set stage to the field construction stage."
   }
 ];
