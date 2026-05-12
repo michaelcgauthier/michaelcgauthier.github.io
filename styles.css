@@ -992,8 +992,6 @@ main.noPad{ padding-top: 0 !important; }
     height: 3px;
   }
 
-
-
   .timeline-date{
     font-size: 16px;
     padding: 16px 16px 0;
@@ -1013,6 +1011,31 @@ main.noPad{ padding-top: 0 !important; }
   .timeline-title{ font-size: 20px; }
   .timeline-company{ font-size: 15.5px; }
   .timeline-subdate{ font-size: 13px; }
+
+  /* About page mobile fix: prevent overflow + stack photo above text */
+  html, body{ overflow-x: hidden; }
+
+  body .surface .wrap.section > div[style*="grid-template-columns: 320px 1fr"]{
+    grid-template-columns: 1fr !important;
+  }
+
+  body .surface .wrap.section div[style*="grid-template-columns: 220px 1fr"]{
+    grid-template-columns: 1fr !important;
+  }
+
+  body .surface .wrap.section img{
+    max-width: 100%;
+    height: auto;
+  }
+
+  body .surface .wrap.section img[alt="Headshot"]{
+    height: 340px !important;
+    object-fit: cover;
+  }
+
+  body .surface .wrap.section div[style*="grid-template-columns: 220px 1fr"] > div{
+    padding-top: 8px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce){
