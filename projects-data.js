@@ -2,19 +2,19 @@ window.PROJECTS = [
   {
     slug: "project-1",
     number: 1,
-    title: "Python OCR Program for Converting Inspection Sketches into CAD/GIS Linework",
+    title: "Python OCR Tool for Converting Inspection Sketches into CAD/GIS Linework",
     thumb: "assets/images/project1.jpg",
-    images: ["assets/images/project1.jpg"],
+    images: ["assets/images/project3.jpg"],
     previewLabel: "Preview Blurb",
     preview: "Wrote a Python OCR and vector-conversion tool that read scanned utility inspection forms, extracted addresses and pipe attributes, converted hand sketches into CAD/GIS linework, georeferenced the output, and reduced initial drafting time by about 50%.",
     skillsLabel: "Key Skills Used",
     skills: "Python, pytesseract OCR, scanned PDF processing, image-to-vector conversion, AutoCAD drafting support, GIS vector creation, georeferencing, address extraction, scale correction, rotation correction, attribute mapping, debugging, and time study analysis.",
     contextLabel: "What / Context",
-    context: "Before the ArcGIS inspection system was created, the Town had hundreds of scanned inspection forms with hand-drawn utility sketches. These sketches showed pipe locations, utility ties, field measurements, and nearby landmarks, but many were messy and difficult to use as drafting references. My boss originally asked me to manually redraw the sketches in AutoCAD so they could be cleaned up and shared with contractors. Since there were hundreds of files, I knew manual drafting would take a long time and would repeat the same steps over and over.",
+    context: "The Town of Wellesley had hundreds of scanned utility inspection forms with hand-drawn sketches attached. These forms documented pipe inspections around town and included checklist items, inspector information, addresses, pipe size, pipe material, field measurements, and sketches showing dimensional ties to nearby manholes, poles, houses, or other fixed landmarks. The sketches were important because they helped contractors and future staff locate utility features, but many of them were hard to read and not clean enough to use as drafting references. My boss originally asked me to manually redraw the sketches in AutoCAD so they could be cleaned up and shared with contractors. Since there were hundreds of files, I knew manual drafting would take a long time and would repeat the same steps over and over.",
     howLabel: "How / Tools",
     how: "I wrote a Python program that opened each scanned inspection file, used pytesseract OCR to read the address and checklist information, and converted the hand-drawn sketch into CAD/GIS vector linework. The program extracted pipe size, pipe material, address, inspection notes, and other checklist data, then attached those values to the converted geometry as attributes or comments. The address mattered because the code used it to locate the inspection on the map. The program placed the output in the correct CAD/GIS coordinate system, then scaled and rotated the sketch based on existing street and house geometry already drafted in CAD. This turned the sketch from a scanned image into aligned vector geometry that could be used directly in CAD and GIS.",
     resultsLabel: "Results / Outcomes",
-    results: "The output was a set of cleaned, scaled, and georeferenced CAD/GIS sketches with inspection information attached. I tested the workflow on dozens of hand-drawn sketches and produced organized drawings that could be used as drafting starting points or sent to contractors. Staff no longer had to start with a messy scanned sketch or redraw every line from scratch. I completed a before-and-after time study and found that the tool reduced initial drafting time by about 50%. The project took a repetitive manual drafting assignment and turned it into an automated workflow using OCR, coordinate alignment, and vector geometry."
+    results: "The output was a set of cleaned, scaled, and georeferenced CAD/GIS sketches with inspection information attached. I tested the workflow on dozens of hand-drawn sketches and produced organized drawings that could be used as drafting starting points or sent to contractors. Staff no longer had to start with a scanned sketch or redraw every line from scratch. I completed a before-and-after time study and found that the tool reduced initial drafting time by about 50%. This work also helped me see that the entire paper inspection process could be improved, which led me to later build a separate ArcGIS inspection workflow for collecting this type of field information digitally."
   },
 
   {
@@ -38,25 +38,25 @@ window.PROJECTS = [
   {
     slug: "project-3",
     number: 3,
-    title: "Python OCR Tool for Converting Inspection Sketches into CAD/GIS Linework",
+    title: "Detention Pond Redesign from Field Survey & CAD modeling to Construction Planning",
     thumb: "assets/images/project3.jpg",
     images: ["assets/images/project3.jpg"],
     previewLabel: "Preview Blurb",
-    preview: "Wrote a Python OCR and vector-conversion tool that read scanned utility inspection forms, extracted addresses and pipe attributes, converted hand sketches into CAD/GIS linework, georeferenced the output, and reduced initial drafting time by about 50%.",
+    preview: "Collected 500+ total station survey points, built a 3D CAD surface model, created three detention pond redesign options, and supported the final plan set, specifications, bid calculations, and construction planning for a failing stormwater basin.",
     skillsLabel: "Key Skills Used",
-    skills: "Python, pytesseract OCR, scanned PDF processing, image-to-vector conversion, AutoCAD drafting support, GIS vector creation, georeferencing, address extraction, scale correction, rotation correction, attribute mapping, debugging, and time study analysis.",
+    skills: "Total station surveying, AutoCAD, 3D surface modeling, contour generation, datum conversion, drainage design, pipe networks, plan/profile drawings, construction details, specifications, bid tabulation, field documentation, and redline revisions.",
     contextLabel: "What / Context",
-    context: "The Town of Wellesley had hundreds of scanned utility inspection forms with hand-drawn sketches attached. These forms documented pipe inspections around town and included checklist items, inspector information, addresses, pipe size, pipe material, field measurements, and sketches showing dimensional ties to nearby manholes, poles, houses, or other fixed landmarks. The sketches were important because they helped contractors and future staff locate utility features, but many of them were hard to read and not clean enough to use as drafting references. My boss originally asked me to manually redraw the sketches in AutoCAD so they could be cleaned up and shared with contractors. Since there were hundreds of files, I knew manual drafting would take a long time and would repeat the same steps over and over.",
+    context: "At the Town of Wellesley Engineering Division, I worked on the redesign of a detention pond next to a recycling center. Several drainage networks discharged into the pond, but the pond was not draining correctly. It was collecting trash and debris, holding water longer than intended, and creating maintenance problems. I first reviewed the site in dry conditions to see the existing layout, then returned during rain to observe how water entered, moved through, and sat inside the basin. That field review showed that the redesign needed to improve water infiltration, slow down trash movement, and make the basin easier to maintain.",
     howLabel: "How / Tools",
-    how: "I wrote a Python program that opened each scanned inspection file, used pytesseract OCR to read the address and checklist information, and converted the hand-drawn sketch into CAD/GIS vector linework. The program extracted pipe size, pipe material, address, inspection notes, and other checklist data, then attached those values to the converted geometry as attributes or comments. The address mattered because the code used it to locate the inspection on the map. The program placed the output in the correct CAD/GIS coordinate system, then scaled and rotated the sketch based on existing street and house geometry already drafted in CAD. This turned the sketch from a scanned image into aligned vector geometry that could be used directly in CAD and GIS.",
+    how: "I helped complete the topographic survey over about three days and operated the total station to capture 500+ points in the field. I collected elevations and coordinates across the top of slope, side slopes, basin bottom, surrounding pavement, edge of pavement, start of roadway, catch basins, poles, trees, utilities, water limits, and other existing site features. I uploaded the survey data into CAD, converted the elevations to the correct Wellesley/Massachusetts datum, built a 3D surface model, and interpolated between points to create major and minor contour lines. I then created the drawing package with a title sheet, contract number, site image, existing conditions sheet, and three redesign options. The first option used a snake-shaped basin to increase the water travel path and give stormwater more time to infiltrate. The second option used three lowered basin areas separated by raised berms so trash would be slowed or trapped while water could still pass through and seep into the ground. The third option kept the existing layout mostly intact as a lower-cost construction option. I also created side profiles, utility pipe network drawings, drain/sewer/water information, catch basin details, outfall details, installation details, and presentation graphics with CAD hatching, grass, shrubs, trees, and water.",
     resultsLabel: "Results / Outcomes",
-    results: "The output was a set of cleaned, scaled, and georeferenced CAD/GIS sketches with inspection information attached. I tested the workflow on dozens of hand-drawn sketches and produced organized drawings that could be used as drafting starting points or sent to contractors. Staff no longer had to start with a scanned sketch or redraw every line from scratch. I completed a before-and-after time study and found that the tool reduced initial drafting time by about 50%. This work also helped me see that the entire paper inspection process could be improved, which led me to later build a separate ArcGIS inspection workflow for collecting this type of field information digitally."
+    results: "The final drawing package included the surveyed CAD base, 3D surface, contour plan, existing conditions plan, three proposed design plans, side profiles, utility/pipe network layouts, construction details, specifications, bid calculations, and bid tabulation comparing contractor costs. My supervisor redlined the drawings multiple times, and I revised the package after each review. The Town selected the second design with the three lowered basin areas and raised berms, and that option moved into construction planning. The project changed the pond redesign from a rough field problem into a documented construction option with survey data, grading information, design alternatives, cost comparisons, and clear drawings for review."
   },
 
   {
     slug: "project-4",
     number: 4,
-    title: "Robotic Crawler Pipe Inspection and New Manhole Repair Design",
+    title: "Robotic Rover for Pipe Inspection and New Pipe Repair Design",
     thumb: "assets/images/project4.jpg",
     images: ["assets/images/project4.jpg"],
     previewLabel: "Preview Blurb",
@@ -74,7 +74,7 @@ window.PROJECTS = [
   {
     slug: "project-5",
     number: 5,
-    title: "Town-Wide CAD Utility, Orthoimagery, and Contour Base Map System",
+    title: "Town-Wide CAD Drawing of Utilities, Orthoimagery, and Contour Base Map System",
     thumb: "assets/images/project5.jpg",
     images: ["assets/images/project5.jpg"],
     previewLabel: "Preview Blurb",
@@ -92,7 +92,7 @@ window.PROJECTS = [
   {
     slug: "project-6",
     number: 6,
-    title: "CA Light Designs — Custom LED Sign Design, Fabrication, and Machine Optimization",
+    title: "CA Light Designs: Custom LED Sign Business- Designing, Manufacturing, and Selling Custom Products",
     thumb: "assets/images/project6.jpg",
     images: ["assets/images/project6.jpg"],
     previewLabel: "Preview Blurb",
@@ -100,7 +100,7 @@ window.PROJECTS = [
     skillsLabel: "Key Skills Used",
     skills: "Product design, Silhouette Studio, acrylic engraving, LED product assembly, machine modification, design for manufacturability, production workflow improvement, tooling research, quality control, Wix, Etsy, Instagram, TikTok, customer communication, and order fulfillment.",
     contextLabel: "What / Context",
-    context: "CA Light Designs was a custom engraved LED sign business that I started in high school and ran myself through senior year. I designed and manufactured personalized acrylic LED signs, mostly for colleges, celebrations, and decorative use. I handled customer communication, design layout, engraving setup, acrylic production, LED assembly, quality checks, packaging, order fulfillment, website updates, and marketing. The design, machine setup, and online sales channels were all part of the same process because each order started with a customer request and ended with a finished product that had to be made cleanly and shipped on time.",
+    context: "CA Light Designs was a custom-engraved LED sign business that I started in high school and ran myself through senior year. I designed and manufactured personalized acrylic LED signs, mostly for colleges, celebrations, and decorative use. I handled customer communication, design layout, engraving setup, acrylic production, LED assembly, quality checks, packaging, order fulfillment, website updates, and marketing. The design, machine setup, and online sales channels were all part of the same process because each order started with a customer request and ended with a finished product that had to be made cleanly and shipped on time.",
     howLabel: "How / Tools",
     how: "For each order, I worked with the customer to understand the school, logo, name, message, or design style they wanted. I created the layout in CAD-like design software and Silhouette Studio, then adjusted the geometry so the engraving would cut cleanly into acrylic and light evenly in the LED base. I had to control line thickness, spacing, engraving depth, acrylic size, alignment, and how the light would travel through the engraved design. As demand increased, the engraving machine became the production bottleneck. The original metal cutting attachment had a sharp edge, but it was too dull and not strong enough for the material and finish quality I needed. I researched compatible replacement parts, modified the engraving setup, and adjusted the machine speed so it could produce cleaner lines faster. I also built the CA Light Designs website on Wix and created Etsy, Instagram, and TikTok pages to bring in customers, show finished products, and manage sales.",
     resultsLabel: "Results / Outcomes",
@@ -201,7 +201,7 @@ window.PROJECTS = [
   {
     slug: "project-9",
     number: 9,
-    title: "Formula-Style Electric Race Car Tire Inertia Analysis",
+    title: "Formula-Style Electric Race Car Tire & Inertia Analysis",
     thumb: "assets/images/project9.jpg",
     images: ["assets/images/project9.jpg"],
     previewLabel: "Preview Blurb",
@@ -237,7 +237,7 @@ window.PROJECTS = [
   {
     slug: "project-11",
     number: 11,
-    title: "Intersection Safety Redesign with Lane and Signal Concepts",
+    title: "Intersection Safety Redesign with Signaling Redesign",
     thumb: "assets/images/project11.jpg",
     images: ["assets/images/project11.jpg"],
     previewLabel: "Preview Blurb",
@@ -291,7 +291,7 @@ window.PROJECTS = [
   {
     slug: "project-14",
     number: 14,
-    title: "Coding With a Cause Website Design Outreach Program",
+    title: "Coding With a Cause: Website Design Outreach Program for Middle School Students",
     thumb: "assets/images/project14.jpg",
     images: ["assets/images/project14.jpg"],
     previewLabel: "Preview Blurb",
@@ -305,22 +305,3 @@ window.PROJECTS = [
     resultsLabel: "Results / Outcomes",
     results: "The program started with one middle school and expanded to three more because the first sessions went well. Attendance grew over time, and by the end of the year, students had built their own websites showing their designs, creativity, and coding knowledge. The work produced lesson plans, presentations, outreach sessions, and student-created websites."
   },
-
-  {
-    slug: "project-16",
-    number: 16,
-    title: "Construction Time-Lapse Documentation for Field Projects",
-    thumb: "assets/images/project16.jpg",
-    images: ["assets/images/project16.jpg"],
-    previewLabel: "Preview Blurb",
-    preview: "Created multi-month construction time-lapse videos for Town of Wellesley projects, including a gas pump station redesign and tennis court redesign, to document field progress from start to finish.",
-    skillsLabel: "Key Skills Used",
-    skills: "Construction documentation, field progress tracking, video editing, iMovie, Clipchamp, project sequencing, visual communication, and design-to-construction documentation.",
-    contextLabel: "What / Context",
-    context: "At Wellesley, I created time-lapse videos for construction projects around town. Two examples were a gas pump station redesign and a tennis court redesign, each documented over about four months. The goal was to record how each project changed over time and show the sequence from early construction through final conditions.",
-    howLabel: "How / Tools",
-    how: "I recorded and organized footage from the sites over multiple months, then edited the clips using iMovie and Clipchamp. I selected footage that showed major project stages, including site preparation, equipment movement, construction progress, installation work, and final conditions. I arranged the clips in order so the final videos showed the project timeline clearly.",
-    resultsLabel: "Results / Outcomes",
-    results: "The final videos condensed months of construction into clear visual summaries. They showed the project sequence, made field progress easier to communicate, and created a record of how the work was built. For projects where I also supported design or documentation work, the videos helped connect the plan set stage to the field construction stage."
-  }
-];
