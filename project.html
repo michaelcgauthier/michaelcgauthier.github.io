@@ -154,9 +154,12 @@
 
         return `
           <div style="margin-top:16px;">
-            <div style="font-weight:700; font-size:14px; margin-bottom:10px; color: rgba(11,18,32,.70);">More images</div>
-            <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-              ${rest.map(src => imgBox(src, alt)).join("")}
+            <div class="project-extra-grid">
+              ${rest.map(src => `
+                <div class="project-extra-img">
+                  <img src="${src}" alt="${escapeHtml(alt)}" loading="lazy" style="width:100%; height:auto; display:block;">
+                </div>
+              `).join("")}
             </div>
           </div>
         `;
@@ -168,7 +171,10 @@
 
         const rightSrc = imgs[0] || "";
         const leftSrc  = imgs[1] || "";
-        const more = extraGallery(imgs, 2, tileTitle);
+
+        const rightStackSrc = (imgs.length === 3) ? (imgs[2] || "") : "";
+
+        const more = (imgs.length >= 4) ? extraGallery(imgs, 2, tileTitle) : "";
 
         return `
           <div class="card" style="padding:18px; margin-bottom:16px;">
@@ -195,7 +201,10 @@
                 </div>
               </div>
 
-              ${imgBox(rightSrc, tileTitle)}
+              <div style="display:grid; gap:12px;">
+                ${imgBox(rightSrc, tileTitle)}
+                ${rightStackSrc ? imgBox(rightStackSrc, tileTitle) : ""}
+              </div>
             </div>
 
             <div style="margin-top:18px; padding-top:18px; border-top:1px solid rgba(2,8,23,.08);">
