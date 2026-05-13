@@ -540,6 +540,20 @@ main.noPad{ padding-top: 0 !important; }
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
+.project-extra-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.project-extra-img{
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(2,8,23,.10);
+  background: #fff;
+  box-shadow: 0 14px 36px rgba(2,8,23,.10);
+}
+
 .project-card:hover{
   transform: translateY(-6px);
   box-shadow: 0 26px 70px rgba(2,8,23,.18);
