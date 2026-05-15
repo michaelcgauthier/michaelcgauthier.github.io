@@ -139,8 +139,30 @@
         }[m]));
       }
 
-      function imgBox(src, alt){
+      function isVideoSrc(src){
+        const base = (src || "").split("?")[0].toLowerCase();
+        return base.endsWith(".mp4");
+      }
+
+      function mediaBox(src, alt){
         if (!src) return "";
+        if (isVideoSrc(src)) {
+          return `
+            <div class="project-detail-photo" style="overflow:hidden; border-radius:14px; border:1px solid rgba(2,8,23,.10); background:#000; box-shadow: 0 14px 36px rgba(2,8,23,.10);">
+              <video
+                src="${src}"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                style="width:100%; height:auto; display:block;"
+                aria-label="${escapeHtml(alt)}"
+              ></video>
+            </div>
+          `;
+        }
+
         return `
           <div class="project-detail-photo" style="overflow:hidden; border-radius:14px; border:1px solid rgba(2,8,23,.10); background:#fff; box-shadow: 0 14px 36px rgba(2,8,23,.10);">
             <img src="${src}" alt="${escapeHtml(alt)}" loading="lazy" style="width:100%; height:auto; display:block;">
@@ -157,7 +179,10 @@
             <div class="project-extra-grid">
               ${rest.map(src => `
                 <div class="project-extra-img">
-                  <img src="${src}" alt="${escapeHtml(alt)}" loading="lazy" style="width:100%; height:auto; display:block;">
+                  ${isVideoSrc(src)
+                    ? `<video src="${src}" autoplay muted loop playsinline preload="metadata" style="width:100%; height:auto; display:block;" aria-label="${escapeHtml(alt)}"></video>`
+                    : `<img src="${src}" alt="${escapeHtml(alt)}" loading="lazy" style="width:100%; height:auto; display:block;">`
+                  }
                 </div>
               `).join("")}
             </div>
@@ -202,14 +227,14 @@
               </div>
 
               <div style="display:grid; gap:12px;">
-                ${imgBox(rightSrc, tileTitle)}
-                ${rightStackSrc ? imgBox(rightStackSrc, tileTitle) : ""}
+                ${mediaBox(rightSrc, tileTitle)}
+                ${rightStackSrc ? mediaBox(rightStackSrc, tileTitle) : ""}
               </div>
             </div>
 
             <div style="margin-top:18px; padding-top:18px; border-top:1px solid rgba(2,8,23,.08);">
               <div style="display:grid; grid-template-columns: 320px 1fr; gap:18px; align-items:start;">
-                ${imgBox(leftSrc, tileTitle)}
+                ${mediaBox(leftSrc, tileTitle)}
 
                 <div>
                   <div class="project-detail-label">${resultsLabel || ""}</div>
