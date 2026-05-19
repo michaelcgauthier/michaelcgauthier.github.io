@@ -17,7 +17,6 @@
 
     html,body{ margin:0; padding:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background:#fff; }
 
-    /* Screen-only wrapper (so it still looks nice before printing) */
     .screenbar{
       position: sticky; top:0; z-index:999;
       background:#fff; border-bottom:1px solid var(--line);
@@ -32,10 +31,11 @@
     .btn.primary{
       background: #0b1220; color:#fff; border-color:#0b1220;
     }
+
     .wrap{ width: min(980px, calc(100% - 48px)); margin: 0 auto; padding: 24px 0; }
 
-    /* Print layout */
-    @page { size: Letter; margin: 0.6in; }  /* change to A4 if you want */
+    @page { size: Letter; margin: 0.6in; }
+
     @media print{
       .screenbar{ display:none; }
       .wrap{ width: 100%; margin:0; padding:0; }
@@ -47,16 +47,34 @@
     }
     .page:last-child{ page-break-after: auto; }
 
-    .page-header{
-      display:flex; justify-content:space-between; align-items:flex-end;
+    .page-top{
+      display:flex;
+      align-items:center;
+      justify-content:center;
       border-bottom: 1px solid var(--line);
       padding-bottom: 10px;
       margin-bottom: 18px;
     }
-    .name{ font-weight:900; font-size:18px; letter-spacing:.2px; }
-    .tag{ font-weight:600; font-size:12px; color:var(--muted); margin-top:4px; }
-    .contact{ text-align:right; font-size:12px; color:var(--muted); }
-    .contact a{ color:inherit; text-decoration:none; }
+    .page-top .center-title{
+      font-weight:900;
+      font-size: 13px;
+      letter-spacing: .2px;
+      color: rgba(11,18,32,.86);
+      text-transform: none;
+    }
+
+    .page-bottom{
+      margin-top: 16px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+    .page-bottom a{ color: inherit; text-decoration:none; }
+
     .title{
       font-size: 22px; font-weight:900; margin: 0 0 10px;
     }
@@ -67,21 +85,12 @@
       margin: 0 0 14px;
     }
 
-    .two-col{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
     .card{
       border:1px solid var(--line);
       border-radius:14px;
       padding:14px;
+      background:#fff;
     }
-
-    .h3{ font-size:14px; font-weight:800; margin:0 0 8px; }
-    .p{ margin:0; font-size:12.8px; line-height:1.5; color: rgba(11,18,32,.88); }
-    .muted{ color: var(--muted); }
 
     .img{
       width:100%; height:auto; display:block;
@@ -96,17 +105,23 @@
       background:#fff;
     }
 
-    /* Project page layout (matches your current alignment idea) */
+    .label{
+      font-weight:800; font-size:12px; margin: 0 0 6px;
+      color: rgba(11,18,32,.75);
+    }
+    .p{ margin:0; font-size:12.8px; line-height:1.5; color: rgba(11,18,32,.88); }
+    .muted{ color: var(--muted); }
+
+    .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
     .proj-top{
       display:grid;
       grid-template-columns: 1fr 2.6in;
       gap: 16px;
       align-items:start;
     }
-    .proj-right{
-      display:grid;
-      gap: 10px;
-    }
+    .proj-right{ display:grid; gap: 10px; }
+
     .proj-split{
       margin-top: 14px;
       padding-top: 14px;
@@ -116,12 +131,7 @@
       gap: 16px;
       align-items:start;
     }
-    .label{
-      font-weight:800; font-size:12px; margin: 0 0 6px;
-      color: rgba(11,18,32,.75);
-    }
 
-    /* Timeline print block */
     .timeline-list{ display:grid; gap:10px; }
     .t-item{
       display:grid;
@@ -131,6 +141,7 @@
       border:1px solid var(--line);
       border-radius:14px;
       padding:10px 12px;
+      background:#fff;
     }
     .t-logo{
       width:54px; height:54px; border-radius:12px; border:1px solid var(--line);
@@ -140,7 +151,6 @@
     .t-title{ font-weight:900; font-size:13px; margin:0; }
     .t-meta{ font-size:12px; color:var(--muted); margin-top:3px; }
 
-    /* Resume page */
     .resume-img{
       width:100%;
       height:auto;
@@ -149,7 +159,80 @@
       border-radius:14px;
     }
 
-    /* Prevent awkward breaks */
+    .cover{
+      position: relative;
+      overflow:hidden;
+      border-radius: 18px;
+      border:1px solid var(--line);
+      min-height: 9.6in;
+    }
+    .cover-bg{
+      position:absolute; inset:0;
+      background-image:url('assets/images/HomeBackground.jpg');
+      background-size:cover;
+      background-position:center;
+      filter: saturate(1.05);
+    }
+    .cover-overlay{
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(11,18,32,.55) 0%, rgba(11,18,32,.70) 55%, rgba(11,18,32,.78) 100%);
+    }
+    .cover-content{
+      position:relative;
+      padding: 34px;
+      color:#fff;
+      display:grid;
+      grid-template-columns: 260px 1fr;
+      gap: 22px;
+      align-items:center;
+    }
+    .cover-title{
+      grid-column: 1 / -1;
+      text-align:center;
+      font-weight:900;
+      letter-spacing:.3px;
+      font-size: 34px;
+      margin: 6px 0 14px;
+    }
+    .cover-headshot{
+      width:100%;
+      height: 260px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.06);
+    }
+    .cover-block{
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 16px;
+      padding: 16px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .cover-basics{
+      font-weight:700;
+      line-height: 1.45;
+      color: rgba(255,255,255,.92);
+      font-size: 13.5px;
+    }
+    .cover-blurb{
+      margin-top: 10px;
+      color: rgba(255,255,255,.90);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+    .cover-links{
+      margin-top: 12px;
+      color: rgba(255,255,255,.92);
+      font-size: 12.5px;
+      display:grid;
+      gap:6px;
+    }
+    .cover-links a{ color: rgba(255,255,255,.92); text-decoration:none; }
+    .cover-links a:hover{ text-decoration: underline; }
+
+    .break-avoid{ break-inside: avoid; page-break-inside: avoid; }
     .card, .t-item, .proj-top, .proj-split{ break-inside: avoid; page-break-inside: avoid; }
   </style>
 </head>
@@ -159,7 +242,7 @@
     <div style="font-weight:800;">Print Portfolio</div>
     <div style="display:flex; gap:10px;">
       <button class="btn" onclick="window.location.href='resume.html'">Back</button>
-      <button class="btn primary" onclick="window.print()">Print / Save PDF</button>
+      <button class="btn primary" onclick="window.print()">Print or Save PDF</button>
     </div>
   </div>
 
@@ -168,37 +251,27 @@
   <script src="projects-data.js"></script>
 
   <script>
-    const NAME = "Michael Gauthier";
+    const NAME_LINE = "Michael Gauthier Engineering Portfolio";
     const EMAIL = "gauthier.mi@northeastern.edu";
-    const LINKEDIN = "linkedin.com/in/mgauthier1";
+    const LINKEDIN_URL = "https://www.linkedin.com/in/mgauthier1";
 
-    // Pull About copy from your about page (simple: keep it here so print is stable)
-    const ABOUT_TEXT = `Mechanical Engineering student at Northeastern University. I’m currently balancing classes, capstone work, and continued work as a mechanical and construction engineering co-op. I’ve worked on CAD plan sets and documentation, Python automation, ArcGIS workflows, and projects that connect field constraints to clean engineering outputs. I like building tools and systems that make teams faster and more consistent, and I’m always happy to connect.`;
+    const BASICS = "Northeastern University Mechanical Engineering Student, Class of 2027. Minor in Entrepreneurial Startups & Business.";
+    const HOME_BLURB = "Hi, I’m Michael! I’m a fourth-year Mechanical Engineering student at Northeastern University with a minor in Entrepreneurial Startups & Business. I’m currently balancing classes, my capstone project, and continued work as a mechanical/construction engineering co-op, where I’ve been creating AutoCAD plan sets, survey-based design drawings, Python automation tools, and ArcGIS inspection workflows. I’ve always been the kind of person who gets very invested once I start working on something, whether that was running my custom LED sign business in high school or creating tools at work that made my team’s day easier. Even this website I programmed and designed myself through JavaScript, CSS, and HTML.";
 
-    // Timeline items (use your logos + dates)
-    const TIMELINE = [
-      { logo:"assets/images/WellesleyLogo_web.jpg", title:"Mechanical and Construction Engineering Co op", meta:"Jul 2025 – Present" },
-      { logo:"assets/images/Capstone.png", title:"Automated Microscope Platform for Microfluidic Imaging", meta:"May 2026 – Present" },
-      { logo:"assets/images/RacingClubLogo_web.jpg", title:"NU Electric Racing, Tire Optimization", meta:"2024 – Present" },
-      { logo:"assets/images/HandClubLogo_web.jpg", title:"NU Give a Hand, Prosthetic Hand Design", meta:"2024 – Present" },
-      { logo:"assets/images/BrandyLogo.png", title:"Stock Associate", meta:"Sep 2024 – Present" },
-      { logo:"assets/images/NortheasternLogo.jpg", title:"Mechanical Engineering Student, Dean’s List", meta:"Aug 2023 – Present" },
-      { logo:"assets/images/Madrid1.jpeg", title:"Study Abroad, Madrid", meta:"Aug 2023 – Dec 2023" },
-      { logo:"assets/images/CleanEnergyLogo.png", title:"Clean Energy Exhibit", meta:"Jan 2024 – May 2024" },
-      { logo:"assets/images/CALightDesignsLogo_web.jpg", title:"Founder and Owner, CA Light Designs", meta:"Mar 2021 – Aug 2024" }
-    ];
-
-    function headerBlock(pageTitle){
+    function pageHeader(){
       return `
-        <div class="page-header">
-          <div>
-            <div class="name">${NAME}</div>
-            <div class="tag">${pageTitle}</div>
-          </div>
-          <div class="contact">
-            <div><a href="mailto:${EMAIL}">${EMAIL}</a></div>
-            <div>${LINKEDIN}</div>
-          </div>
+        <div class="page-top">
+          <div class="center-title">${NAME_LINE}</div>
+        </div>
+      `;
+    }
+
+    function pageFooter(){
+      return `
+        <div class="page-bottom">
+          <div><a href="mailto:${EMAIL}">${EMAIL}</a></div>
+          <div><a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a></div>
+          <div>michaelcgauthier.github.io</div>
         </div>
       `;
     }
@@ -217,9 +290,7 @@
     function mediaBox(src, alt){
       if(!src) return "";
       if(isVideo(src)){
-        return `
-          <video class="img" src="${src}" autoplay muted loop playsinline preload="metadata"></video>
-        `;
+        return `<video class="img" src="${src}" autoplay muted loop playsinline preload="metadata"></video>`;
       }
       return `<img class="img" src="${src}" alt="${escapeHtml(alt)}">`;
     }
@@ -234,24 +305,24 @@
     function projectPage(p){
       const imgs = Array.isArray(p.images) ? p.images : [];
       const right1 = imgs[0] || "";
-      const right2 = (imgs.length===3) ? (imgs[2] || "") : "";
+      const right2 = (imgs.length === 3) ? (imgs[2] || "") : "";
       const left1  = imgs[1] || "";
-      const extras = (imgs.length>=4) ? imgs.slice(2) : [];
+      const extras = (imgs.length >= 4) ? imgs.slice(2) : [];
 
       return `
         <div class="page">
-          ${headerBlock("Project")}
+          ${pageHeader()}
           <div class="title">${escapeHtml(p.title)}</div>
           ${pillRow(p.skills || "")}
 
           <div class="proj-top">
             <div>
-              <div class="label">${escapeHtml(p.contextLabel || "Context")}</div>
+              <div class="label">${escapeHtml(p.contextLabel || "What / Context")}</div>
               <div class="p">${p.context || ""}</div>
 
               <div style="height:10px;"></div>
 
-              <div class="label">${escapeHtml(p.howLabel || "How")}</div>
+              <div class="label">${escapeHtml(p.howLabel || "How / Tools")}</div>
               <div class="p">${p.how || ""}</div>
             </div>
 
@@ -264,7 +335,7 @@
           <div class="proj-split">
             <div>${mediaBox(left1, p.title)}</div>
             <div>
-              <div class="label">${escapeHtml(p.resultsLabel || "Results")}</div>
+              <div class="label">${escapeHtml(p.resultsLabel || "Results / Outcomes")}</div>
               <div class="p">${p.results || ""}</div>
 
               ${extras.length ? `
@@ -276,6 +347,8 @@
               ` : ""}
             </div>
           </div>
+
+          ${pageFooter()}
         </div>
       `;
     }
@@ -284,25 +357,25 @@
       return (p.subsections || []).map(s => {
         const imgs = Array.isArray(s.images) ? s.images : [];
         const right1 = imgs[0] || "";
-        const right2 = (imgs.length===3) ? (imgs[2] || "") : "";
+        const right2 = (imgs.length === 3) ? (imgs[2] || "") : "";
         const left1  = imgs[1] || "";
-        const extras = (imgs.length>=4) ? imgs.slice(2) : [];
+        const extras = (imgs.length >= 4) ? imgs.slice(2) : [];
 
         return `
           <div class="page">
-            ${headerBlock("Project")}
+            ${pageHeader()}
             <div class="title">${escapeHtml(p.title)}</div>
-            <div class="sub">${escapeHtml(s.title)}</div>
+            <p class="sub">${escapeHtml(s.title)}</p>
             ${pillRow(s.skills || "")}
 
             <div class="proj-top">
               <div>
-                <div class="label">${escapeHtml(s.contextLabel || "Context")}</div>
+                <div class="label">${escapeHtml(s.contextLabel || "What / Context")}</div>
                 <div class="p">${s.context || ""}</div>
 
                 <div style="height:10px;"></div>
 
-                <div class="label">${escapeHtml(s.howLabel || "How")}</div>
+                <div class="label">${escapeHtml(s.howLabel || "How / Tools")}</div>
                 <div class="p">${s.how || ""}</div>
               </div>
 
@@ -315,7 +388,7 @@
             <div class="proj-split">
               <div>${mediaBox(left1, s.title)}</div>
               <div>
-                <div class="label">${escapeHtml(s.resultsLabel || "Results")}</div>
+                <div class="label">${escapeHtml(s.resultsLabel || "Results / Outcomes")}</div>
                 <div class="p">${s.results || ""}</div>
 
                 ${extras.length ? `
@@ -327,6 +400,8 @@
                 ` : ""}
               </div>
             </div>
+
+            ${pageFooter()}
           </div>
         `;
       }).join("");
@@ -334,29 +409,62 @@
 
     const projects = (window.PROJECTS || []).slice().sort((a,b)=>a.number-b.number);
 
+    const TIMELINE = [
+      { logo:"assets/images/WellesleyLogo_web.jpg", title:"Mechanical and Construction Engineering Co op", meta:"Jul 2025 – Present" },
+      { logo:"assets/images/Capstone.png", title:"Automated Microscope Platform for Microfluidic Imaging", meta:"May 2026 – Present" },
+      { logo:"assets/images/HandClubLogo_web.jpg", title:"Prosthetic Hand Design Team, NU Give a Hand", meta:"Jan 2025 – Present" },
+      { logo:"assets/images/RacingClubLogo_web.jpg", title:"Tire Optimization Team For Formula Style Race Car, NU Electric Racing", meta:"Sep 2024 – Present" },
+      { logo:"assets/images/BrandyLogo.png", title:"Stock Associate and Assistant, Brandy Melville", meta:"Sep 2024 – Jul 2025" },
+      { logo:"assets/images/CleanEnergyLogo.png", title:"Educational Clean Energy Exhibit for Boston Middle School Students", meta:"Jan 2024 – May 2024" },
+      { logo:"assets/images/Madrid1.jpeg", title:"Study Abroad in Europe, Madrid Spain", meta:"Aug 2023 – Dec 2023" },
+      { logo:"assets/images/NortheasternLogo.jpg", title:"Fourth Year Mechanical Engineering Student, Northeastern University", meta:"Sep 2023 – Present" },
+      { logo:"assets/images/CALightDesignsLogo_web.jpg", title:"Business Founder and Owner, CA Light Designs", meta:"Mar 2021 – Aug 2024" },
+      { logo:"assets/images/EntrepreneurshipClubLogo_web.jpg", title:"Small Business Club President and Founder", meta:"Sep 2021 – Jun 2023" },
+      { logo:"assets/images/CodingWithACauseClubLogo_web.jpg", title:"Computer Science Club President", meta:"Sep 2022 – Jun 2023" },
+      { logo:"assets/images/WestfieldLogo_web.jpg", title:"Lifeguard and Swim Instructor", meta:"Jul 2020 – Aug 2023" },
+      { logo:"assets/images/westfieldsoccer_web.jpg", title:"Head Soccer Referee, Westfield Soccer Association", meta:"Sep 2018 – May 2020" }
+    ];
+
+    const ABOUT_ITEMS = [
+      { img:"assets/images/CodingWithACauseClubLogo_web.jpg", title:"Coding With a Cause President", date:"Sep 2022 – Jun 2023", text:"Led outreach for my high school computer science club and created a program where we visited middle schools throughout the year to teach students how to code and build simple websites. We planned the lessons and ran the sessions almost monthly, and the kids ended up showing off their sites at the end." },
+      { img:"assets/images/DanaFarberLogo_web.jpg", title:"Dana Farber Fundraiser and Running", date:"Fall 2025", text:"Organized a fundraiser for Dana Farber Cancer Institute by leading a yoga class, finding instructors, and coordinating the event. We raised $1,000. I’m also training for the Boston Half Marathon, and running has become one of the ways I stay consistent and push myself outside of engineering." },
+      { img:"assets/images/EntrepreneurshipClubLogo_web.jpg", title:"Entrepreneurship Club President", date:"Sep 2021 – Jun 2023", text:"Co founded and ran my high school entrepreneurship club for two years. We made weekly lesson plans and activities and taught students how to start a small business, based on what I learned from running my own business." },
+      { img:"assets/images/CansForACauseLogo_web.jpg", title:"Cans for a Cause Club President", date:"Sep 2022 – Jun 2023", text:"Led a school community service effort focused on organizing drives, coordinating student participation, and keeping the club consistent week to week. It was a very rewarding experience getting to help my community and get others to help as well." },
+      { img:"assets/images/CommunityServiceLogo_web.png", title:"Community Service Club", date:"2019 – 2023", text:"Took part in community service events through school clubs and group outreach programs. I enjoyed getting to help my community and see how my efforts can help someone else in need." },
+      { img:"assets/images/Madrid1.jpeg", title:"Study Abroad Madrid", date:"Fall 2023", text:"Studied abroad in Madrid during my first semester of college. I got to travel around Spain and Europe, learn different perspectives, and get way more comfortable speaking Spanish. It was cool to get a different perspective on how engineering classes are taught in Madrid versus the US. I learned a lot and loved the experience overall." }
+    ];
+
     const root = document.getElementById("root");
     root.innerHTML = `
-      <!-- Cover -->
+      <!-- COVER PAGE -->
       <div class="page">
-        ${headerBlock("Engineering Portfolio")}
-        <div class="title">Engineering Portfolio</div>
-        <p class="sub">${ABOUT_TEXT}</p>
+        <div class="cover break-avoid">
+          <div class="cover-bg"></div>
+          <div class="cover-overlay"></div>
 
-        <div class="card">
-          <div class="h3">Quick links</div>
-          <p class="p">
-            Email: <a href="mailto:${EMAIL}">${EMAIL}</a><br>
-            LinkedIn: ${LINKEDIN}<br>
-            Website: michaelcgauthier.github.io
-          </p>
+          <div class="cover-content">
+            <div class="cover-title">${NAME_LINE}</div>
+
+            <img class="cover-headshot" src="assets/images/headshot2.png" alt="Headshot">
+
+            <div class="cover-block">
+              <div class="cover-basics">${escapeHtml(BASICS)}</div>
+              <div class="cover-blurb">${escapeHtml(HOME_BLURB)}</div>
+              <div class="cover-links">
+                <div><a href="mailto:${EMAIL}">${EMAIL}</a></div>
+                <div><a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a></div>
+                <div>michaelcgauthier.github.io</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Timeline -->
+      <!-- TIMELINE PAGE -->
       <div class="page">
-        ${headerBlock("Timeline")}
+        ${pageHeader()}
         <div class="title">Timeline</div>
-        <p class="sub">A quick snapshot of roles and projects. Full details follow in the project pages.</p>
+        <p class="sub">A full snapshot of experience and involvement. Project details follow.</p>
 
         <div class="timeline-list">
           ${TIMELINE.map(t => `
@@ -369,33 +477,72 @@
             </div>
           `).join("")}
         </div>
+
+        ${pageFooter()}
       </div>
 
-      <!-- Projects -->
+      <!-- PROJECT PAGES -->
       ${projects.map(p => {
         if (p.subsections && p.subsections.length) return projectSubsectionPages(p);
         return projectPage(p);
       }).join("")}
 
-      <!-- Resume -->
+      <!-- RESUME PAGE -->
       <div class="page">
-        ${headerBlock("Resume")}
+        ${pageHeader()}
         <div class="title">Resume</div>
-        <img class="resume-img" src="assets/images/ResumeImage_web.jpg" alt="Resume">
+        <img class="resume-img" src="assets/images/ResumeImage.png" alt="Michael Gauthier Resume">
+        ${pageFooter()}
       </div>
 
-      <!-- About -->
+      <!-- ABOUT PAGE -->
       <div class="page">
-        ${headerBlock("About")}
+        ${pageHeader()}
         <div class="title">About</div>
-        <p class="sub">${ABOUT_TEXT}</p>
-        <div class="card">
-          <div class="h3">Contact</div>
-          <p class="p">
-            <a href="mailto:${EMAIL}">${EMAIL}</a><br>
-            ${LINKEDIN}
-          </p>
+
+        <div class="two-col break-avoid" style="grid-template-columns: 260px 1fr; align-items:start;">
+          <img class="img" src="assets/images/heasshot9.jpg" alt="Headshot">
+          <div class="card">
+            <div class="label">About me</div>
+            <div class="p muted" style="margin-top:8px;">
+              I’m a fourth-year Mechanical Engineering student at Northeastern University, graduating in May 2027, with a minor in Entrepreneurial Startups & Business. I’ve wanted to be an engineer for a long time, and a big part of that started with the custom LED sign business I founded in 2021. I designed the signs, engraved and assembled the products, built the website, and worked with customers. I loved the whole experience. It was so rewarding to see people enjoy the products I created, and it is the main reason why I decided to go into engineering.
+            </div>
+
+            <div class="p muted" style="margin-top:10px;">
+              At Northeastern, I’ve been able to keep building on that through classes, lab work, design projects, and my co-op. I completed my first co-op with the Town of Wellesley Engineering Division as a Mechanical/Construction Engineering Co-op, and I’m still working there part-time during the school year. My work has included AutoCAD design work, creating plan sets, taking field measurements, writing Python automation tools, digitizing office workflows, and designing ArcGIS inspection workflows. I’ve really enjoyed both collecting data and then turning it into drawings, systems, and tools that the other engineers can use.
+            </div>
+
+            <div class="p muted" style="margin-top:10px;">
+              Outside of engineering, I’m happiest when I’m doing something active. I’m currently training for the Boston Half Marathon, since I love to run, along with skiing and swimming. I like music, hiking, cars, and spending time outside when the Boston weather is finally nice out. I studied abroad in Madrid during my first semester of college, which helped me become more comfortable speaking Spanish and gave me a chance to travel, meet new people, and see more of the world early in college. As I finish my senior year and work on my capstone project, I’m excited to keep learning, contribute to a great engineering team, and keep doing work I’m proud of.
+            </div>
+
+            <div class="p muted" style="margin-top:12px;">
+              Feel free to contact me or connect with me on LinkedIn.
+            </div>
+          </div>
         </div>
+
+        <div style="height:14px;"></div>
+
+        <div class="card">
+          <div class="label" style="font-size:14px;">Leadership and Volunteer Work</div>
+          <div class="p muted" style="margin-top:8px;">A few things I’ve led or been involved in outside of classes and co-op work.</div>
+
+          <div style="margin-top:12px; display:grid; gap:10px;">
+            ${ABOUT_ITEMS.map(item => `
+              <div class="t-item">
+                <img class="t-logo" src="${item.img}" alt="">
+                <div>
+                  <div class="t-title">${escapeHtml(item.title)}</div>
+                  <div class="t-meta">${escapeHtml(item.date)}</div>
+                  <div class="p muted" style="margin-top:6px;">${escapeHtml(item.text)}</div>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+
+        ${pageFooter()}
       </div>
     `;
   </script>
