@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Print Portfolio | Michael Gauthier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#0b1220;
+      --muted: rgba(11,18,32,.72);
+      --line: rgba(11,18,32,.14);
+    }
+
+    html,body{ margin:0; padding:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background:#fff; }
+
+    /* Screen-only wrapper (so it still looks nice before printing) */
+    .screenbar{
+      position: sticky; top:0; z-index:999;
+      background:#fff; border-bottom:1px solid var(--line);
+      padding: 10px 14px;
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+    }
+    .btn{
+      appearance:none; border:1px solid var(--line); background:#fff;
+      padding:10px 12px; border-radius:10px; cursor:pointer;
+      font-weight:600; font-size:14px;
+    }
+    .btn.primary{
+      background: #0b1220; color:#fff; border-color:#0b1220;
+    }
+    .wrap{ width: min(980px, calc(100% - 48px)); margin: 0 auto; padding: 24px 0; }
+
+    /* Print layout */
+    @page { size: Letter; margin: 0.6in; }  /* change to A4 if you want */
+    @media print{
+      .screenbar{ display:none; }
+      .wrap{ width: 100%; margin:0; padding:0; }
+    }
+
+    .page{
+      page-break-after: always;
+      padding: 0;
+    }
+    .page:last-child{ page-break-after: auto; }
+
+    .page-header{
+      display:flex; justify-content:space-between; align-items:flex-end;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+    }
+    .name{ font-weight:900; font-size:18px; letter-spacing:.2px; }
+    .tag{ font-weight:600; font-size:12px; color:var(--muted); margin-top:4px; }
+    .contact{ text-align:right; font-size:12px; color:var(--muted); }
+    .contact a{ color:inherit; text-decoration:none; }
+    .title{
+      font-size: 22px; font-weight:900; margin: 0 0 10px;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      margin: 0 0 14px;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+    }
+
+    .h3{ font-size:14px; font-weight:800; margin:0 0 8px; }
+    .p{ margin:0; font-size:12.8px; line-height:1.5; color: rgba(11,18,32,.88); }
+    .muted{ color: var(--muted); }
+
+    .img{
+      width:100%; height:auto; display:block;
+      border-radius:12px; border:1px solid var(--line);
+    }
+
+    .pillrow{ display:flex; flex-wrap:wrap; gap:6px; margin: 10px 0 12px; }
+    .pill{
+      font-size:11px; padding:6px 8px; border-radius:999px;
+      border:1px solid var(--line);
+      color: rgba(11,18,32,.82);
+      background:#fff;
+    }
+
+    /* Project page layout (matches your current alignment idea) */
+    .proj-top{
+      display:grid;
+      grid-template-columns: 1fr 2.6in;
+      gap: 16px;
+      align-items:start;
+    }
+    .proj-right{
+      display:grid;
+      gap: 10px;
+    }
+    .proj-split{
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display:grid;
+      grid-template-columns: 2.6in 1fr;
+      gap: 16px;
+      align-items:start;
+    }
+    .label{
+      font-weight:800; font-size:12px; margin: 0 0 6px;
+      color: rgba(11,18,32,.75);
+    }
+
+    /* Timeline print block */
+    .timeline-list{ display:grid; gap:10px; }
+    .t-item{
+      display:grid;
+      grid-template-columns: 54px 1fr;
+      gap: 12px;
+      align-items:center;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+    }
+    .t-logo{
+      width:54px; height:54px; border-radius:12px; border:1px solid var(--line);
+      object-fit:cover;
+      background:#fff;
+    }
+    .t-title{ font-weight:900; font-size:13px; margin:0; }
+    .t-meta{ font-size:12px; color:var(--muted); margin-top:3px; }
+
+    /* Resume page */
+    .resume-img{
+      width:100%;
+      height:auto;
+      display:block;
+      border:1px solid var(--line);
+      border-radius:14px;
+    }
+
+    /* Prevent awkward breaks */
+    .card, .t-item, .proj-top, .proj-split{ break-inside: avoid; page-break-inside: avoid; }
+  </style>
+</head>
+
+<body>
+  <div class="screenbar">
+    <div style="font-weight:800;">Print Portfolio</div>
+    <div style="display:flex; gap:10px;">
+      <button class="btn" onclick="window.location.href='resume.html'">Back</button>
+      <button class="btn primary" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </div>
+
+  <div class="wrap" id="root"></div>
+
+  <script src="projects-data.js"></script>
+
+  <script>
+    const NAME = "Michael Gauthier";
+    const EMAIL = "gauthier.mi@northeastern.edu";
+    const LINKEDIN = "linkedin.com/in/mgauthier1";
+
+    // Pull About copy from your about page (simple: keep it here so print is stable)
+    const ABOUT_TEXT = `Mechanical Engineering student at Northeastern University. I’m currently balancing classes, capstone work, and continued work as a mechanical and construction engineering co-op. I’ve worked on CAD plan sets and documentation, Python automation, ArcGIS workflows, and projects that connect field constraints to clean engineering outputs. I like building tools and systems that make teams faster and more consistent, and I’m always happy to connect.`;
+
+    // Timeline items (use your logos + dates)
+    const TIMELINE = [
+      { logo:"assets/images/WellesleyLogo_web.jpg", title:"Mechanical and Construction Engineering Co op", meta:"Jul 2025 – Present" },
+      { logo:"assets/images/Capstone.png", title:"Automated Microscope Platform for Microfluidic Imaging", meta:"May 2026 – Present" },
+      { logo:"assets/images/RacingClubLogo_web.jpg", title:"NU Electric Racing, Tire Optimization", meta:"2024 – Present" },
+      { logo:"assets/images/HandClubLogo_web.jpg", title:"NU Give a Hand, Prosthetic Hand Design", meta:"2024 – Present" },
+      { logo:"assets/images/BrandyLogo.png", title:"Stock Associate", meta:"Sep 2024 – Present" },
+      { logo:"assets/images/NortheasternLogo.jpg", title:"Mechanical Engineering Student, Dean’s List", meta:"Aug 2023 – Present" },
+      { logo:"assets/images/Madrid1.jpeg", title:"Study Abroad, Madrid", meta:"Aug 2023 – Dec 2023" },
+      { logo:"assets/images/CleanEnergyLogo.png", title:"Clean Energy Exhibit", meta:"Jan 2024 – May 2024" },
+      { logo:"assets/images/CALightDesignsLogo_web.jpg", title:"Founder and Owner, CA Light Designs", meta:"Mar 2021 – Aug 2024" }
+    ];
+
+    function headerBlock(pageTitle){
+      return `
+        <div class="page-header">
+          <div>
+            <div class="name">${NAME}</div>
+            <div class="tag">${pageTitle}</div>
+          </div>
+          <div class="contact">
+            <div><a href="mailto:${EMAIL}">${EMAIL}</a></div>
+            <div>${LINKEDIN}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function escapeHtml(str){
+      return (str || "").replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[m]));
+    }
+
+    function isVideo(src){
+      const base = (src||"").split("?")[0].toLowerCase();
+      return base.endsWith(".mp4");
+    }
+
+    function mediaBox(src, alt){
+      if(!src) return "";
+      if(isVideo(src)){
+        return `
+          <video class="img" src="${src}" autoplay muted loop playsinline preload="metadata"></video>
+        `;
+      }
+      return `<img class="img" src="${src}" alt="${escapeHtml(alt)}">`;
+    }
+
+    function pillRow(skillsStr){
+      const pills = (skillsStr||"")
+        .split(",").map(s=>s.trim()).filter(Boolean).slice(0,12)
+        .map(s=>`<span class="pill">${escapeHtml(s)}</span>`).join("");
+      return `<div class="pillrow">${pills}</div>`;
+    }
+
+    function projectPage(p){
+      const imgs = Array.isArray(p.images) ? p.images : [];
+      const right1 = imgs[0] || "";
+      const right2 = (imgs.length===3) ? (imgs[2] || "") : "";
+      const left1  = imgs[1] || "";
+      const extras = (imgs.length>=4) ? imgs.slice(2) : [];
+
+      return `
+        <div class="page">
+          ${headerBlock("Project")}
+          <div class="title">${escapeHtml(p.title)}</div>
+          ${pillRow(p.skills || "")}
+
+          <div class="proj-top">
+            <div>
+              <div class="label">${escapeHtml(p.contextLabel || "Context")}</div>
+              <div class="p">${p.context || ""}</div>
+
+              <div style="height:10px;"></div>
+
+              <div class="label">${escapeHtml(p.howLabel || "How")}</div>
+              <div class="p">${p.how || ""}</div>
+            </div>
+
+            <div class="proj-right">
+              ${mediaBox(right1, p.title)}
+              ${right2 ? mediaBox(right2, p.title) : ""}
+            </div>
+          </div>
+
+          <div class="proj-split">
+            <div>${mediaBox(left1, p.title)}</div>
+            <div>
+              <div class="label">${escapeHtml(p.resultsLabel || "Results")}</div>
+              <div class="p">${p.results || ""}</div>
+
+              ${extras.length ? `
+                <div style="height:12px;"></div>
+                <div class="label">More visuals</div>
+                <div class="two-col" style="gap:12px;">
+                  ${extras.map(src=>`<div>${mediaBox(src, p.title)}</div>`).join("")}
+                </div>
+              ` : ""}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function projectSubsectionPages(p){
+      return (p.subsections || []).map(s => {
+        const imgs = Array.isArray(s.images) ? s.images : [];
+        const right1 = imgs[0] || "";
+        const right2 = (imgs.length===3) ? (imgs[2] || "") : "";
+        const left1  = imgs[1] || "";
+        const extras = (imgs.length>=4) ? imgs.slice(2) : [];
+
+        return `
+          <div class="page">
+            ${headerBlock("Project")}
+            <div class="title">${escapeHtml(p.title)}</div>
+            <div class="sub">${escapeHtml(s.title)}</div>
+            ${pillRow(s.skills || "")}
+
+            <div class="proj-top">
+              <div>
+                <div class="label">${escapeHtml(s.contextLabel || "Context")}</div>
+                <div class="p">${s.context || ""}</div>
+
+                <div style="height:10px;"></div>
+
+                <div class="label">${escapeHtml(s.howLabel || "How")}</div>
+                <div class="p">${s.how || ""}</div>
+              </div>
+
+              <div class="proj-right">
+                ${mediaBox(right1, s.title)}
+                ${right2 ? mediaBox(right2, s.title) : ""}
+              </div>
+            </div>
+
+            <div class="proj-split">
+              <div>${mediaBox(left1, s.title)}</div>
+              <div>
+                <div class="label">${escapeHtml(s.resultsLabel || "Results")}</div>
+                <div class="p">${s.results || ""}</div>
+
+                ${extras.length ? `
+                  <div style="height:12px;"></div>
+                  <div class="label">More visuals</div>
+                  <div class="two-col" style="gap:12px;">
+                    ${extras.map(src=>`<div>${mediaBox(src, s.title)}</div>`).join("")}
+                  </div>
+                ` : ""}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    const projects = (window.PROJECTS || []).slice().sort((a,b)=>a.number-b.number);
+
+    const root = document.getElementById("root");
+    root.innerHTML = `
+      <!-- Cover -->
+      <div class="page">
+        ${headerBlock("Engineering Portfolio")}
+        <div class="title">Engineering Portfolio</div>
+        <p class="sub">${ABOUT_TEXT}</p>
+
+        <div class="card">
+          <div class="h3">Quick links</div>
+          <p class="p">
+            Email: <a href="mailto:${EMAIL}">${EMAIL}</a><br>
+            LinkedIn: ${LINKEDIN}<br>
+            Website: michaelcgauthier.github.io
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="page">
+        ${headerBlock("Timeline")}
+        <div class="title">Timeline</div>
+        <p class="sub">A quick snapshot of roles and projects. Full details follow in the project pages.</p>
+
+        <div class="timeline-list">
+          ${TIMELINE.map(t => `
+            <div class="t-item">
+              <img class="t-logo" src="${t.logo}" alt="">
+              <div>
+                <div class="t-title">${escapeHtml(t.title)}</div>
+                <div class="t-meta">${escapeHtml(t.meta)}</div>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+
+      <!-- Projects -->
+      ${projects.map(p => {
+        if (p.subsections && p.subsections.length) return projectSubsectionPages(p);
+        return projectPage(p);
+      }).join("")}
+
+      <!-- Resume -->
+      <div class="page">
+        ${headerBlock("Resume")}
+        <div class="title">Resume</div>
+        <img class="resume-img" src="assets/images/ResumeImage_web.jpg" alt="Resume">
+      </div>
+
+      <!-- About -->
+      <div class="page">
+        ${headerBlock("About")}
+        <div class="title">About</div>
+        <p class="sub">${ABOUT_TEXT}</p>
+        <div class="card">
+          <div class="h3">Contact</div>
+          <p class="p">
+            <a href="mailto:${EMAIL}">${EMAIL}</a><br>
+            ${LINKEDIN}
+          </p>
+        </div>
+      </div>
+    `;
+  </script>
+</body>
+</html>
