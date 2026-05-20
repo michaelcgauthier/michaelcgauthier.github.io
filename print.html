@@ -4,18 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Print Portfolio | Michael Gauthier</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- PDF download library (client-side). No print dialog required. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <style>
     :root{
       --ink:#0b1220;
       --muted: rgba(11,18,32,.72);
       --line: rgba(11,18,32,.14);
+      --card:#ffffff;
+      --bg:#ffffff;
     }
 
     html,body{ margin:0; padding:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background:#fff; }
+    a{ color: inherit; }
 
     .screenbar{
       position: sticky; top:0; z-index:999;
@@ -26,7 +33,7 @@
     .btn{
       appearance:none; border:1px solid var(--line); background:#fff;
       padding:10px 12px; border-radius:10px; cursor:pointer;
-      font-weight:600; font-size:14px;
+      font-weight:700; font-size:14px;
     }
     .btn.primary{
       background: #0b1220; color:#fff; border-color:#0b1220;
@@ -34,12 +41,15 @@
 
     .wrap{ width: min(980px, calc(100% - 48px)); margin: 0 auto; padding: 24px 0; }
 
-    @page { size: Letter; margin: 0.6in; }
-
+    /* When printing via browser print (still supported). */
+    @page { size: Letter; margin: 0.55in; }
     @media print{
       .screenbar{ display:none; }
       .wrap{ width: 100%; margin:0; padding:0; }
     }
+
+    /* The element we convert to PDF */
+    #pdfRoot{ background:#fff; }
 
     .page{
       page-break-after: always;
@@ -47,181 +57,172 @@
     }
     .page:last-child{ page-break-after: auto; }
 
+    /* Header on every page except cover */
     .page-top{
       display:flex;
       align-items:center;
       justify-content:center;
       border-bottom: 1px solid var(--line);
       padding-bottom: 10px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
     .page-top .center-title{
       font-weight:900;
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: .2px;
       color: rgba(11,18,32,.86);
-      text-transform: none;
     }
 
+    /* Footer on every page */
     .page-bottom{
-      margin-top: 16px;
+      margin-top: 14px;
       padding-top: 10px;
       border-top: 1px solid var(--line);
       display:flex;
       justify-content:space-between;
       gap:12px;
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--muted);
     }
     .page-bottom a{ color: inherit; text-decoration:none; }
+    .page-bottom a:hover{ text-decoration: underline; }
 
     .title{
-      font-size: 22px; font-weight:900; margin: 0 0 10px;
+      font-size: 20px; font-weight:900; margin: 0 0 8px;
     }
     .sub{
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12.2px;
       line-height: 1.45;
-      margin: 0 0 14px;
+      margin: 0 0 10px;
     }
 
     .card{
       border:1px solid var(--line);
       border-radius:14px;
-      padding:14px;
+      padding:12px;
+      background:#fff;
+    }
+
+    .label{
+      font-weight:800; font-size:11.5px; margin: 0 0 6px;
+      color: rgba(11,18,32,.75);
+    }
+    .p{ margin:0; font-size:12.0px; line-height:1.48; color: rgba(11,18,32,.90); }
+
+    .pillrow{ display:flex; flex-wrap:wrap; gap:6px; margin: 8px 0 10px; }
+    .pill{
+      font-size:10.5px; padding:5px 7px; border-radius:999px;
+      border:1px solid var(--line);
+      color: rgba(11,18,32,.82);
       background:#fff;
     }
 
     .img{
       width:100%; height:auto; display:block;
       border-radius:12px; border:1px solid var(--line);
-    }
-
-    .pillrow{ display:flex; flex-wrap:wrap; gap:6px; margin: 10px 0 12px; }
-    .pill{
-      font-size:11px; padding:6px 8px; border-radius:999px;
-      border:1px solid var(--line);
-      color: rgba(11,18,32,.82);
       background:#fff;
     }
 
-    .label{
-      font-weight:800; font-size:12px; margin: 0 0 6px;
-      color: rgba(11,18,32,.75);
-    }
-    .p{ margin:0; font-size:12.8px; line-height:1.5; color: rgba(11,18,32,.88); }
-    .muted{ color: var(--muted); }
+    .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-    .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-
-    .proj-top{
-      display:grid;
-      grid-template-columns: 1fr 2.6in;
-      gap: 16px;
-      align-items:start;
-    }
-    .proj-right{ display:grid; gap: 10px; }
-
-    .proj-split{
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-      display:grid;
-      grid-template-columns: 2.6in 1fr;
-      gap: 16px;
-      align-items:start;
-    }
-
-    .timeline-list{ display:grid; gap:10px; }
-    .t-item{
-      display:grid;
-      grid-template-columns: 54px 1fr;
-      gap: 12px;
-      align-items:center;
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:10px 12px;
-      background:#fff;
-    }
-    .t-logo{
-      width:54px; height:54px; border-radius:12px; border:1px solid var(--line);
-      object-fit:cover;
-      background:#fff;
-    }
-    .t-title{ font-weight:900; font-size:13px; margin:0; }
-    .t-meta{ font-size:12px; color:var(--muted); margin-top:3px; }
-
-    .resume-img{
-      width:100%;
-      height:auto;
-      display:block;
-      border:1px solid var(--line);
-      border-radius:14px;
-    }
-
+    /* ===== COVER PAGE ===== */
     .cover{
       position: relative;
       overflow:hidden;
       border-radius: 18px;
       border:1px solid var(--line);
       min-height: 9.6in;
+      background:#0b1220;
     }
     .cover-bg{
       position:absolute; inset:0;
       background-image:url('assets/images/HomeBackground.jpg');
       background-size:cover;
       background-position:center;
-      filter: saturate(1.05);
+      opacity: 1;
+      filter: saturate(1.02);
     }
-    .cover-overlay{
+    .cover-fade{
       position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(11,18,32,.55) 0%, rgba(11,18,32,.70) 55%, rgba(11,18,32,.78) 100%);
+      background: linear-gradient(180deg,
+        rgba(11,18,32,.55) 0%,
+        rgba(11,18,32,.62) 35%,
+        rgba(11,18,32,.74) 70%,
+        rgba(11,18,32,.82) 100%);
     }
+
     .cover-content{
       position:relative;
       padding: 34px;
       color:#fff;
       display:grid;
       grid-template-columns: 260px 1fr;
-      gap: 22px;
-      align-items:center;
+      gap: 18px;
+      align-items:start;
     }
-    .cover-title{
+
+    .cover-top{
       grid-column: 1 / -1;
+      padding-top: 6px;
+      padding-bottom: 10px;
+      min-height: 2.6in; /* top 1/3-ish */
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
       text-align:center;
-      font-weight:900;
-      letter-spacing:.3px;
-      font-size: 34px;
-      margin: 6px 0 14px;
     }
+
+    .cover-name{
+      font-weight:900;
+      letter-spacing:.2px;
+      font-size: 44px;
+      line-height: 1.05;
+      margin: 0;
+    }
+    .cover-subtitle{
+      font-weight:900;
+      letter-spacing:.2px;
+      font-size: 34px;
+      line-height: 1.05;
+      margin: 6px 0 0;
+    }
+
+    .cover-basics{
+      grid-column: 1 / -1;
+      margin-top: 6px;
+      color: rgba(255,255,255,.92);
+      font-size: 13px;
+      font-weight: 700;
+      text-align:center;
+    }
+
     .cover-headshot{
       width:100%;
-      height: 260px;
+      height: 250px;
       border-radius: 16px;
       object-fit: cover;
       border: 1px solid rgba(255,255,255,.22);
       background: rgba(255,255,255,.06);
     }
+
     .cover-block{
       background: rgba(255,255,255,.08);
       border: 1px solid rgba(255,255,255,.18);
       border-radius: 16px;
-      padding: 16px;
+      padding: 14px;
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
     }
-    .cover-basics{
-      font-weight:700;
-      line-height: 1.45;
-      color: rgba(255,255,255,.92);
-      font-size: 13.5px;
-    }
+
     .cover-blurb{
-      margin-top: 10px;
-      color: rgba(255,255,255,.90);
-      font-size: 13.5px;
+      color: rgba(255,255,255,.92);
+      font-size: 13px;
       line-height: 1.55;
+      margin: 0;
     }
+
     .cover-links{
       margin-top: 12px;
       color: rgba(255,255,255,.92);
@@ -232,21 +233,110 @@
     .cover-links a{ color: rgba(255,255,255,.92); text-decoration:none; }
     .cover-links a:hover{ text-decoration: underline; }
 
+    /* ===== TIMELINE PAGE (home-style, compact) ===== */
+    .timeline-wrap{ position: relative; padding: 4px 0 0; }
+    .timeline-line{
+      position:absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: rgba(11,18,32,.18);
+      transform: translateX(-50%);
+      border-radius: 4px;
+    }
+    .t-row{
+      position: relative;
+      display:flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      margin: 8px 0;  /* tighter spacing */
+    }
+    .t-row.left{ justify-content:flex-start; }
+    .t-row.right{ justify-content:flex-end; }
+
+    .t-card{
+      width: 46%;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background:#fff;
+      padding: 10px 12px;
+      display:grid;
+      grid-template-columns: 48px 1fr;
+      gap: 10px;
+      align-items:center;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .t-logo{
+      width:48px; height:48px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      object-fit: cover;
+      background:#fff;
+    }
+    .t-title{ font-weight:900; font-size:12.6px; margin:0; line-height:1.2; }
+    .t-company{ font-size:11.3px; color: var(--muted); margin-top:3px; }
+    .t-date{ font-size:11.3px; color: var(--muted); margin-top:3px; }
+
+    .t-dot{
+      position:absolute;
+      left: 50%;
+      top: 50%;
+      width: 12px; height: 12px;
+      background:#fff;
+      border: 2px solid rgba(11,18,32,.25);
+      transform: translate(-50%,-50%);
+      border-radius: 50%;
+    }
+
+    /* ===== PROJECT PAGES (compact, 1 page) ===== */
+    .proj-top{
+      display:grid;
+      grid-template-columns: 1fr 2.3in;
+      gap: 14px;
+      align-items:start;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .proj-right{ display:grid; gap: 10px; }
+
+    .proj-split{
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      display:grid;
+      grid-template-columns: 2.3in 1fr;
+      gap: 14px;
+      align-items:start;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* ===== Resume & About compact ===== */
+    .resume-img{
+      width:100%;
+      height:auto;
+      display:block;
+      border:1px solid var(--line);
+      border-radius:14px;
+    }
+
     .break-avoid{ break-inside: avoid; page-break-inside: avoid; }
-    .card, .t-item, .proj-top, .proj-split{ break-inside: avoid; page-break-inside: avoid; }
   </style>
 </head>
 
 <body>
   <div class="screenbar">
-    <div style="font-weight:800;">Print Portfolio</div>
+    <div style="font-weight:800;">Portfolio PDF</div>
     <div style="display:flex; gap:10px;">
       <button class="btn" onclick="window.location.href='resume.html'">Back</button>
-      <button class="btn primary" onclick="window.print()">Print or Save PDF</button>
+      <button class="btn primary" id="downloadBtn">Download PDF</button>
+      <button class="btn" onclick="window.print()">Print</button>
     </div>
   </div>
 
-  <div class="wrap" id="root"></div>
+  <div class="wrap" id="pdfRoot"></div>
 
   <script src="projects-data.js"></script>
 
@@ -254,9 +344,34 @@
     const NAME_LINE = "Michael Gauthier Engineering Portfolio";
     const EMAIL = "gauthier.mi@northeastern.edu";
     const LINKEDIN_URL = "https://www.linkedin.com/in/mgauthier1";
+    const WEBSITE = "https://michaelcgauthier.github.io/";
 
     const BASICS = "Northeastern University Mechanical Engineering Student, Class of 2027. Minor in Entrepreneurial Startups & Business.";
-    const HOME_BLURB = "Hi, I’m Michael! I’m a fourth-year Mechanical Engineering student at Northeastern University with a minor in Entrepreneurial Startups & Business. I’m currently balancing classes, my capstone project, and continued work as a mechanical/construction engineering co-op, where I’ve been creating AutoCAD plan sets, survey-based design drawings, Python automation tools, and ArcGIS inspection workflows. I’ve always been the kind of person who gets very invested once I start working on something, whether that was running my custom LED sign business in high school or creating tools at work that made my team’s day easier. Even this website I programmed and designed myself through JavaScript, CSS, and HTML.";
+
+    const HOME_BLURB = "Hi, I’m Michael! I’m a fourth-year Mechanical Engineering student at Northeastern University with a minor in Entrepreneurial Startups and Business. I’m currently balancing classes, my capstone project, and continued work as a mechanical and construction engineering co op. My work has focused on AutoCAD plan sets, survey-based design drawings, Python automation tools, and ArcGIS inspection workflows.";
+
+    const TIMELINE = [
+      { logo:"assets/images/WellesleyLogo_web.jpg", title:"Mechanical and Construction Engineering Co op", company:"Engineering Division", date:"Jul 2025 – Present" },
+      { logo:"assets/images/Capstone.png", title:"Automated Microscope Platform for Microfluidic Imaging", company:"Capstone Project", date:"May 2026 – Present" },
+      { logo:"assets/images/HandClubLogo_web.jpg", title:"Prosthetic Hand Design Team", company:"NU Give a Hand", date:"2024 – Present" },
+      { logo:"assets/images/RacingClubLogo_web.jpg", title:"Tire Optimization Team", company:"NU Electric Racing", date:"2024 – Present" },
+      { logo:"assets/images/BrandyLogo.png", title:"Stock Associate", company:"Brandy Melville", date:"Sep 2024 – Present" },
+      { logo:"assets/images/NortheasternLogo.jpg", title:"Mechanical Engineering Student, Dean’s List", company:"Northeastern University", date:"Aug 2023 – Present" },
+      { logo:"assets/images/Madrid1.jpeg", title:"Study Abroad", company:"Madrid, Spain", date:"Aug 2023 – Dec 2023" },
+      { logo:"assets/images/CleanEnergyLogo.png", title:"Clean Energy Exhibit", company:"Cornerstone of Engineering", date:"Jan 2024 – May 2024" },
+      { logo:"assets/images/CALightDesignsLogo_web.jpg", title:"Founder and Owner", company:"CA Light Designs", date:"Mar 2021 – Aug 2024" },
+      { logo:"assets/images/EntrepreneurshipClubLogo_web.jpg", title:"Entrepreneurship Club President", company:"Westfield High School", date:"Sep 2021 – Jun 2023" },
+      { logo:"assets/images/CodingWithACauseClubLogo_web.jpg", title:"Coding With a Cause President", company:"Westfield High School", date:"Sep 2022 – Jun 2023" },
+      { logo:"assets/images/WestfieldLogo_web.jpg", title:"Lifeguard and Swim Instructor", company:"Westfield Memorial Pool", date:"Jul 2020 – Aug 2023" },
+      { logo:"assets/images/westfieldsoccer_web.jpg", title:"Soccer Referee", company:"Westfield Soccer Association", date:"Sep 2018 – May 2020" }
+    ];
+
+    const ABOUT_ITEMS = [
+      { img:"assets/images/CodingWithACauseClubLogo_web.jpg", title:"Coding With a Cause President", date:"Sep 2022 – Jun 2023", text:"Led outreach for my high school computer science club and created a program where we visited middle schools to teach students how to code and build simple websites." },
+      { img:"assets/images/DanaFarberLogo_web.jpg", title:"Dana Farber Fundraiser and Running", date:"Fall 2025", text:"Organized a fundraiser by coordinating a yoga class and instructors and raised $1,000. I’m also training for the Boston Half Marathon." },
+      { img:"assets/images/EntrepreneurshipClubLogo_web.jpg", title:"Entrepreneurship Club President", date:"Sep 2021 – Jun 2023", text:"Co founded and ran a weekly entrepreneurship club and built lesson plans and activities to help students start small businesses." },
+      { img:"assets/images/CansForACauseLogo_web.jpg", title:"Cans for a Cause Club President", date:"Sep 2022 – Jun 2023", text:"Organized student participation for school drives and coordinated club events focused on local community support." }
+    ];
 
     function pageHeader(){
       return `
@@ -270,8 +385,8 @@
       return `
         <div class="page-bottom">
           <div><a href="mailto:${EMAIL}">${EMAIL}</a></div>
-          <div><a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a></div>
-          <div>michaelcgauthier.github.io</div>
+          <div><a href="${LINKEDIN_URL}" target="_blank" rel="noopener">${LINKEDIN_URL}</a></div>
+          <div><a href="${WEBSITE}" target="_blank" rel="noopener">${WEBSITE}</a></div>
         </div>
       `;
     }
@@ -312,7 +427,7 @@
       return `
         <div class="page">
           ${pageHeader()}
-          <div class="title">${escapeHtml(p.title)}</div>
+          <div class="title">${p.number}. ${escapeHtml(p.title)}</div>
           ${pillRow(p.skills || "")}
 
           <div class="proj-top">
@@ -320,7 +435,7 @@
               <div class="label">${escapeHtml(p.contextLabel || "What / Context")}</div>
               <div class="p">${p.context || ""}</div>
 
-              <div style="height:10px;"></div>
+              <div style="height:8px;"></div>
 
               <div class="label">${escapeHtml(p.howLabel || "How / Tools")}</div>
               <div class="p">${p.how || ""}</div>
@@ -339,9 +454,9 @@
               <div class="p">${p.results || ""}</div>
 
               ${extras.length ? `
-                <div style="height:12px;"></div>
+                <div style="height:10px;"></div>
                 <div class="label">More visuals</div>
-                <div class="two-col" style="gap:12px;">
+                <div class="two-col">
                   ${extras.map(src=>`<div>${mediaBox(src, p.title)}</div>`).join("")}
                 </div>
               ` : ""}
@@ -364,7 +479,7 @@
         return `
           <div class="page">
             ${pageHeader()}
-            <div class="title">${escapeHtml(p.title)}</div>
+            <div class="title">${p.number}. ${escapeHtml(p.title)}</div>
             <p class="sub">${escapeHtml(s.title)}</p>
             ${pillRow(s.skills || "")}
 
@@ -373,7 +488,7 @@
                 <div class="label">${escapeHtml(s.contextLabel || "What / Context")}</div>
                 <div class="p">${s.context || ""}</div>
 
-                <div style="height:10px;"></div>
+                <div style="height:8px;"></div>
 
                 <div class="label">${escapeHtml(s.howLabel || "How / Tools")}</div>
                 <div class="p">${s.how || ""}</div>
@@ -392,9 +507,9 @@
                 <div class="p">${s.results || ""}</div>
 
                 ${extras.length ? `
-                  <div style="height:12px;"></div>
+                  <div style="height:10px;"></div>
                   <div class="label">More visuals</div>
-                  <div class="two-col" style="gap:12px;">
+                  <div class="two-col">
                     ${extras.map(src=>`<div>${mediaBox(src, s.title)}</div>`).join("")}
                   </div>
                 ` : ""}
@@ -409,51 +524,54 @@
 
     const projects = (window.PROJECTS || []).slice().sort((a,b)=>a.number-b.number);
 
-    const TIMELINE = [
-      { logo:"assets/images/WellesleyLogo_web.jpg", title:"Mechanical and Construction Engineering Co op", meta:"Jul 2025 – Present" },
-      { logo:"assets/images/Capstone.png", title:"Automated Microscope Platform for Microfluidic Imaging", meta:"May 2026 – Present" },
-      { logo:"assets/images/HandClubLogo_web.jpg", title:"Prosthetic Hand Design Team, NU Give a Hand", meta:"Jan 2025 – Present" },
-      { logo:"assets/images/RacingClubLogo_web.jpg", title:"Tire Optimization Team For Formula Style Race Car, NU Electric Racing", meta:"Sep 2024 – Present" },
-      { logo:"assets/images/BrandyLogo.png", title:"Stock Associate and Assistant, Brandy Melville", meta:"Sep 2024 – Jul 2025" },
-      { logo:"assets/images/CleanEnergyLogo.png", title:"Educational Clean Energy Exhibit for Boston Middle School Students", meta:"Jan 2024 – May 2024" },
-      { logo:"assets/images/Madrid1.jpeg", title:"Study Abroad in Europe, Madrid Spain", meta:"Aug 2023 – Dec 2023" },
-      { logo:"assets/images/NortheasternLogo.jpg", title:"Fourth Year Mechanical Engineering Student, Northeastern University", meta:"Sep 2023 – Present" },
-      { logo:"assets/images/CALightDesignsLogo_web.jpg", title:"Business Founder and Owner, CA Light Designs", meta:"Mar 2021 – Aug 2024" },
-      { logo:"assets/images/EntrepreneurshipClubLogo_web.jpg", title:"Small Business Club President and Founder", meta:"Sep 2021 – Jun 2023" },
-      { logo:"assets/images/CodingWithACauseClubLogo_web.jpg", title:"Computer Science Club President", meta:"Sep 2022 – Jun 2023" },
-      { logo:"assets/images/WestfieldLogo_web.jpg", title:"Lifeguard and Swim Instructor", meta:"Jul 2020 – Aug 2023" },
-      { logo:"assets/images/westfieldsoccer_web.jpg", title:"Head Soccer Referee, Westfield Soccer Association", meta:"Sep 2018 – May 2020" }
-    ];
+    function renderTimeline(){
+      return `
+        <div class="timeline-wrap">
+          <div class="timeline-line"></div>
+          ${TIMELINE.map((t, i) => {
+            const side = (i % 2 === 0) ? "left" : "right";
+            return `
+              <div class="t-row ${side}">
+                <div class="t-dot"></div>
+                <div class="t-card">
+                  <img class="t-logo" src="${t.logo}" alt="">
+                  <div>
+                    <div class="t-title">${escapeHtml(t.title)}</div>
+                    <div class="t-company">${escapeHtml(t.company)}</div>
+                    <div class="t-date">${escapeHtml(t.date)}</div>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
 
-    const ABOUT_ITEMS = [
-      { img:"assets/images/CodingWithACauseClubLogo_web.jpg", title:"Coding With a Cause President", date:"Sep 2022 – Jun 2023", text:"Led outreach for my high school computer science club and created a program where we visited middle schools throughout the year to teach students how to code and build simple websites. We planned the lessons and ran the sessions almost monthly, and the kids ended up showing off their sites at the end." },
-      { img:"assets/images/DanaFarberLogo_web.jpg", title:"Dana Farber Fundraiser and Running", date:"Fall 2025", text:"Organized a fundraiser for Dana Farber Cancer Institute by leading a yoga class, finding instructors, and coordinating the event. We raised $1,000. I’m also training for the Boston Half Marathon, and running has become one of the ways I stay consistent and push myself outside of engineering." },
-      { img:"assets/images/EntrepreneurshipClubLogo_web.jpg", title:"Entrepreneurship Club President", date:"Sep 2021 – Jun 2023", text:"Co founded and ran my high school entrepreneurship club for two years. We made weekly lesson plans and activities and taught students how to start a small business, based on what I learned from running my own business." },
-      { img:"assets/images/CansForACauseLogo_web.jpg", title:"Cans for a Cause Club President", date:"Sep 2022 – Jun 2023", text:"Led a school community service effort focused on organizing drives, coordinating student participation, and keeping the club consistent week to week. It was a very rewarding experience getting to help my community and get others to help as well." },
-      { img:"assets/images/CommunityServiceLogo_web.png", title:"Community Service Club", date:"2019 – 2023", text:"Took part in community service events through school clubs and group outreach programs. I enjoyed getting to help my community and see how my efforts can help someone else in need." },
-      { img:"assets/images/Madrid1.jpeg", title:"Study Abroad Madrid", date:"Fall 2023", text:"Studied abroad in Madrid during my first semester of college. I got to travel around Spain and Europe, learn different perspectives, and get way more comfortable speaking Spanish. It was cool to get a different perspective on how engineering classes are taught in Madrid versus the US. I learned a lot and loved the experience overall." }
-    ];
-
-    const root = document.getElementById("root");
+    const root = document.getElementById("pdfRoot");
     root.innerHTML = `
       <!-- COVER PAGE -->
       <div class="page">
         <div class="cover break-avoid">
           <div class="cover-bg"></div>
-          <div class="cover-overlay"></div>
+          <div class="cover-fade"></div>
 
           <div class="cover-content">
-            <div class="cover-title">${NAME_LINE}</div>
+            <div class="cover-top">
+              <div class="cover-name">Michael Gauthier</div>
+              <div class="cover-subtitle">Engineering Portfolio</div>
+              <div class="cover-basics">${escapeHtml(BASICS)}</div>
+            </div>
 
             <img class="cover-headshot" src="assets/images/headshot2.png" alt="Headshot">
 
             <div class="cover-block">
-              <div class="cover-basics">${escapeHtml(BASICS)}</div>
-              <div class="cover-blurb">${escapeHtml(HOME_BLURB)}</div>
+              <p class="cover-blurb">${escapeHtml(HOME_BLURB)}</p>
+
               <div class="cover-links">
-                <div><a href="mailto:${EMAIL}">${EMAIL}</a></div>
-                <div><a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a></div>
-                <div>michaelcgauthier.github.io</div>
+                <div>Email: <a href="mailto:${EMAIL}">${EMAIL}</a></div>
+                <div>LinkedIn: <a href="${LINKEDIN_URL}" target="_blank" rel="noopener">${LINKEDIN_URL}</a></div>
+                <div>Website: <a href="${WEBSITE}" target="_blank" rel="noopener">${WEBSITE}</a></div>
               </div>
             </div>
           </div>
@@ -464,19 +582,9 @@
       <div class="page">
         ${pageHeader()}
         <div class="title">Timeline</div>
-        <p class="sub">A full snapshot of experience and involvement. Project details follow.</p>
+        <p class="sub">A compact snapshot of experience and involvement.</p>
 
-        <div class="timeline-list">
-          ${TIMELINE.map(t => `
-            <div class="t-item">
-              <img class="t-logo" src="${t.logo}" alt="">
-              <div>
-                <div class="t-title">${escapeHtml(t.title)}</div>
-                <div class="t-meta">${escapeHtml(t.meta)}</div>
-              </div>
-            </div>
-          `).join("")}
-        </div>
+        ${renderTimeline()}
 
         ${pageFooter()}
       </div>
@@ -491,7 +599,7 @@
       <div class="page">
         ${pageHeader()}
         <div class="title">Resume</div>
-        <img class="resume-img" src="assets/images/ResumeImage.png" alt="Michael Gauthier Resume">
+        <img class="resume-img" src="assets/images/ResumeImage_web.jpg" alt="Michael Gauthier Resume">
         ${pageFooter()}
       </div>
 
@@ -500,35 +608,25 @@
         ${pageHeader()}
         <div class="title">About</div>
 
-        <div class="two-col break-avoid" style="grid-template-columns: 260px 1fr; align-items:start;">
-          <img class="img" src="assets/images/heasshot9.jpg" alt="Headshot">
+        <div class="two-col break-avoid" style="grid-template-columns: 220px 1fr; align-items:start;">
+          <img class="img" src="assets/images/headshot2.png" alt="Headshot">
           <div class="card">
-            <div class="label">About me</div>
-            <div class="p muted" style="margin-top:8px;">
-              I’m a fourth-year Mechanical Engineering student at Northeastern University, graduating in May 2027, with a minor in Entrepreneurial Startups & Business. I’ve wanted to be an engineer for a long time, and a big part of that started with the custom LED sign business I founded in 2021. I designed the signs, engraved and assembled the products, built the website, and worked with customers. I loved the whole experience. It was so rewarding to see people enjoy the products I created, and it is the main reason why I decided to go into engineering.
+            <div class="label">A little more about me</div>
+            <div class="p" style="margin-top:8px;">
+              Outside of classes and co op work, I care a lot about staying active and building things that have a clear purpose. I’m training for the Boston Half Marathon, and I like running, skiing, swimming, and being outside. I studied abroad in Madrid which helped me become more comfortable speaking Spanish and gave me the chance to travel and learn from different perspectives.
             </div>
-
-            <div class="p muted" style="margin-top:10px;">
-              At Northeastern, I’ve been able to keep building on that through classes, lab work, design projects, and my co-op. I completed my first co-op with the Town of Wellesley Engineering Division as a Mechanical/Construction Engineering Co-op, and I’m still working there part-time during the school year. My work has included AutoCAD design work, creating plan sets, taking field measurements, writing Python automation tools, digitizing office workflows, and designing ArcGIS inspection workflows. I’ve really enjoyed both collecting data and then turning it into drawings, systems, and tools that the other engineers can use.
-            </div>
-
-            <div class="p muted" style="margin-top:10px;">
-              Outside of engineering, I’m happiest when I’m doing something active. I’m currently training for the Boston Half Marathon, since I love to run, along with skiing and swimming. I like music, hiking, cars, and spending time outside when the Boston weather is finally nice out. I studied abroad in Madrid during my first semester of college, which helped me become more comfortable speaking Spanish and gave me a chance to travel, meet new people, and see more of the world early in college. As I finish my senior year and work on my capstone project, I’m excited to keep learning, contribute to a great engineering team, and keep doing work I’m proud of.
-            </div>
-
-            <div class="p muted" style="margin-top:12px;">
-              Feel free to contact me or connect with me on LinkedIn.
+            <div class="p" style="margin-top:10px;">
+              I’m always happy to connect. Feel free to reach out anytime.
             </div>
           </div>
         </div>
 
-        <div style="height:14px;"></div>
+        <div style="height:10px;"></div>
 
-        <div class="card">
-          <div class="label" style="font-size:14px;">Leadership and Volunteer Work</div>
-          <div class="p muted" style="margin-top:8px;">A few things I’ve led or been involved in outside of classes and co-op work.</div>
+        <div class="card break-avoid">
+          <div class="label" style="font-size:13px;">Leadership and Volunteer Work</div>
 
-          <div style="margin-top:12px; display:grid; gap:10px;">
+          <div style="margin-top:10px; display:grid; gap:8px;">
             ${ABOUT_ITEMS.map(item => `
               <div class="t-item">
                 <img class="t-logo" src="${item.img}" alt="">
@@ -540,11 +638,36 @@
               </div>
             `).join("")}
           </div>
+
+          <div style="margin-top:12px;" class="p muted">
+            Feel free to contact me or connect with me on LinkedIn. I’m always open to talking and learning more.
+            <div style="margin-top:8px;">
+              Email: <a href="mailto:${EMAIL}">${EMAIL}</a><br>
+              LinkedIn: <a href="${LINKEDIN_URL}" target="_blank" rel="noopener">${LINKEDIN_URL}</a><br>
+              Website: <a href="${WEBSITE}" target="_blank" rel="noopener">${WEBSITE}</a>
+            </div>
+          </div>
         </div>
 
         ${pageFooter()}
       </div>
     `;
+
+    // Direct PDF download (no print dialog)
+    document.getElementById("downloadBtn").addEventListener("click", async () => {
+      const el = document.getElementById("pdfRoot");
+
+      const opt = {
+        margin:       0,
+        filename:     "Michael_Gauthier_Engineering_Portfolio.pdf",
+        image:        { type: "jpeg", quality: 0.96 },
+        html2canvas:  { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
+        jsPDF:        { unit: "in", format: "letter", orientation: "portrait" },
+        pagebreak:    { mode: ["css", "legacy"] }
+      };
+
+      await html2pdf().set(opt).from(el).save();
+    });
   </script>
 </body>
 </html>
