@@ -348,7 +348,7 @@
     .project-page{
       justify-content:flex-start;
       align-items:stretch;
-      padding:.28in .38in .30in;
+      padding:.27in .37in .29in;
       background:linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
     }
 
@@ -440,7 +440,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:8px;
+      padding:7px;
     }
 
     .project-img-box img{
@@ -455,7 +455,7 @@
 
     .project-main{
       display:grid;
-      grid-template-columns:1fr 3.55in;
+      grid-template-columns:1fr 3.70in;
       gap:18px;
       align-items:stretch;
       width:100%;
@@ -463,7 +463,7 @@
 
     .project-lower{
       display:grid;
-      grid-template-columns:3.55in 1fr;
+      grid-template-columns:3.70in 1fr;
       gap:18px;
       align-items:stretch;
       margin-top:14px;
@@ -472,96 +472,64 @@
 
     .project-main .project-img-box,
     .project-lower .project-img-box{
-      min-height:2.22in;
-      max-height:2.42in;
+      min-height:2.34in;
+      max-height:2.55in;
       height:100%;
     }
 
     .project-main .project-img-box img,
     .project-lower .project-img-box img{
-      max-height:2.25in;
+      max-height:2.40in;
     }
 
-    .multi-project-body{
-      width:100%;
+    .project-main-stacked{
       display:grid;
-      grid-template-columns:3.20in 1fr;
-      gap:16px;
+      grid-template-columns:1fr 3.70in;
+      gap:18px;
       align-items:stretch;
+      width:100%;
     }
 
-    .multi-left-stack{
+    .project-lower-stacked{
+      display:grid;
+      grid-template-columns:3.70in 1fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:14px;
+      width:100%;
+    }
+
+    .image-stack{
       display:grid;
       grid-template-rows:1fr 1fr;
       gap:10px;
-      height:3.20in;
+      height:2.98in;
     }
 
-    .multi-left-stack .project-img-box{
-      height:1.55in;
-      min-height:1.55in;
-      max-height:1.55in;
-    }
-
-    .multi-left-stack .project-img-box img{
-      max-height:1.38in;
-    }
-
-    .multi-project-body .text-box{
-      min-height:3.20in;
-    }
-
-    .multi-results-row{
-      width:100%;
-      display:grid;
-      grid-template-columns:2.12in 1fr 2.12in;
-      gap:12px;
-      align-items:stretch;
-      margin-top:12px;
-    }
-
-    .multi-side-stack{
-      display:grid;
-      grid-template-rows:1fr 1fr;
-      gap:9px;
-      height:2.45in;
-    }
-
-    .multi-side-stack .project-img-box{
-      height:1.18in;
-      min-height:1.18in;
-      max-height:1.18in;
-      border-radius:15px;
-      padding:7px;
-    }
-
-    .multi-side-stack .project-img-box img{
-      max-height:1.02in;
-    }
-
-    .multi-results-row .text-box{
-      min-height:2.45in;
-      justify-content:center;
-    }
-
-    .multi-extra-strip{
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:9px;
-      margin-top:10px;
-      width:100%;
-    }
-
-    .multi-extra-strip .project-img-box{
-      height:.88in;
-      min-height:.88in;
-      max-height:.88in;
+    .image-stack .project-img-box{
+      min-height:1.44in;
+      max-height:1.44in;
+      height:1.44in;
       padding:6px;
-      border-radius:13px;
     }
 
-    .multi-extra-strip .project-img-box img{
-      max-height:.75in;
+    .image-stack .project-img-box img{
+      max-height:1.30in;
+    }
+
+    .single-image-tall{
+      height:2.98in;
+      min-height:2.98in;
+      max-height:2.98in;
+    }
+
+    .single-image-tall img{
+      max-height:2.82in;
+    }
+
+    .project-main-stacked .text-box,
+    .project-lower-stacked .text-box{
+      min-height:2.98in;
     }
 
     .text-only-project{
@@ -823,7 +791,7 @@
   <script src="projects-data.js?v=1000"></script>
 
   <script>
-    const PHONE = "Add phone number here";
+    const PHONE = "908-821-3897";
     const EMAIL = "gauthier.mi@northeastern.edu";
     const LINKEDIN = "https://www.linkedin.com/in/mgauthier1";
     const PORTFOLIO = "https://michaelcgauthier.github.io/";
@@ -978,10 +946,11 @@
     function onlyImages(images){
       return (Array.isArray(images) ? images : [])
         .filter(Boolean)
-        .filter(src => !isVideo(src));
+        .filter(src => !isVideo(src))
+        .slice(0, 4);
     }
 
-    function mediaBox(src, alt){
+    function mediaBox(src, alt, extraClass = ""){
       if(!src) return "";
 
       if(isVideo(src)){
@@ -989,8 +958,16 @@
       }
 
       return `
-        <div class="project-img-box">
+        <div class="project-img-box ${extraClass}">
           <img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" crossorigin="anonymous">
+        </div>
+      `;
+    }
+
+    function imageStack(images, alt){
+      return `
+        <div class="image-stack">
+          ${images.map(src => mediaBox(src, alt)).join("")}
         </div>
       `;
     }
@@ -1176,7 +1153,51 @@
       `;
     }
 
-    function renderNormalProjectPage(projectPage, images){
+    function renderOneImageProjectPage(projectPage, images){
+      const firstImg = images[0] || "";
+
+      return `
+        <section class="page project-page" id="${escapeHtml(projectPage.id)}">
+          <div class="project-header">
+            <div class="project-number">${escapeHtml(projectPage.displayNumber)}</div>
+            <h1 class="project-title">${escapeHtml(projectPage.title)}</h1>
+
+            <div class="skill-row">
+              ${skillPills(projectPage.skills)}
+            </div>
+          </div>
+
+          <div class="project-main">
+            <div class="text-box">
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.contextLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.context)}</div>
+              </div>
+
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.howLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.how)}</div>
+              </div>
+            </div>
+
+            ${mediaBox(firstImg, projectPage.title)}
+          </div>
+
+          <div class="project-lower">
+            <div></div>
+
+            <div class="text-box">
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.resultsLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.results)}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderTwoImageProjectPage(projectPage, images){
       const firstImg = images[0] || "";
       const secondImg = images[1] || "";
 
@@ -1221,11 +1242,9 @@
       `;
     }
 
-    function renderMultiImageProjectPage(projectPage, images){
-      const topLeftImages = [images[0], images[2]].filter(Boolean);
-      const resultsLeftImages = [images[1], images[3]].filter(Boolean);
-      const resultsRightImages = [images[4], images[5]].filter(Boolean);
-      const extraImages = images.slice(6);
+    function renderThreeImageProjectPage(projectPage, images){
+      const firstTwo = [images[0], images[1]].filter(Boolean);
+      const thirdImg = images[2] || "";
 
       return `
         <section class="page project-page" id="${escapeHtml(projectPage.id)}">
@@ -1238,11 +1257,7 @@
             </div>
           </div>
 
-          <div class="multi-project-body">
-            <div class="multi-left-stack">
-              ${topLeftImages.map(src => mediaBox(src, projectPage.title)).join("")}
-            </div>
-
+          <div class="project-main-stacked">
             <div class="text-box">
               <div class="text-section">
                 <div class="label">${escapeHtml(projectPage.contextLabel)}</div>
@@ -1254,12 +1269,12 @@
                 <div class="body-text">${escapeHtml(projectPage.how)}</div>
               </div>
             </div>
+
+            ${imageStack(firstTwo, projectPage.title)}
           </div>
 
-          <div class="multi-results-row">
-            <div class="multi-side-stack">
-              ${resultsLeftImages.map(src => mediaBox(src, projectPage.title)).join("")}
-            </div>
+          <div class="project-lower-stacked">
+            ${mediaBox(thirdImg, projectPage.title, "single-image-tall")}
 
             <div class="text-box">
               <div class="text-section">
@@ -1267,17 +1282,52 @@
                 <div class="body-text">${escapeHtml(projectPage.results)}</div>
               </div>
             </div>
+          </div>
+        </section>
+      `;
+    }
 
-            <div class="multi-side-stack">
-              ${resultsRightImages.map(src => mediaBox(src, projectPage.title)).join("")}
+    function renderFourImageProjectPage(projectPage, images){
+      const firstTwo = [images[0], images[1]].filter(Boolean);
+      const secondTwo = [images[2], images[3]].filter(Boolean);
+
+      return `
+        <section class="page project-page" id="${escapeHtml(projectPage.id)}">
+          <div class="project-header">
+            <div class="project-number">${escapeHtml(projectPage.displayNumber)}</div>
+            <h1 class="project-title">${escapeHtml(projectPage.title)}</h1>
+
+            <div class="skill-row">
+              ${skillPills(projectPage.skills)}
             </div>
           </div>
 
-          ${extraImages.length ? `
-            <div class="multi-extra-strip">
-              ${extraImages.map(src => mediaBox(src, projectPage.title)).join("")}
+          <div class="project-main-stacked">
+            <div class="text-box">
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.contextLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.context)}</div>
+              </div>
+
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.howLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.how)}</div>
+              </div>
             </div>
-          ` : ""}
+
+            ${imageStack(firstTwo, projectPage.title)}
+          </div>
+
+          <div class="project-lower-stacked">
+            ${imageStack(secondTwo, projectPage.title)}
+
+            <div class="text-box">
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.resultsLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.results)}</div>
+              </div>
+            </div>
+          </div>
         </section>
       `;
     }
@@ -1290,11 +1340,23 @@
         return renderTextOnlyProject(projectPage);
       }
 
-      if(images.length >= 3){
-        return renderMultiImageProjectPage(projectPage, images);
+      if(images.length === 0){
+        return renderTextOnlyProject(projectPage);
       }
 
-      return renderNormalProjectPage(projectPage, images);
+      if(images.length === 1){
+        return renderOneImageProjectPage(projectPage, images);
+      }
+
+      if(images.length === 2){
+        return renderTwoImageProjectPage(projectPage, images);
+      }
+
+      if(images.length === 3){
+        return renderThreeImageProjectPage(projectPage, images);
+      }
+
+      return renderFourImageProjectPage(projectPage, images);
     }
 
     function renderAboutPage(){
