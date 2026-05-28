@@ -348,7 +348,7 @@
     .project-page{
       justify-content:flex-start;
       align-items:stretch;
-      padding:.30in .40in .32in;
+      padding:.28in .38in .30in;
       background:linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
     }
 
@@ -401,23 +401,6 @@
       white-space:nowrap;
     }
 
-    .project-main{
-      display:grid;
-      grid-template-columns:1fr 3.55in;
-      gap:18px;
-      align-items:stretch;
-      width:100%;
-    }
-
-    .project-lower{
-      display:grid;
-      grid-template-columns:3.55in 1fr;
-      gap:18px;
-      align-items:stretch;
-      margin-top:14px;
-      width:100%;
-    }
-
     .text-box{
       background:#ffffff;
       border-radius:18px;
@@ -457,16 +440,12 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      min-height:2.22in;
-      max-height:2.42in;
-      height:100%;
       padding:8px;
     }
 
     .project-img-box img{
       width:100%;
       height:100%;
-      max-height:2.25in;
       object-fit:contain;
       object-position:center;
       display:block;
@@ -474,25 +453,166 @@
       background:#fff;
     }
 
-    .extra-gallery{
-      margin-top:13px;
+    .project-main{
       display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:10px;
+      grid-template-columns:1fr 3.55in;
+      gap:18px;
+      align-items:stretch;
       width:100%;
     }
 
-    .extra-gallery .project-img-box{
+    .project-lower{
+      display:grid;
+      grid-template-columns:3.55in 1fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:14px;
+      width:100%;
+    }
+
+    .project-main .project-img-box,
+    .project-lower .project-img-box{
+      min-height:2.22in;
+      max-height:2.42in;
+      height:100%;
+    }
+
+    .project-main .project-img-box img,
+    .project-lower .project-img-box img{
+      max-height:2.25in;
+    }
+
+    .multi-project-body{
+      width:100%;
+      display:grid;
+      grid-template-columns:3.20in 1fr;
+      gap:16px;
+      align-items:stretch;
+    }
+
+    .multi-left-stack{
+      display:grid;
+      grid-template-rows:1fr 1fr;
+      gap:10px;
+      height:3.20in;
+    }
+
+    .multi-left-stack .project-img-box{
+      height:1.55in;
+      min-height:1.55in;
+      max-height:1.55in;
+    }
+
+    .multi-left-stack .project-img-box img{
+      max-height:1.38in;
+    }
+
+    .multi-project-body .text-box{
+      min-height:3.20in;
+    }
+
+    .multi-results-row{
+      width:100%;
+      display:grid;
+      grid-template-columns:2.12in 1fr 2.12in;
+      gap:12px;
+      align-items:stretch;
+      margin-top:12px;
+    }
+
+    .multi-side-stack{
+      display:grid;
+      grid-template-rows:1fr 1fr;
+      gap:9px;
+      height:2.45in;
+    }
+
+    .multi-side-stack .project-img-box{
+      height:1.18in;
       min-height:1.18in;
       max-height:1.18in;
-      height:1.18in;
-      border-radius:13px;
+      border-radius:15px;
       padding:7px;
     }
 
-    .extra-gallery .project-img-box img{
-      max-height:1.03in;
-      object-fit:contain;
+    .multi-side-stack .project-img-box img{
+      max-height:1.02in;
+    }
+
+    .multi-results-row .text-box{
+      min-height:2.45in;
+      justify-content:center;
+    }
+
+    .multi-extra-strip{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:9px;
+      margin-top:10px;
+      width:100%;
+    }
+
+    .multi-extra-strip .project-img-box{
+      height:.88in;
+      min-height:.88in;
+      max-height:.88in;
+      padding:6px;
+      border-radius:13px;
+    }
+
+    .multi-extra-strip .project-img-box img{
+      max-height:.75in;
+    }
+
+    .text-only-project{
+      height:100%;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:16px;
+    }
+
+    .text-only-grid{
+      width:9.8in;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .text-only-grid .text-box{
+      min-height:2.35in;
+      justify-content:flex-start;
+    }
+
+    .text-only-results{
+      width:9.8in;
+    }
+
+    .text-only-project .body-text{
+      font-size:12.2px;
+      line-height:1.52;
+    }
+
+    .website-video-note{
+      width:9.8in;
+      background:#eaf1ff;
+      color:#1e3a8a;
+      border-radius:20px;
+      padding:18px 22px;
+      text-align:center;
+      font-size:14px;
+      line-height:1.45;
+      font-weight:800;
+      box-shadow:0 10px 28px rgba(2,8,23,.065);
+    }
+
+    .website-video-note a{
+      color:#1d4ed8;
+      text-decoration:underline;
+      font-weight:950;
     }
 
     .about-page{
@@ -703,7 +823,7 @@
   <script src="projects-data.js?v=1000"></script>
 
   <script>
-    const PHONE = "908-821-3897";
+    const PHONE = "Add phone number here";
     const EMAIL = "gauthier.mi@northeastern.edu";
     const LINKEDIN = "https://www.linkedin.com/in/mgauthier1";
     const PORTFOLIO = "https://michaelcgauthier.github.io/";
@@ -849,6 +969,18 @@
       return String(src || "").toLowerCase().split("?")[0].endsWith(".mp4");
     }
 
+    function hasVideos(images){
+      return (Array.isArray(images) ? images : [])
+        .filter(Boolean)
+        .some(src => isVideo(src));
+    }
+
+    function onlyImages(images){
+      return (Array.isArray(images) ? images : [])
+        .filter(Boolean)
+        .filter(src => !isVideo(src));
+    }
+
     function mediaBox(src, alt){
       if(!src) return "";
 
@@ -863,12 +995,6 @@
       `;
     }
 
-    function onlyImages(images){
-      return (Array.isArray(images) ? images : [])
-        .filter(Boolean)
-        .filter(src => !isVideo(src));
-    }
-
     function skillPills(skills){
       return String(skills || "")
         .split(",")
@@ -877,13 +1003,6 @@
         .slice(0, 16)
         .map(s => `<span class="skill-pill">${escapeHtml(s)}</span>`)
         .join("");
-    }
-
-    function pageIdFromTitle(title){
-      return String(title || "")
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
     }
 
     function flattenProjectPages(projects){
@@ -1009,12 +1128,57 @@
       `;
     }
 
-    function renderProjectPage(projectPage){
-      const images = onlyImages(projectPage.images);
+    function renderTextOnlyProject(projectPage){
+      return `
+        <section class="page project-page" id="${escapeHtml(projectPage.id)}">
+          <div class="project-header">
+            <div class="project-number">${escapeHtml(projectPage.displayNumber)}</div>
+            <h1 class="project-title">${escapeHtml(projectPage.title)}</h1>
 
+            <div class="skill-row">
+              ${skillPills(projectPage.skills)}
+            </div>
+          </div>
+
+          <div class="text-only-project">
+            <div class="text-only-grid">
+              <div class="text-box">
+                <div class="text-section">
+                  <div class="label">${escapeHtml(projectPage.contextLabel)}</div>
+                  <div class="body-text">${escapeHtml(projectPage.context)}</div>
+                </div>
+              </div>
+
+              <div class="text-box">
+                <div class="text-section">
+                  <div class="label">${escapeHtml(projectPage.howLabel)}</div>
+                  <div class="body-text">${escapeHtml(projectPage.how)}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-only-results">
+              <div class="text-box">
+                <div class="text-section">
+                  <div class="label">${escapeHtml(projectPage.resultsLabel)}</div>
+                  <div class="body-text">${escapeHtml(projectPage.results)}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="website-video-note">
+              Videos for this project are available on the website:
+              <br>
+              <a href="${escapeHtml(PORTFOLIO)}">${escapeHtml(PORTFOLIO)}</a>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderNormalProjectPage(projectPage, images){
       const firstImg = images[0] || "";
       const secondImg = images[1] || "";
-      const extraImages = images.slice(2);
 
       return `
         <section class="page project-page" id="${escapeHtml(projectPage.id)}">
@@ -1053,14 +1217,84 @@
               </div>
             </div>
           </div>
+        </section>
+      `;
+    }
+
+    function renderMultiImageProjectPage(projectPage, images){
+      const topLeftImages = [images[0], images[2]].filter(Boolean);
+      const resultsLeftImages = [images[1], images[3]].filter(Boolean);
+      const resultsRightImages = [images[4], images[5]].filter(Boolean);
+      const extraImages = images.slice(6);
+
+      return `
+        <section class="page project-page" id="${escapeHtml(projectPage.id)}">
+          <div class="project-header">
+            <div class="project-number">${escapeHtml(projectPage.displayNumber)}</div>
+            <h1 class="project-title">${escapeHtml(projectPage.title)}</h1>
+
+            <div class="skill-row">
+              ${skillPills(projectPage.skills)}
+            </div>
+          </div>
+
+          <div class="multi-project-body">
+            <div class="multi-left-stack">
+              ${topLeftImages.map(src => mediaBox(src, projectPage.title)).join("")}
+            </div>
+
+            <div class="text-box">
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.contextLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.context)}</div>
+              </div>
+
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.howLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.how)}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="multi-results-row">
+            <div class="multi-side-stack">
+              ${resultsLeftImages.map(src => mediaBox(src, projectPage.title)).join("")}
+            </div>
+
+            <div class="text-box">
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.resultsLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.results)}</div>
+              </div>
+            </div>
+
+            <div class="multi-side-stack">
+              ${resultsRightImages.map(src => mediaBox(src, projectPage.title)).join("")}
+            </div>
+          </div>
 
           ${extraImages.length ? `
-            <div class="extra-gallery">
+            <div class="multi-extra-strip">
               ${extraImages.map(src => mediaBox(src, projectPage.title)).join("")}
             </div>
           ` : ""}
         </section>
       `;
+    }
+
+    function renderProjectPage(projectPage){
+      const images = onlyImages(projectPage.images);
+      const videoOnly = images.length === 0 && hasVideos(projectPage.images);
+
+      if(videoOnly){
+        return renderTextOnlyProject(projectPage);
+      }
+
+      if(images.length >= 3){
+        return renderMultiImageProjectPage(projectPage, images);
+      }
+
+      return renderNormalProjectPage(projectPage, images);
     }
 
     function renderAboutPage(){
