@@ -448,10 +448,8 @@
     }
 
     .project-img-box img{
-      width:auto;
-      height:auto;
-      max-width:100%;
-      max-height:100%;
+      width:100%;
+      height:100%;
       object-fit:contain;
       object-position:center;
       display:block;
@@ -1116,48 +1114,6 @@
     /* Make sure normal project pages keep their light background */
     .project-page{
       background:linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%) !important;
-    }
-
-        /* FINAL IMAGE ASPECT RATIO FIX */
-
-    .project-img-box{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-    }
-
-    .project-img-box img{
-      width:auto !important;
-      height:auto !important;
-      max-width:100% !important;
-      max-height:100% !important;
-      object-fit:contain !important;
-      object-position:center center !important;
-      flex:0 0 auto;
-    }
-
-    .project-img-box.image-fill-soft img{
-      width:auto !important;
-      height:auto !important;
-      max-width:106% !important;
-      max-height:106% !important;
-      object-fit:contain !important;
-    }
-
-    .project-img-box.image-wide img{
-      max-width:100% !important;
-      max-height:96% !important;
-    }
-
-    .project-img-box.image-tall img{
-      max-width:94% !important;
-      max-height:100% !important;
-    }
-
-    .project-img-box.image-square img{
-      max-width:98% !important;
-      max-height:98% !important;
     }
 
     @media print{
@@ -2064,39 +2020,6 @@
       `;
     }
 
-        function tuneProjectImageBoxes(){
-      const images = Array.from(document.querySelectorAll(".project-img-box img"));
-
-      images.forEach(img => {
-        const box = img.closest(".project-img-box");
-        if(!box) return;
-
-        function applyClass(){
-          const naturalWidth = img.naturalWidth || 1;
-          const naturalHeight = img.naturalHeight || 1;
-          const ratio = naturalWidth / naturalHeight;
-
-          box.classList.remove("image-wide", "image-tall", "image-square", "image-fill-soft");
-
-          if(ratio > 1.55){
-            box.classList.add("image-wide");
-          } else if(ratio < 0.72){
-            box.classList.add("image-tall");
-          } else {
-            box.classList.add("image-square");
-          }
-
-          box.classList.add("image-fill-soft");
-        }
-
-        if(img.complete){
-          applyClass();
-        } else {
-          img.addEventListener("load", applyClass, { once:true });
-        }
-      });
-    }
-
     function buildPortfolio(){
       const root = document.getElementById("pdfPortfolio");
 
@@ -2158,8 +2081,6 @@
 
       await waitForFonts();
       await waitForImages();
-      tuneProjectImageBoxes();
-      await new Promise(resolve => setTimeout(resolve, 250));
 
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF({
@@ -2216,7 +2137,6 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       buildPortfolio();
-      tuneProjectImageBoxes();
       document.getElementById("downloadPdfBtn").addEventListener("click", downloadPortfolioPdf);
     });
   </script>
