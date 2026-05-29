@@ -20,7 +20,7 @@ window.PROJECTS = [
   {
     slug: "project-2",
     number: 2,
-    title: "Digitization of an inspection workflow through ArcGIS, replacing paper forms.",
+    title: "Digitization of an inspection workflow through ArcGIS, replacing paper forms",
     thumb: "assets/images/survey123_form_design_web.jpg",
     images: ["assets/images/survey123_checklist_web.jpg", "assets/images/PyConvert3_web.jpg", "assets/images/survey123_sewer_ties_web.jpg"],
     previewLabel: "Preview Blurb",
@@ -110,7 +110,7 @@ window.PROJECTS = [
   {
     slug: "project-7",
     number: 7,
-    title: "Interactive Clean Energy Educational Exhibit with Wind Turbine, House Model, LEDs, and Arduino/MATLAB Game",
+    title: "Interactive Clean Energy Educational Exhibit with Wind Turbine, House Model, & Arduino/MATLAB Game",
     thumb: "assets/images/web_image_set5_4.jpg",
     images: ["assets/images/web_image_set5_4.jpg", "assets/images/web_image_set5_5.jpg", "assets/images/web_image_set5_2.jpg", "assets/images/web_image_set5_6.jpg", "assets/images/web_image_set5_3.jpg"],
     previewLabel: "Preview Blurb",
@@ -157,7 +157,7 @@ window.PROJECTS = [
         previewLabel: "Preview Blurb",
         preview: "Measured fracture energy, Rockwell hardness, microstructure, stress concentrations, polymer crystal growth, Charpy impact testing, optical/polarized microscopy, XRD.",
         skillsLabel: "Key Skills Used",
-        skills: "Charpy impact testing, Fracta software, liquid nitrogen testing, furnace heating, Rockwell hardness tester, optical microscopy, polished and etched samples, polarized optical microscope, polariscope, WAXD-RAPID2 XRD, Archimedes density method, fracture energy, phase percentage measurement, and material identification.",
+        skills: "Charpy impact, Fracta, Rockwell hardness, optical microscopy, polished/etched, polariscope, XRD, fracture energy, phase percentage measurement, and material identification.",
         contextLabel: "What / Context",
         context: "In my materials labs, I studied how material behavior changes with temperature, hardness, internal structure, stress concentration, polymer crystal growth, and crystal structure. These tests helped explain why materials fail differently even when they are placed under similar loads. The focus was on connecting the material’s internal structure and test conditions to its mechanical behavior.",
         howLabel: "How / Tools",
