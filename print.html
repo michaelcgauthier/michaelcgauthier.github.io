@@ -153,13 +153,20 @@
     }
 
     .cover-headshot{
-      width:325px;
-      height:430px;
-      object-fit:cover;
-      object-position:center 16%;
+      width:325px !important;
+      height:430px !important;
+      min-width:325px !important;
+      max-width:325px !important;
+      min-height:430px !important;
+      max-height:430px !important;
+      flex:0 0 325px;
       border-radius:26px;
       box-shadow:0 24px 70px rgba(0,0,0,.38);
-      background:#fff;
+      background-image:url("assets/images/headshot2.png");
+      background-size:cover;
+      background-position:center 16%;
+      background-repeat:no-repeat;
+      background-color:#fff;
     }
 
     .cover-kicker{
@@ -349,7 +356,7 @@
     .project-page{
       justify-content:flex-start;
       align-items:stretch;
-      padding:.25in .34in .27in;
+      padding:.32in .34in .20in;
       background:linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
     }
 
@@ -1897,7 +1904,11 @@
           <div class="page-bg-overlay"></div>
           <div class="page-content">
             <div class="cover-grid">
-              <img class="cover-headshot" src="assets/images/headshot2.png" alt="Michael Gauthier headshot">
+              <div
+                class="cover-headshot"
+                role="img"
+                aria-label="Michael Gauthier headshot"
+              ></div>
               <div>
                 <div class="cover-kicker">Engineering Portfolio</div>
                 <h1 class="cover-title">Michael Gauthier</h1>
