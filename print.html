@@ -368,13 +368,16 @@
     }
 
     .project-title{
-      font-size:25px;
-      line-height:1.08;
-      letter-spacing:-.8px;
+      font-size:21px;
+      line-height:1.05;
+      letter-spacing:-.55px;
       font-weight:950;
       color:#0f172a;
-      margin:0 auto 6px;
-      max-width:10.2in;
+      margin:0 auto 8px;
+      max-width:10.9in;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
     .skill-row{
@@ -382,7 +385,7 @@
       flex-wrap:wrap;
       justify-content:center;
       gap:5px;
-      margin:13px auto 12px;
+      margin:14px auto 12px;
       max-height:36px;
       overflow:hidden;
     }
@@ -421,8 +424,8 @@
     }
 
     .body-text{
-      font-size:12.35px;
-      line-height:1.48;
+      font-size:12.7px;
+      line-height:1.43;
       color:#263445;
       font-weight:570;
     }
@@ -606,6 +609,27 @@
       object-fit:cover;
     }
 
+    .project-3 .project-main{
+      grid-template-columns:1.28fr 3.28in;
+    }
+
+    .project-3 .project-lower{
+      grid-template-columns:3.28in 1.28fr;
+      margin-top:10px;
+    }
+
+    .project-3 .project-main .project-img-box,
+    .project-3 .project-lower .project-img-box{
+      min-height:2.22in;
+      height:2.22in;
+      max-height:2.22in;
+    }
+
+    .project-3 .project-main .project-img-box img,
+    .project-3 .project-lower .project-img-box img{
+      max-height:2.10in;
+    }
+
     .project-4 .project-4-lower{
       display:grid;
       grid-template-columns:5.45in 1fr;
@@ -641,90 +665,97 @@
     }
 
     .project-6 .project-main-stacked{
-      grid-template-columns:1fr 3.95in;
+      grid-template-columns:1.18fr 3.65in;
+      align-items:stretch;
+    }
+
+    .project-6 .project-main-stacked .text-box{
+      min-height:auto;
+      height:auto;
+      max-height:none;
     }
 
     .project-6 .image-stack{
-      height:3.24in;
+      height:auto;
+      min-height:0;
+      display:grid;
+      grid-template-rows:1fr 1fr;
+      gap:10px;
     }
 
     .project-6 .image-stack .project-img-box{
-      min-height:1.57in;
-      height:1.57in;
-      max-height:1.57in;
+      min-height:1.46in;
+      height:1.46in;
+      max-height:1.46in;
       padding:4px;
     }
 
     .project-6 .image-stack .project-img-box img{
-      max-height:1.48in;
-    }
-
-    .project-6 .project-main-stacked .text-box{
-      min-height:3.24in;
-      height:3.24in;
-      max-height:3.24in;
+      max-height:1.36in;
     }
 
     .project-6 .project-lower-stacked{
-      grid-template-columns:3.50in 1fr;
-      margin-top:12px;
+      grid-template-columns:3.35in 1fr;
+      margin-top:10px;
     }
 
     .project-6 .project-lower-stacked .text-box,
     .project-6 .project-lower-stacked .project-img-box{
-      min-height:2.30in;
-      height:2.30in;
-      max-height:2.30in;
+      min-height:2.18in;
+      height:2.18in;
+      max-height:2.18in;
     }
 
     .project-6 .project-lower-stacked .project-img-box img{
-      max-height:2.18in;
+      max-height:2.08in;
       object-fit:contain;
     }
 
     .project-7 .project-main-stacked{
-      grid-template-columns:1fr 4.05in;
+      grid-template-columns:1.15fr 3.85in;
+      align-items:stretch;
     }
 
     .project-7 .project-main-stacked .text-box{
-      min-height:3.05in;
-      height:3.05in;
-      max-height:3.05in;
+      min-height:auto;
+      height:auto;
+      max-height:none;
     }
 
     .project-7 .image-stack{
-      height:3.05in;
+      height:auto;
+      min-height:0;
     }
 
     .project-7 .image-stack .project-img-box{
-      min-height:1.47in;
-      height:1.47in;
-      max-height:1.47in;
+      min-height:1.42in;
+      height:1.42in;
+      max-height:1.42in;
       padding:4px;
     }
 
     .project-7 .image-stack .project-img-box img{
-      max-height:1.38in;
+      max-height:1.32in;
     }
 
     .project-7 .project-7-lower{
       display:grid;
-      grid-template-columns:2.75in 1fr 2.75in;
+      grid-template-columns:2.55in 1fr 2.55in;
       gap:14px;
       align-items:stretch;
-      margin-top:14px;
+      margin-top:10px;
       width:100%;
     }
 
     .project-7 .project-7-lower .text-box,
     .project-7 .project-7-lower .project-img-box{
-      min-height:2.72in;
-      height:2.72in;
-      max-height:2.72in;
+      min-height:2.38in;
+      height:2.38in;
+      max-height:2.38in;
     }
 
     .project-7 .project-7-lower .project-img-box img{
-      max-height:2.60in;
+      max-height:2.28in;
     }
 
     .project-12 .project-main{
