@@ -1027,14 +1027,16 @@
       line-height:1.45;
     }
 
-    /* FINAL IMAGE + PROJECT-SPECIFIC ZOOM FIXES */
+    /* FINAL CLEAN IMAGE + PROJECT LAYOUT FIXES */
 
-    /* Prevent PDF image stretching/narrowing */
+    /* Less rounded image boxes everywhere */
     .project-img-box{
       display:flex;
       align-items:center;
       justify-content:center;
       overflow:hidden;
+      border-radius:12px !important;
+      padding:3px;
     }
 
     .project-img-box img{
@@ -1044,50 +1046,57 @@
       max-height:100% !important;
       object-fit:contain !important;
       object-position:center center !important;
+      border-radius:7px !important;
       transform:scale(var(--img-scale, 1));
       transform-origin:center center;
       flex:0 0 auto;
     }
 
-    /* Keep normal project pages with the light background */
     .project-page{
       background:linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%) !important;
     }
 
-    /* PROJECT 1: use more space, zoom selected images, keep spacing clean */
+    /* PROJECT 1: fix overflowing What/How box and zoom images */
     .project-1 .project-main-special{
-      grid-template-columns:1fr 3.25in;
+      grid-template-columns:1fr 3.18in;
+      gap:18px;
+      align-items:stretch;
+      width:100%;
     }
 
     .project-1 .project-main-special .text-box{
-      min-height:3.28in;
-      height:3.28in;
-      max-height:3.28in;
-      padding:18px 20px 22px 20px;
+      min-height:3.62in !important;
+      height:3.62in !important;
+      max-height:3.62in !important;
+      padding:18px 20px 26px 20px !important;
+      justify-content:flex-start !important;
+      overflow:hidden;
     }
 
     .project-1 .project-main-special .project-img-box{
-      min-height:3.28in;
-      height:3.28in;
-      max-height:3.28in;
-      padding:4px;
+      min-height:3.62in !important;
+      height:3.62in !important;
+      max-height:3.62in !important;
+      padding:3px;
     }
 
     .project-1 .project-main-special .project-img-box img{
-      --img-scale:1.07;
+      --img-scale:1.08;
     }
 
     .project-1 .project-lower-special{
       grid-template-columns:4.05in 1fr;
       gap:18px;
-      margin-top:14px;
+      align-items:stretch;
+      margin-top:10px;
+      width:100%;
     }
 
     .project-1 .project-lower-special .text-box,
     .project-1 .project-lower-special .side-mini-stack{
-      min-height:2.66in;
-      height:2.66in;
-      max-height:2.66in;
+      min-height:2.34in !important;
+      height:2.34in !important;
+      max-height:2.34in !important;
     }
 
     .project-1 .side-mini-stack{
@@ -1097,100 +1106,105 @@
     }
 
     .project-1 .side-mini-stack .project-img-box{
-      min-height:1.28in;
-      height:1.28in;
-      max-height:1.28in;
-      padding:3px;
+      min-height:1.12in !important;
+      height:1.12in !important;
+      max-height:1.12in !important;
+      padding:2px;
     }
 
     .project-1 .side-mini-stack .project-img-box:nth-child(1) img{
-      --img-scale:1.32;
+      --img-scale:1.55;
     }
 
     .project-1 .side-mini-stack .project-img-box:nth-child(2) img{
-      --img-scale:1.08;
+      --img-scale:1.10;
     }
 
-    /* PROJECT 2: slightly zoom top stacked images to reduce white space */
+    /* PROJECT 2: slight zoom and fill stacked space */
     .project-2 .image-stack{
-      height:3.26in;
-      min-height:3.26in;
-      max-height:3.26in;
+      height:3.16in !important;
+      min-height:3.16in !important;
+      max-height:3.16in !important;
     }
 
     .project-2 .image-stack .project-img-box{
-      min-height:1.58in;
-      height:1.58in;
-      max-height:1.58in;
-      padding:3px;
+      min-height:1.53in !important;
+      height:1.53in !important;
+      max-height:1.53in !important;
+      padding:2px;
     }
 
     .project-2 .image-stack .project-img-box img{
       --img-scale:1.08;
     }
 
-    /* PROJECT 4: slightly enlarge the two stacked images */
+    /* PROJECT 4: slight zoom on top stacked images */
     .project-4 .image-stack{
-      height:3.18in;
-      min-height:3.18in;
-      max-height:3.18in;
+      height:3.14in !important;
+      min-height:3.14in !important;
+      max-height:3.14in !important;
     }
 
     .project-4 .image-stack .project-img-box{
-      min-height:1.54in;
-      height:1.54in;
-      max-height:1.54in;
-      padding:3px;
+      min-height:1.52in !important;
+      height:1.52in !important;
+      max-height:1.52in !important;
+      padding:2px;
     }
 
     .project-4 .image-stack .project-img-box img{
       --img-scale:1.06;
     }
 
-    /* PROJECT 6: reduce white space around all images */
+    /* PROJECT 6: restore clean layout, no overflow, no huge image column */
     .project-6 .project-main-stacked{
-      grid-template-columns:1fr 4.05in;
+      grid-template-columns:1fr 3.85in !important;
+      gap:18px;
       align-items:stretch;
-      margin-bottom:0;
+      width:100%;
     }
 
     .project-6 .project-main-stacked .text-box{
-      min-height:auto !important;
-      height:auto !important;
-      max-height:none !important;
-      padding:16px 18px;
+      min-height:3.18in !important;
+      height:3.18in !important;
+      max-height:3.18in !important;
+      padding:16px 18px !important;
+      overflow:hidden;
     }
 
     .project-6 .image-stack{
-      height:100% !important;
-      min-height:100% !important;
-      max-height:none !important;
+      height:3.18in !important;
+      min-height:3.18in !important;
+      max-height:3.18in !important;
       display:grid;
       grid-template-rows:1fr 1fr;
       gap:10px;
     }
 
     .project-6 .image-stack .project-img-box{
-      min-height:0 !important;
-      height:auto !important;
-      max-height:none !important;
+      min-height:1.54in !important;
+      height:1.54in !important;
+      max-height:1.54in !important;
       padding:2px;
     }
 
     .project-6 .image-stack .project-img-box img{
-      --img-scale:1.10;
+      --img-scale:1.08;
     }
 
     .project-6 .project-lower-stacked{
-      grid-template-columns:3.45in 1fr;
-      margin-top:18px;
+      grid-template-columns:3.35in 1fr !important;
+      gap:18px;
+      align-items:stretch;
+      margin-top:12px !important;
+      width:100%;
     }
 
     .project-6 .project-lower-stacked .text-box,
     .project-6 .project-lower-stacked .project-img-box{
-      min-height:2.18in;
-      height:2.18in;
-      max-height:2.18in;
+      min-height:2.20in !important;
+      height:2.20in !important;
+      max-height:2.20in !important;
     }
 
     .project-6 .project-lower-stacked .project-img-box{
@@ -1201,45 +1215,59 @@
       --img-scale:1.04;
     }
 
-    /* PROJECT 7: reduce side white space on top two images */
+    /* PROJECT 7: restore clean layout, no oversized right column */
     .project-7 .project-main-stacked{
-      grid-template-columns:1fr 4.05in;
+      grid-template-columns:1fr 3.85in !important;
+      gap:18px;
       align-items:stretch;
-      margin-bottom:0;
+      width:100%;
     }
 
     .project-7 .project-main-stacked .text-box{
-      min-height:auto !important;
-      height:auto !important;
-      max-height:none !important;
-      padding:16px 18px;
+      min-height:3.05in !important;
+      height:3.05in !important;
+      max-height:3.05in !important;
+      padding:16px 18px !important;
+      overflow:hidden;
     }
 
     .project-7 .image-stack{
-      height:100% !important;
-      min-height:100% !important;
-      max-height:none !important;
+      height:3.05in !important;
+      min-height:3.05in !important;
+      max-height:3.05in !important;
       display:grid;
       grid-template-rows:1fr 1fr;
       gap:10px;
     }
 
     .project-7 .image-stack .project-img-box{
-      min-height:0 !important;
-      height:auto !important;
-      max-height:none !important;
+      min-height:1.475in !important;
+      height:1.475in !important;
+      max-height:1.475in !important;
       padding:2px;
     }
 
     .project-7 .image-stack .project-img-box img{
-      --img-scale:1.08;
+      --img-scale:1.06;
     }
 
     .project-7 .project-7-lower{
-      margin-top:18px;
+      display:grid;
+      grid-template-columns:2.55in 1fr 2.55in;
+      gap:14px;
+      align-items:stretch;
+      margin-top:12px !important;
+      width:100%;
     }
 
-    /* PROJECT 12: zoom code screenshots more so they fill the boxes */
+    .project-7 .project-7-lower .text-box,
+    .project-7 .project-7-lower .project-img-box{
+      min-height:2.38in !important;
+      height:2.38in !important;
+      max-height:2.38in !important;
+    }
+
+    /* PROJECT 12: zoom both code images a lot more */
     .project-12 .project-main .project-img-box,
     .project-12 .project-lower .project-img-box{
       padding:2px;
@@ -1247,7 +1275,7 @@
 
     .project-12 .project-main .project-img-box img,
     .project-12 .project-lower .project-img-box img{
-      --img-scale:1.32;
+      --img-scale:1.55;
     }
 
     @media print{
