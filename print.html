@@ -448,8 +448,10 @@
     }
 
     .project-img-box img{
-      width:100%;
-      height:100%;
+      width:auto;
+      height:auto;
+      max-width:100%;
+      max-height:100%;
       object-fit:contain;
       object-position:center;
       display:block;
@@ -1025,19 +1027,129 @@
       line-height:1.45;
     }
 
-        /* FINAL FIXES FOR PROJECT 6 / 7 + PDF IMAGE QUALITY */
+    /* FINAL IMAGE + PROJECT-SPECIFIC ZOOM FIXES */
 
-    /* Keep images proportional everywhere */
-    .project-img-box img{
-      width:100%;
-      height:100%;
-      object-fit:contain !important;
-      object-position:center;
+    /* Prevent PDF image stretching/narrowing */
+    .project-img-box{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
     }
 
-    /* Project 6: let the text box grow naturally so text never spills out */
+    .project-img-box img{
+      width:auto !important;
+      height:auto !important;
+      max-width:100% !important;
+      max-height:100% !important;
+      object-fit:contain !important;
+      object-position:center center !important;
+      transform:scale(var(--img-scale, 1));
+      transform-origin:center center;
+      flex:0 0 auto;
+    }
+
+    /* Keep normal project pages with the light background */
+    .project-page{
+      background:linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%) !important;
+    }
+
+    /* PROJECT 1: use more space, zoom selected images, keep spacing clean */
+    .project-1 .project-main-special{
+      grid-template-columns:1fr 3.25in;
+    }
+
+    .project-1 .project-main-special .text-box{
+      min-height:3.28in;
+      height:3.28in;
+      max-height:3.28in;
+      padding:18px 20px 22px 20px;
+    }
+
+    .project-1 .project-main-special .project-img-box{
+      min-height:3.28in;
+      height:3.28in;
+      max-height:3.28in;
+      padding:4px;
+    }
+
+    .project-1 .project-main-special .project-img-box img{
+      --img-scale:1.07;
+    }
+
+    .project-1 .project-lower-special{
+      grid-template-columns:4.05in 1fr;
+      gap:18px;
+      margin-top:14px;
+    }
+
+    .project-1 .project-lower-special .text-box,
+    .project-1 .project-lower-special .side-mini-stack{
+      min-height:2.66in;
+      height:2.66in;
+      max-height:2.66in;
+    }
+
+    .project-1 .side-mini-stack{
+      display:grid;
+      grid-template-rows:1fr 1fr;
+      gap:10px;
+    }
+
+    .project-1 .side-mini-stack .project-img-box{
+      min-height:1.28in;
+      height:1.28in;
+      max-height:1.28in;
+      padding:3px;
+    }
+
+    .project-1 .side-mini-stack .project-img-box:nth-child(1) img{
+      --img-scale:1.32;
+    }
+
+    .project-1 .side-mini-stack .project-img-box:nth-child(2) img{
+      --img-scale:1.08;
+    }
+
+    /* PROJECT 2: slightly zoom top stacked images to reduce white space */
+    .project-2 .image-stack{
+      height:3.26in;
+      min-height:3.26in;
+      max-height:3.26in;
+    }
+
+    .project-2 .image-stack .project-img-box{
+      min-height:1.58in;
+      height:1.58in;
+      max-height:1.58in;
+      padding:3px;
+    }
+
+    .project-2 .image-stack .project-img-box img{
+      --img-scale:1.08;
+    }
+
+    /* PROJECT 4: slightly enlarge the two stacked images */
+    .project-4 .image-stack{
+      height:3.18in;
+      min-height:3.18in;
+      max-height:3.18in;
+    }
+
+    .project-4 .image-stack .project-img-box{
+      min-height:1.54in;
+      height:1.54in;
+      max-height:1.54in;
+      padding:3px;
+    }
+
+    .project-4 .image-stack .project-img-box img{
+      --img-scale:1.06;
+    }
+
+    /* PROJECT 6: reduce white space around all images */
     .project-6 .project-main-stacked{
-      grid-template-columns:1fr 3.95in;
+      grid-template-columns:1fr 4.05in;
       align-items:stretch;
       margin-bottom:0;
     }
@@ -1062,11 +1174,15 @@
       min-height:0 !important;
       height:auto !important;
       max-height:none !important;
-      padding:3px;
+      padding:2px;
+    }
+
+    .project-6 .image-stack .project-img-box img{
+      --img-scale:1.10;
     }
 
     .project-6 .project-lower-stacked{
-      grid-template-columns:3.35in 1fr;
+      grid-template-columns:3.45in 1fr;
       margin-top:18px;
     }
 
@@ -1077,9 +1193,17 @@
       max-height:2.18in;
     }
 
-    /* Project 7: same fix */
+    .project-6 .project-lower-stacked .project-img-box{
+      padding:2px;
+    }
+
+    .project-6 .project-lower-stacked .project-img-box img{
+      --img-scale:1.04;
+    }
+
+    /* PROJECT 7: reduce side white space on top two images */
     .project-7 .project-main-stacked{
-      grid-template-columns:1fr 3.95in;
+      grid-template-columns:1fr 4.05in;
       align-items:stretch;
       margin-bottom:0;
     }
@@ -1104,16 +1228,26 @@
       min-height:0 !important;
       height:auto !important;
       max-height:none !important;
-      padding:3px;
+      padding:2px;
+    }
+
+    .project-7 .image-stack .project-img-box img{
+      --img-scale:1.08;
     }
 
     .project-7 .project-7-lower{
       margin-top:18px;
     }
 
-    /* Make sure normal project pages keep their light background */
-    .project-page{
-      background:linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%) !important;
+    /* PROJECT 12: zoom code screenshots more so they fill the boxes */
+    .project-12 .project-main .project-img-box,
+    .project-12 .project-lower .project-img-box{
+      padding:2px;
+    }
+
+    .project-12 .project-main .project-img-box img,
+    .project-12 .project-lower .project-img-box img{
+      --img-scale:1.32;
     }
 
     @media print{
@@ -1162,7 +1296,7 @@
 
     const homeAboutBlurb = `Hi, I’m Michael! I’m a fourth-year Mechanical Engineering student at Northeastern University with a minor in Entrepreneurial Startups & Business. I’m currently balancing classes, my capstone project, and continued work as a mechanical/construction engineering co-op, where I’ve been creating AutoCAD plan sets, survey-based design drawings, Python automation tools, and ArcGIS inspection workflows. I’ve always been the kind of person who gets very invested once I start working on something, whether that was running my custom LED sign business in high school or creating tools at work that made my team’s day easier. Even this website I programmed and designed myself through JavaScript, CSS, and HTML. Check it out and let me know what you think! I genuinely love what I do at Northeastern, and in my internship, and I’m excited to keep growing as an engineer as I start the early stages of my career!`;
 
-    const aboutPageBlurb = `I’m a fourth-year Mechanical Engineering student at Northeastern University, graduating in May 2027, with a minor in Entrepreneurial Startups & Business. I’ve wanted to be an engineer for a long time, and a big part of that started with the custom LED sign business I founded in 2021. I designed the signs, engraved and assembled the products, built the website, and worked with customers. I loved the whole experience. It was so rewarding to see people enjoy the products I created, and it is the main reason why I decided to go into engineering. Since then, I’ve kept looking for work where I can design, build, improve, and solve practical problems. Through my co-op, class projects, clubs, labs, and personal projects, I’ve worked with CAD, SolidWorks, Python automation, ArcGIS workflows, survey data, mechanical testing, sensors, and hands-on design. I’m excited to keep growing as an engineer and keep working on projects that are useful, creative, and meaningful.`;
+    const aboutPageBlurb = `I’m a fourth-year Mechanical Engineering student at Northeastern University, graduating in May 2027, with a minor in Entrepreneurial Startups & Business. I’ve wanted to be an engineer for a long time, and a big part of that started with the custom LED sign business I founded in 2021. I designed the signs, engraved and assembled the products, built the website, and worked with customers. I loved the whole experience. It was so rewarding to see people enjoy the products I created, and it is the main reason why I decided to go into engineering. Since then, I've continued to work and build on my engineering skills at northeastern, in my projects, and with the Wellesley Engineering Deparmemt. Through my co-op, class projects, clubs, labs, and personal projects, I’ve worked with CAD, SolidWorks, Fusion 360, Python automation, ArcGIS, surveys, mechanical testing, sensors, construction work, and design work. I’m excited to keep growing as an engineer and keep working on engineering projects as I start the early stages of my career!`;
 
     const timelineItems = [
       {
