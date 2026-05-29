@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <style>
     :root{
@@ -543,16 +544,14 @@
       width:100%;
     }
 
-    .project-1 .project-lower-special{
-      display:grid;
-      grid-template-columns:3.25in 1fr;
-      gap:18px;
-      align-items:stretch;
-      margin-top:14px;
-      width:100%;
+    .project-1 .project-main-special .text-box{
+      min-height:3.20in;
+      height:3.20in;
+      max-height:3.20in;
+      padding:18px 20px;
+      justify-content:flex-start;
     }
 
-    .project-1 .project-main-special .text-box,
     .project-1 .project-main-special .project-img-box{
       min-height:3.20in;
       height:3.20in;
@@ -564,11 +563,20 @@
       max-height:3.08in;
     }
 
+    .project-1 .project-lower-special{
+      display:grid;
+      grid-template-columns:3.75in 1fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:14px;
+      width:100%;
+    }
+
     .project-1 .project-lower-special .text-box,
     .project-1 .project-lower-special .side-mini-stack{
-      min-height:2.42in;
-      height:2.42in;
-      max-height:2.42in;
+      min-height:2.54in;
+      height:2.54in;
+      max-height:2.54in;
     }
 
     .project-1 .side-mini-stack{
@@ -578,14 +586,14 @@
     }
 
     .project-1 .side-mini-stack .project-img-box{
-      min-height:1.16in;
-      height:1.16in;
-      max-height:1.16in;
-      padding:4px;
+      min-height:1.22in;
+      height:1.22in;
+      max-height:1.22in;
+      padding:3px;
     }
 
     .project-1 .side-mini-stack .project-img-box img{
-      max-height:1.08in;
+      max-height:1.15in;
       object-fit:contain;
     }
 
@@ -665,33 +673,35 @@
     }
 
     .project-6 .project-main-stacked{
-      grid-template-columns:1.18fr 3.65in;
+      grid-template-columns:1.18fr 3.82in;
       align-items:stretch;
     }
 
     .project-6 .project-main-stacked .text-box{
-      min-height:auto;
-      height:auto;
-      max-height:none;
+      min-height:3.20in;
+      height:3.20in;
+      max-height:3.20in;
     }
 
     .project-6 .image-stack{
-      height:auto;
-      min-height:0;
+      height:3.20in;
+      min-height:3.20in;
+      max-height:3.20in;
       display:grid;
       grid-template-rows:1fr 1fr;
       gap:10px;
     }
 
     .project-6 .image-stack .project-img-box{
-      min-height:1.46in;
-      height:1.46in;
-      max-height:1.46in;
-      padding:4px;
+      min-height:1.55in;
+      height:1.55in;
+      max-height:1.55in;
+      padding:3px;
     }
 
     .project-6 .image-stack .project-img-box img{
-      max-height:1.36in;
+      max-height:1.47in;
+      object-fit:contain;
     }
 
     .project-6 .project-lower-stacked{
@@ -706,36 +716,42 @@
       max-height:2.18in;
     }
 
+    .project-6 .project-lower-stacked .project-img-box{
+      padding:2px;
+    }
+
     .project-6 .project-lower-stacked .project-img-box img{
-      max-height:2.08in;
+      max-height:2.12in;
       object-fit:contain;
     }
 
     .project-7 .project-main-stacked{
-      grid-template-columns:1.15fr 3.85in;
+      grid-template-columns:1.15fr 3.95in;
       align-items:stretch;
     }
 
     .project-7 .project-main-stacked .text-box{
-      min-height:auto;
-      height:auto;
-      max-height:none;
+      min-height:3.05in;
+      height:3.05in;
+      max-height:3.05in;
     }
 
     .project-7 .image-stack{
-      height:auto;
-      min-height:0;
+      height:3.05in;
+      min-height:3.05in;
+      max-height:3.05in;
     }
 
     .project-7 .image-stack .project-img-box{
-      min-height:1.42in;
-      height:1.42in;
-      max-height:1.42in;
-      padding:4px;
+      min-height:1.475in;
+      height:1.475in;
+      max-height:1.475in;
+      padding:3px;
     }
 
     .project-7 .image-stack .project-img-box img{
-      max-height:1.32in;
+      max-height:1.39in;
+      object-fit:contain;
     }
 
     .project-7 .project-7-lower{
@@ -1199,6 +1215,10 @@
         .slice(0, 4);
     }
 
+    function cleanTitle(title){
+      return String(title || "").trim().replace(/[.]+$/g, "");
+    }
+
     function mediaBox(src, alt, extraClass = ""){
       if(!src) return "";
 
@@ -1241,12 +1261,14 @@
           if(Array.isArray(project.subsections) && project.subsections.length){
             project.subsections.forEach((sub, index) => {
               const letter = String.fromCharCode(97 + index);
+              const title = cleanTitle(sub.title);
+
               pages.push({
                 id:`project-${project.number}${letter}`,
                 projectNumber:project.number,
-                navTitle:`Project ${project.number}${letter}: ${sub.title}`,
+                navTitle:`Project ${project.number}${letter}: ${title}`,
                 displayNumber:`Project ${project.number}${letter}`,
-                title:sub.title,
+                title:title,
                 skills:sub.skills || project.skills,
                 contextLabel:sub.contextLabel || project.contextLabel || "What / Context",
                 context:sub.context || project.context || "",
@@ -1258,12 +1280,14 @@
               });
             });
           } else {
+            const title = cleanTitle(project.title);
+
             pages.push({
               id:`project-${project.number}`,
               projectNumber:project.number,
-              navTitle:`Project ${project.number}: ${project.title}`,
+              navTitle:`Project ${project.number}: ${title}`,
               displayNumber:`Project ${project.number}`,
-              title:project.title,
+              title:title,
               skills:project.skills,
               contextLabel:project.contextLabel || "What / Context",
               context:project.context || "",
@@ -1944,23 +1968,34 @@
       }));
     }
 
+    async function waitForFonts(){
+      if(document.fonts && document.fonts.ready){
+        await document.fonts.ready;
+      }
+    }
+
     async function downloadPortfolioPdf(){
       const button = document.getElementById("downloadPdfBtn");
+      const pages = Array.from(document.querySelectorAll("#pdfPortfolio .page"));
+
       button.textContent = "Preparing PDF...";
       button.disabled = true;
 
+      await waitForFonts();
       await waitForImages();
 
-      const element = document.getElementById("pdfPortfolio");
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({
+        orientation:"landscape",
+        unit:"in",
+        format:[11.69, 8.27],
+        compress:true
+      });
 
-      const options = {
-        margin:0,
-        filename:"Michael-Gauthier-Engineering-Portfolio.pdf",
-        image:{
-          type:"jpeg",
-          quality:0.98
-        },
-        html2canvas:{
+      for(let i = 0; i < pages.length; i++){
+        const page = pages[i];
+
+        const canvas = await html2canvas(page, {
           scale:2,
           useCORS:true,
           allowTaint:true,
@@ -1968,35 +2003,26 @@
           logging:false,
           scrollX:0,
           scrollY:0,
-          windowWidth:1122,
-          windowHeight:794
-        },
-        jsPDF:{
-          unit:"in",
-          format:"letter",
-          orientation:"landscape",
-          compress:true
-        },
-        pagebreak:{
-          mode:["css", "legacy"],
-          before:".page"
-        },
-        enableLinks:true
-      };
-
-      html2pdf()
-        .set(options)
-        .from(element)
-        .save()
-        .then(() => {
-          button.textContent = "Download PDF";
-          button.disabled = false;
-        })
-        .catch(() => {
-          button.textContent = "Try Again";
-          button.disabled = false;
-          alert("The PDF did not generate. Check that all image paths are correct and that this file is being run from your GitHub Pages site, not opened directly from your computer.");
+          width:page.offsetWidth,
+          height:page.offsetHeight,
+          windowWidth:page.offsetWidth,
+          windowHeight:page.offsetHeight
         });
+
+        const imgData = canvas.toDataURL("image/jpeg", 0.98);
+
+        if(i > 0){
+          pdf.addPage([11.69, 8.27], "landscape");
+        }
+
+        pdf.addImage(imgData, "JPEG", 0, 0, 11.69, 8.27);
+        button.textContent = `Preparing PDF... ${i + 1}/${pages.length}`;
+      }
+
+      pdf.save("Michael-Gauthier-Engineering-Portfolio.pdf");
+
+      button.textContent = "Download PDF";
+      button.disabled = false;
     }
 
     document.addEventListener("DOMContentLoaded", () => {
