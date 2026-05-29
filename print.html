@@ -1580,6 +1580,40 @@
       transform-origin:center center !important;
     }
 
+        /* SOFT LIGHT BLUE / WHITE BACKGROUND FOR ALL NON-COVER PAGES */
+
+    .page:not(.full-bg){
+      background:
+        radial-gradient(circle at 12% 18%, rgba(191,219,254,.30) 0%, rgba(191,219,254,.30) 4.5%, transparent 5.2%),
+        radial-gradient(circle at 84% 16%, rgba(219,234,254,.34) 0%, rgba(219,234,254,.34) 5.5%, transparent 6.2%),
+        radial-gradient(circle at 22% 78%, rgba(186,230,253,.26) 0%, rgba(186,230,253,.26) 5%, transparent 5.7%),
+        radial-gradient(circle at 74% 70%, rgba(219,234,254,.28) 0%, rgba(219,234,254,.28) 6%, transparent 6.8%),
+        radial-gradient(circle at 52% 38%, rgba(224,242,254,.22) 0%, rgba(224,242,254,.22) 4.2%, transparent 4.9%),
+        linear-gradient(135deg, #f8fbff 0%, #eef6ff 50%, #fdfefe 100%);
+    }
+
+    .project-page,
+    .about-page{
+      background:
+        radial-gradient(circle at 12% 18%, rgba(191,219,254,.30) 0%, rgba(191,219,254,.30) 4.5%, transparent 5.2%),
+        radial-gradient(circle at 84% 16%, rgba(219,234,254,.34) 0%, rgba(219,234,254,.34) 5.5%, transparent 6.2%),
+        radial-gradient(circle at 22% 78%, rgba(186,230,253,.26) 0%, rgba(186,230,253,.26) 5%, transparent 5.7%),
+        radial-gradient(circle at 74% 70%, rgba(219,234,254,.28) 0%, rgba(219,234,254,.28) 6%, transparent 6.8%),
+        radial-gradient(circle at 52% 38%, rgba(224,242,254,.22) 0%, rgba(224,242,254,.22) 4.2%, transparent 4.9%),
+        linear-gradient(135deg, #f8fbff 0%, #eef6ff 50%, #fdfefe 100%) !important;
+    }
+
+    #page-index,
+    #page-timeline,
+    #page-about{
+      background:
+        radial-gradient(circle at 14% 20%, rgba(191,219,254,.32) 0%, rgba(191,219,254,.32) 4.6%, transparent 5.3%),
+        radial-gradient(circle at 82% 18%, rgba(219,234,254,.34) 0%, rgba(219,234,254,.34) 5.7%, transparent 6.3%),
+        radial-gradient(circle at 18% 82%, rgba(186,230,253,.24) 0%, rgba(186,230,253,.24) 5.1%, transparent 5.9%),
+        radial-gradient(circle at 78% 74%, rgba(224,242,254,.24) 0%, rgba(224,242,254,.24) 5.2%, transparent 6%),
+        linear-gradient(135deg, #f9fcff 0%, #edf5ff 52%, #ffffff 100%) !important;
+    }
+
     @media print{
       .pdf-actions{
         display:none !important;
