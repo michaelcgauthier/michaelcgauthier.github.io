@@ -2544,12 +2544,27 @@
 
     async function waitForImages(){
       const imgs = Array.from(document.images);
-      await Promise.all(imgs.map(img => {
-        if(img.complete) return Promise.resolve();
-        return new Promise(resolve => {
+
+      await Promise.all(imgs.map(async img => {
+        if(img.complete && img.naturalWidth !== 0){
+          if(img.decode){
+            try{
+              await img.decode();
+            } catch(error){}
+          }
+          return;
+        }
+
+        await new Promise(resolve => {
           img.onload = resolve;
           img.onerror = resolve;
         });
+
+        if(img.decode){
+          try{
+            await img.decode();
+          } catch(error){}
+        }
       }));
     }
 
@@ -2569,16 +2584,33 @@
       await waitForFonts();
       await waitForImages();
 
+      await new Promise(resolve => setTimeout(resolve, 300));
+
       const { jsPDF } = window.jspdf;
+
+      const pdfWidth = 11.69;
+      const pdfHeight = 8.27;
+
       const pdf = new jsPDF({
         orientation:"landscape",
         unit:"in",
-        format:[11.69, 8.27],
-        compress:true
+        format:[pdfWidth, pdfHeight],
+        compress:false
+      });
+
+      const pageIdToPdfPage = {};
+      pages.forEach((page, index) => {
+        if(page.id){
+          pageIdToPdfPage[page.id] = index + 1;
+        }
       });
 
       for(let i = 0; i < pages.length; i++){
         const page = pages[i];
+
+        button.textContent = `Capturing page ${i + 1}/${pages.length}...`;
+
+        const pageRect = page.getBoundingClientRect();
 
         const canvas = await html2canvas(page, {
           scale:2,
@@ -2588,10 +2620,13 @@
           logging:false,
           scrollX:0,
           scrollY:0,
-          width:page.offsetWidth,
-          height:page.offsetHeight,
-          windowWidth:page.offsetWidth,
-          windowHeight:page.offsetHeight,
+          x:pageRect.left + window.scrollX,
+          y:pageRect.top + window.scrollY,
+          width:pageRect.width,
+          height:pageRect.height,
+          windowWidth:document.documentElement.scrollWidth,
+          windowHeight:document.documentElement.scrollHeight,
+          imageTimeout:0,
           onclone:function(clonedDoc){
             const clonedActions = clonedDoc.querySelector(".pdf-actions");
             if(clonedActions){
@@ -2599,29 +2634,75 @@
             }
 
             const clonedPages = clonedDoc.querySelectorAll(".page");
-            clonedPages.forEach(p => {
-              p.style.boxShadow = "none";
-              p.style.margin = "0";
+            clonedPages.forEach(clonedPage => {
+              clonedPage.style.margin = "0";
+              clonedPage.style.boxShadow = "none";
+              clonedPage.style.transform = "none";
             });
           }
         });
 
-        const imgData = canvas.toDataURL("image/jpeg", 0.98);
+        const imgData = canvas.toDataURL("image/png");
 
         if(i > 0){
-          pdf.addPage([11.69, 8.27], "landscape");
+          pdf.addPage([pdfWidth, pdfHeight], "landscape");
         }
 
-        pdf.addImage(imgData, "JPEG", 0, 0, 11.69, 8.27);
-        button.textContent = `Preparing PDF... ${i + 1}/${pages.length}`;
+        pdf.addImage(
+          imgData,
+          "PNG",
+          0,
+          0,
+          pdfWidth,
+          pdfHeight,
+          undefined,
+          "FAST"
+        );
+
+        const links = Array.from(page.querySelectorAll("a[href]"));
+
+        links.forEach(link => {
+          const href = link.getAttribute("href");
+          if(!href) return;
+
+          const linkRect = link.getBoundingClientRect();
+          const pageBox = page.getBoundingClientRect();
+
+          const relativeLeft = linkRect.left - pageBox.left;
+          const relativeTop = linkRect.top - pageBox.top;
+
+          const x = relativeLeft / pageBox.width * pdfWidth;
+          const y = relativeTop / pageBox.height * pdfHeight;
+          const w = linkRect.width / pageBox.width * pdfWidth;
+          const h = linkRect.height / pageBox.height * pdfHeight;
+
+          if(w <= 0 || h <= 0) return;
+
+          if(href.startsWith("#")){
+            const targetId = href.replace("#", "");
+            const targetPage = pageIdToPdfPage[targetId];
+
+            if(targetPage){
+              pdf.link(x, y, w, h, {
+                pageNumber:targetPage
+              });
+            }
+          } else {
+            const absoluteUrl = new URL(href, window.location.href).href;
+
+            pdf.link(x, y, w, h, {
+              url:absoluteUrl
+            });
+          }
+        });
       }
 
+      button.textContent = "Saving PDF...";
       pdf.save("Michael-Gauthier-Engineering-Portfolio.pdf");
 
       button.textContent = "Download PDF";
       button.disabled = false;
     }
-
     document.addEventListener("DOMContentLoaded", () => {
       buildPortfolio();
       document.getElementById("downloadPdfBtn").addEventListener("click", downloadPortfolioPdf);
