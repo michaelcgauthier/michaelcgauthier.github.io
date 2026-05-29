@@ -2574,17 +2574,41 @@
       }
     }
 
+    async function waitForElementImages(element){
+      const imgs = Array.from(element.querySelectorAll("img"));
+
+      await Promise.all(imgs.map(async img => {
+        if(img.complete && img.naturalWidth !== 0){
+          if(img.decode){
+            try{
+              await img.decode();
+            } catch(error){}
+          }
+          return;
+        }
+
+        await new Promise(resolve => {
+          img.onload = resolve;
+          img.onerror = resolve;
+        });
+
+        if(img.decode){
+          try{
+            await img.decode();
+          } catch(error){}
+        }
+      }));
+    }
+
     async function downloadPortfolioPdf(){
       const button = document.getElementById("downloadPdfBtn");
-      const pages = Array.from(document.querySelectorAll("#pdfPortfolio .page"));
+      const originalPages = Array.from(document.querySelectorAll("#pdfPortfolio .page"));
 
       button.textContent = "Preparing PDF...";
       button.disabled = true;
 
       await waitForFonts();
       await waitForImages();
-
-      await new Promise(resolve => setTimeout(resolve, 300));
 
       const { jsPDF } = window.jspdf;
 
@@ -2599,109 +2623,131 @@
       });
 
       const pageIdToPdfPage = {};
-      pages.forEach((page, index) => {
+      originalPages.forEach((page, index) => {
         if(page.id){
           pageIdToPdfPage[page.id] = index + 1;
         }
       });
 
-      for(let i = 0; i < pages.length; i++){
-        const page = pages[i];
+      const captureWrap = document.createElement("div");
+      captureWrap.style.position = "fixed";
+      captureWrap.style.left = "0";
+      captureWrap.style.top = "0";
+      captureWrap.style.width = "11.69in";
+      captureWrap.style.height = "8.27in";
+      captureWrap.style.zIndex = "-999999";
+      captureWrap.style.opacity = "1";
+      captureWrap.style.pointerEvents = "none";
+      captureWrap.style.overflow = "hidden";
+      captureWrap.style.background = "#ffffff";
+      document.body.appendChild(captureWrap);
 
-        button.textContent = `Capturing page ${i + 1}/${pages.length}...`;
+      try{
+        for(let i = 0; i < originalPages.length; i++){
+          const originalPage = originalPages[i];
 
-        const pageRect = page.getBoundingClientRect();
+          button.textContent = `Capturing page ${i + 1}/${originalPages.length}...`;
 
-        const canvas = await html2canvas(page, {
-          scale:2,
-          useCORS:true,
-          allowTaint:false,
-          backgroundColor:null,
-          logging:false,
-          scrollX:0,
-          scrollY:0,
-          x:pageRect.left + window.scrollX,
-          y:pageRect.top + window.scrollY,
-          width:pageRect.width,
-          height:pageRect.height,
-          windowWidth:document.documentElement.scrollWidth,
-          windowHeight:document.documentElement.scrollHeight,
-          imageTimeout:0,
-          onclone:function(clonedDoc){
-            const clonedActions = clonedDoc.querySelector(".pdf-actions");
-            if(clonedActions){
-              clonedActions.style.display = "none";
-            }
+          captureWrap.innerHTML = "";
 
-            const clonedPages = clonedDoc.querySelectorAll(".page");
-            clonedPages.forEach(clonedPage => {
-              clonedPage.style.margin = "0";
-              clonedPage.style.boxShadow = "none";
-              clonedPage.style.transform = "none";
-            });
+          const clonedPage = originalPage.cloneNode(true);
+          clonedPage.style.margin = "0";
+          clonedPage.style.boxShadow = "none";
+          clonedPage.style.transform = "none";
+          clonedPage.style.position = "relative";
+          clonedPage.style.left = "0";
+          clonedPage.style.top = "0";
+          clonedPage.style.width = "11.69in";
+          clonedPage.style.height = "8.27in";
+          clonedPage.style.pageBreakAfter = "auto";
+          clonedPage.style.breakAfter = "auto";
+
+          captureWrap.appendChild(clonedPage);
+
+          await waitForElementImages(clonedPage);
+          await new Promise(resolve => requestAnimationFrame(resolve));
+          await new Promise(resolve => setTimeout(resolve, 150));
+
+          const canvas = await html2canvas(clonedPage, {
+            scale:2,
+            useCORS:true,
+            allowTaint:false,
+            backgroundColor:"#ffffff",
+            logging:false,
+            scrollX:0,
+            scrollY:0,
+            width:clonedPage.offsetWidth,
+            height:clonedPage.offsetHeight,
+            windowWidth:clonedPage.offsetWidth,
+            windowHeight:clonedPage.offsetHeight,
+            imageTimeout:0
+          });
+
+          const imgData = canvas.toDataURL("image/png");
+
+          if(i > 0){
+            pdf.addPage([pdfWidth, pdfHeight], "landscape");
           }
-        });
 
-        const imgData = canvas.toDataURL("image/png");
+          pdf.addImage(
+            imgData,
+            "PNG",
+            0,
+            0,
+            pdfWidth,
+            pdfHeight,
+            undefined,
+            "FAST"
+          );
 
-        if(i > 0){
-          pdf.addPage([pdfWidth, pdfHeight], "landscape");
-        }
+          const originalLinks = Array.from(originalPage.querySelectorAll("a[href]"));
+          const originalPageBox = originalPage.getBoundingClientRect();
 
-        pdf.addImage(
-          imgData,
-          "PNG",
-          0,
-          0,
-          pdfWidth,
-          pdfHeight,
-          undefined,
-          "FAST"
-        );
+          originalLinks.forEach(link => {
+            const href = link.getAttribute("href");
+            if(!href) return;
 
-        const links = Array.from(page.querySelectorAll("a[href]"));
+            const linkBox = link.getBoundingClientRect();
 
-        links.forEach(link => {
-          const href = link.getAttribute("href");
-          if(!href) return;
+            const relativeLeft = linkBox.left - originalPageBox.left;
+            const relativeTop = linkBox.top - originalPageBox.top;
 
-          const linkRect = link.getBoundingClientRect();
-          const pageBox = page.getBoundingClientRect();
+            const x = relativeLeft / originalPageBox.width * pdfWidth;
+            const y = relativeTop / originalPageBox.height * pdfHeight;
+            const w = linkBox.width / originalPageBox.width * pdfWidth;
+            const h = linkBox.height / originalPageBox.height * pdfHeight;
 
-          const relativeLeft = linkRect.left - pageBox.left;
-          const relativeTop = linkRect.top - pageBox.top;
+            if(w <= 0 || h <= 0) return;
 
-          const x = relativeLeft / pageBox.width * pdfWidth;
-          const y = relativeTop / pageBox.height * pdfHeight;
-          const w = linkRect.width / pageBox.width * pdfWidth;
-          const h = linkRect.height / pageBox.height * pdfHeight;
+            if(href.startsWith("#")){
+              const targetId = href.replace("#", "");
+              const targetPage = pageIdToPdfPage[targetId];
 
-          if(w <= 0 || h <= 0) return;
+              if(targetPage){
+                pdf.link(x, y, w, h, {
+                  pageNumber:targetPage
+                });
+              }
+            } else {
+              const absoluteUrl = new URL(href, window.location.href).href;
 
-          if(href.startsWith("#")){
-            const targetId = href.replace("#", "");
-            const targetPage = pageIdToPdfPage[targetId];
-
-            if(targetPage){
               pdf.link(x, y, w, h, {
-                pageNumber:targetPage
+                url:absoluteUrl
               });
             }
-          } else {
-            const absoluteUrl = new URL(href, window.location.href).href;
+          });
+        }
 
-            pdf.link(x, y, w, h, {
-              url:absoluteUrl
-            });
-          }
-        });
+        button.textContent = "Saving PDF...";
+        pdf.save("Michael-Gauthier-Engineering-Portfolio.pdf");
+      } catch(error){
+        console.error(error);
+        alert("The PDF did not generate correctly. Check the console for details.");
+      } finally{
+        captureWrap.remove();
+        button.textContent = "Download PDF";
+        button.disabled = false;
       }
-
-      button.textContent = "Saving PDF...";
-      pdf.save("Michael-Gauthier-Engineering-Portfolio.pdf");
-
-      button.textContent = "Download PDF";
-      button.disabled = false;
     }
     document.addEventListener("DOMContentLoaded", () => {
       buildPortfolio();
