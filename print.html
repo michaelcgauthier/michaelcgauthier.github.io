@@ -217,7 +217,7 @@
     }
 
     .section-title{
-      font-size:39px;
+      font-size:36px;
       line-height:1;
       letter-spacing:-1.2px;
       font-weight:950;
@@ -227,13 +227,13 @@
     }
 
     .section-subtitle{
-      font-size:15px;
+      font-size:13.5px;
       line-height:1.55;
       color:var(--muted);
       text-align:center;
-      max-width:820px;
-      margin:13px auto 0;
-      font-weight:650;
+      max-width:760px;
+      margin:12px auto 0;
+      font-weight:600;
     }
 
     .index-wrap{
@@ -245,57 +245,43 @@
     }
 
     .index-list{
-      margin-top:30px;
+      margin-top:24px;
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:11px 20px;
+      gap:8px 16px;
     }
 
     .index-link{
       display:grid;
-      grid-template-columns:46px 1fr;
+      grid-template-columns:42px 1fr;
       align-items:center;
-      gap:11px;
+      gap:10px;
       background:#f8fafc;
-      border-radius:15px;
-      padding:12px 14px;
+      border-radius:14px;
+      padding:9px 12px;
       color:var(--ink);
-      box-shadow:0 7px 18px rgba(2,8,23,.06);
-      min-height:50px;
+      box-shadow:0 5px 16px rgba(2,8,23,.045);
+      min-height:40px;
     }
 
     .index-num{
-      width:35px;
-      height:29px;
+      width:32px;
+      height:26px;
       border-radius:999px;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:12px;
+      font-size:11px;
       font-weight:950;
       color:#fff;
       background:#0f172a;
     }
 
     .index-title{
-      font-size:13.1px;
-      line-height:1.24;
-      font-weight:900;
+      font-size:11.7px;
+      line-height:1.22;
+      font-weight:850;
       letter-spacing:-.1px;
-    }
-
-    .index-note{
-      margin:14px auto 0;
-      width:max-content;
-      max-width:8.3in;
-      background:#eaf1ff;
-      color:#1e3a8a;
-      border-radius:999px;
-      padding:9px 15px;
-      font-size:12.5px;
-      line-height:1.2;
-      font-weight:900;
-      text-align:center;
     }
 
     .timeline-wrap{
@@ -387,7 +373,7 @@
       letter-spacing:-.8px;
       font-weight:950;
       color:#0f172a;
-      margin:0 auto;
+      margin:0 auto 6px;
       max-width:10.2in;
     }
 
@@ -396,7 +382,7 @@
       flex-wrap:wrap;
       justify-content:center;
       gap:5px;
-      margin:10px auto 12px;
+      margin:13px auto 12px;
       max-height:36px;
       overflow:hidden;
     }
@@ -435,7 +421,7 @@
     }
 
     .body-text{
-      font-size:11.85px;
+      font-size:12.35px;
       line-height:1.48;
       color:#263445;
       font-weight:570;
@@ -454,7 +440,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:6px;
+      padding:5px;
     }
 
     .project-img-box img{
@@ -548,7 +534,7 @@
 
     .project-1 .project-main-special{
       display:grid;
-      grid-template-columns:3.18in 1fr;
+      grid-template-columns:1fr 3.15in;
       gap:18px;
       align-items:stretch;
       width:100%;
@@ -556,8 +542,8 @@
 
     .project-1 .project-lower-special{
       display:grid;
-      grid-template-columns:2.25in 1fr 2.95in;
-      gap:14px;
+      grid-template-columns:3.25in 1fr;
+      gap:18px;
       align-items:stretch;
       margin-top:14px;
       width:100%;
@@ -565,76 +551,165 @@
 
     .project-1 .project-main-special .text-box,
     .project-1 .project-main-special .project-img-box{
-      min-height:3.12in;
-      height:3.12in;
-      max-height:3.12in;
+      min-height:3.20in;
+      height:3.20in;
+      max-height:3.20in;
+    }
+
+    .project-1 .project-main-special .project-img-box img{
+      object-fit:contain;
+      max-height:3.08in;
     }
 
     .project-1 .project-lower-special .text-box,
-    .project-1 .project-lower-special .project-img-box{
-      min-height:2.56in;
-      height:2.56in;
-      max-height:2.56in;
+    .project-1 .project-lower-special .side-mini-stack{
+      min-height:2.42in;
+      height:2.42in;
+      max-height:2.42in;
     }
 
     .project-1 .side-mini-stack{
       display:grid;
       grid-template-rows:1fr 1fr;
       gap:10px;
-      height:2.56in;
     }
 
     .project-1 .side-mini-stack .project-img-box{
-      min-height:1.23in;
-      height:1.23in;
-      max-height:1.23in;
+      min-height:1.16in;
+      height:1.16in;
+      max-height:1.16in;
       padding:4px;
     }
 
     .project-1 .side-mini-stack .project-img-box img{
-      max-height:1.15in;
+      max-height:1.08in;
+      object-fit:contain;
+    }
+
+    .project-2 .image-stack{
+      height:3.16in;
+    }
+
+    .project-2 .image-stack .project-img-box{
+      min-height:1.53in;
+      height:1.53in;
+      max-height:1.53in;
+      padding:3px;
+    }
+
+    .project-2 .image-stack .project-img-box img{
+      object-fit:cover;
+      max-height:1.47in;
+    }
+
+    .project-2 .single-image-tall img{
       object-fit:cover;
     }
 
-    .project-1 .project-img-box img{
+    .project-4 .project-4-lower{
+      display:grid;
+      grid-template-columns:5.45in 1fr;
+      gap:16px;
+      align-items:stretch;
+      margin-top:14px;
+      width:100%;
+    }
+
+    .project-4 .side-by-side-images{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      height:2.58in;
+    }
+
+    .project-4 .side-by-side-images .project-img-box{
+      min-height:2.58in;
+      height:2.58in;
+      max-height:2.58in;
+      padding:4px;
+    }
+
+    .project-4 .side-by-side-images .project-img-box img{
+      max-height:2.48in;
       object-fit:cover;
     }
 
-    .project-4 .project-lower-stacked{
-      grid-template-columns:4.35in 1fr;
+    .project-4 .project-4-lower .text-box{
+      min-height:2.58in;
+      height:2.58in;
+      max-height:2.58in;
     }
 
-    .project-4 .image-stack{
-      height:3.18in;
-    }
-
-    .project-4 .image-stack .project-img-box{
-      min-height:1.54in;
-      height:1.54in;
-      max-height:1.54in;
-    }
-
-    .project-4 .image-stack .project-img-box img{
-      max-height:1.43in;
+    .project-6 .project-main-stacked{
+      grid-template-columns:1fr 3.95in;
     }
 
     .project-6 .image-stack{
-      height:3.12in;
+      height:3.24in;
     }
 
     .project-6 .image-stack .project-img-box{
-      min-height:1.51in;
-      height:1.51in;
-      max-height:1.51in;
+      min-height:1.57in;
+      height:1.57in;
+      max-height:1.57in;
+      padding:4px;
     }
 
     .project-6 .image-stack .project-img-box img{
-      max-height:1.40in;
+      max-height:1.48in;
+    }
+
+    .project-6 .project-main-stacked .text-box{
+      min-height:3.24in;
+      height:3.24in;
+      max-height:3.24in;
+    }
+
+    .project-6 .project-lower-stacked{
+      grid-template-columns:3.50in 1fr;
+      margin-top:12px;
+    }
+
+    .project-6 .project-lower-stacked .text-box,
+    .project-6 .project-lower-stacked .project-img-box{
+      min-height:2.30in;
+      height:2.30in;
+      max-height:2.30in;
+    }
+
+    .project-6 .project-lower-stacked .project-img-box img{
+      max-height:2.18in;
+      object-fit:contain;
+    }
+
+    .project-7 .project-main-stacked{
+      grid-template-columns:1fr 4.05in;
+    }
+
+    .project-7 .project-main-stacked .text-box{
+      min-height:3.05in;
+      height:3.05in;
+      max-height:3.05in;
+    }
+
+    .project-7 .image-stack{
+      height:3.05in;
+    }
+
+    .project-7 .image-stack .project-img-box{
+      min-height:1.47in;
+      height:1.47in;
+      max-height:1.47in;
+      padding:4px;
+    }
+
+    .project-7 .image-stack .project-img-box img{
+      max-height:1.38in;
     }
 
     .project-7 .project-7-lower{
       display:grid;
-      grid-template-columns:2.55in 1fr 2.55in;
+      grid-template-columns:2.75in 1fr 2.75in;
       gap:14px;
       align-items:stretch;
       margin-top:14px;
@@ -643,13 +718,13 @@
 
     .project-7 .project-7-lower .text-box,
     .project-7 .project-7-lower .project-img-box{
-      min-height:2.65in;
-      height:2.65in;
-      max-height:2.65in;
+      min-height:2.72in;
+      height:2.72in;
+      max-height:2.72in;
     }
 
     .project-7 .project-7-lower .project-img-box img{
-      max-height:2.52in;
+      max-height:2.60in;
     }
 
     .project-12 .project-main{
@@ -934,7 +1009,7 @@
   <script src="projects-data.js?v=1000"></script>
 
   <script>
-    const PHONE = "Add phone number here";
+    const PHONE = "908-821-3897";
     const EMAIL = "gauthier.mi@northeastern.edu";
     const LINKEDIN = "https://www.linkedin.com/in/mgauthier1";
     const PORTFOLIO = "https://michaelcgauthier.github.io/";
@@ -1210,11 +1285,8 @@
           <div class="index-wrap">
             <h1 class="section-title">Portfolio Index</h1>
             <p class="section-subtitle">
-              Each item below is a clickable link that jumps directly to that page in the PDF.
+              Click any item below to jump directly to that page in the PDF.
             </p>
-            <div class="index-note">
-              Click a project title to navigate through the portfolio.
-            </div>
             <div class="index-list">
               ${navItems.map((item, index) => `
                 <a class="index-link" href="#${escapeHtml(item.id)}">
@@ -1487,7 +1559,6 @@
     function renderProjectOnePage(projectPage, images){
       const img1 = images[0] || "";
       const img2 = images[1] || "";
-      const img3 = images[2] || "";
       const img4 = images[3] || "";
 
       return `
@@ -1502,8 +1573,6 @@
           </div>
 
           <div class="project-main-special">
-            ${mediaBox(img1, projectPage.title)}
-
             <div class="text-box">
               <div class="text-section">
                 <div class="label">${escapeHtml(projectPage.contextLabel)}</div>
@@ -1515,11 +1584,13 @@
                 <div class="body-text">${escapeHtml(projectPage.how)}</div>
               </div>
             </div>
+
+            ${mediaBox(img1, projectPage.title)}
           </div>
 
           <div class="project-lower-special">
             <div class="side-mini-stack">
-              ${[img3, img4].filter(Boolean).map(src => mediaBox(src, projectPage.title)).join("")}
+              ${[img2, img4].filter(Boolean).map(src => mediaBox(src, projectPage.title)).join("")}
             </div>
 
             <div class="text-box">
@@ -1528,8 +1599,53 @@
                 <div class="body-text">${escapeHtml(projectPage.results)}</div>
               </div>
             </div>
+          </div>
+        </section>
+      `;
+    }
 
-            ${mediaBox(img2, projectPage.title)}
+    function renderProjectFourPage(projectPage, images){
+      const firstTwo = [images[0], images[1]].filter(Boolean);
+      const lowerTwo = [images[2], images[3]].filter(Boolean);
+
+      return `
+        <section class="page project-page project-4" id="${escapeHtml(projectPage.id)}">
+          <div class="project-header">
+            <div class="project-number">${escapeHtml(projectPage.displayNumber)}</div>
+            <h1 class="project-title">${escapeHtml(projectPage.title)}</h1>
+
+            <div class="skill-row">
+              ${skillPills(projectPage.skills)}
+            </div>
+          </div>
+
+          <div class="project-main-stacked">
+            <div class="text-box">
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.contextLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.context)}</div>
+              </div>
+
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.howLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.how)}</div>
+              </div>
+            </div>
+
+            ${imageStack(firstTwo, projectPage.title)}
+          </div>
+
+          <div class="project-4-lower">
+            <div class="side-by-side-images">
+              ${lowerTwo.map(src => mediaBox(src, projectPage.title)).join("")}
+            </div>
+
+            <div class="text-box">
+              <div class="text-section">
+                <div class="label">${escapeHtml(projectPage.resultsLabel)}</div>
+                <div class="body-text">${escapeHtml(projectPage.results)}</div>
+              </div>
+            </div>
           </div>
         </section>
       `;
@@ -1642,6 +1758,10 @@
 
       if(projectPage.projectNumber === 1){
         return renderProjectOnePage(projectPage, images);
+      }
+
+      if(projectPage.projectNumber === 4 && images.length >= 4){
+        return renderProjectFourPage(projectPage, images);
       }
 
       if(projectPage.projectNumber === 6 && images.length >= 3){
